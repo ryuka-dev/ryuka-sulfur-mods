@@ -1,33 +1,371 @@
 # Toggle Melee Stance
 
+A shared melee stance module and quality-of-life mod for **SULFUR**.
+
+It changes melee from hold-to-use into a toggle stance, while keeping the original hold melee behavior available through tap / hold input.
+
+Starting from `1.2.0`, this mod is intended to be the shared prerequisite melee stance module for **The Dragonblade** and future melee-focused mods.
+
 ## What it does
 
-Toggle Melee Stance changes SULFUR's melee behavior from "hold melee key" to "toggle melee stance".
+Toggle Melee Stance provides the base stance system:
 
-In vanilla behavior, the player needs to hold the melee key to keep a melee weapon drawn.
+- Toggleable melee stance
+- Tap / hold melee key behavior
+- Fire input as melee attack while melee stance is active
+- Preserved Aim / Block behavior
+- Safe sheathe behavior
+- Animator safe-state cleanup
+- External weapon-switch compatibility
+- Public API for other mods to read melee stance state
 
-With this mod:
+## What it does not do
 
-- Press melee once to draw and keep the melee weapon out.
-- Press melee again to sheathe it.
-- While the melee weapon is drawn, press normal Fire to perform one melee attack.
-- Aim / alternative melee behavior is preserved.
-- If you sheathe during an attack, the weapon returns after the current attack finishes instead of starting another attack.
+This mod does not:
 
-The mod is designed to use the game's own input actions and melee systems instead of checking raw mouse or keyboard buttons.
+- Change melee damage
+- Change weapon durability
+- Change enemy AI
+- Edit save data
+- Replace or rebalance melee weapons
+- Add dash attacks, thrust attacks, or new melee moves
 
-## Implementation overview
+Dragonblade-specific abilities such as Dash Strike, kill refresh, healing, and HUD are handled by **The Dragonblade**, not this mod.
+
+## Public name and internal ID
+
+The public mod name is:
+
+```text
+Toggle Melee Stance
+```
+
+The internal BepInEx GUID is:
+
+```text
+kumo.sulfur.toggle_melee_stance
+```
+
+So the naming is:
+
+```text
+Public mod name: Toggle Melee Stance
+Internal GUID:   kumo.sulfur.toggle_melee_stance
+DLL name:        ToggleMeleeStance.dll
+```
+
+## Basic controls
+
+```text
+Tap Melee key
+→ Toggle melee stance on / off
+
+Hold Melee key
+→ Use the original melee behavior
+→ Release to perform the original melee attack
+→ Return to the previous weapon
+
+Fire
+→ Perform one melee attack while melee stance is toggled on
+
+Aim / Alt Fire
+→ Keep vanilla alternative melee stance / block behavior
+```
+
+The mod does not hardcode `F`, mouse buttons, or controller buttons.
+
+It uses the game's own input actions, so it should respect key rebinding and controller input better than raw key checks.
+
+## Why this mod exists
+
+SULFUR's original melee input is hold-based.
+
+That works for vanilla gameplay, but it becomes uncomfortable for builds or mods that want melee to behave more like a drawn weapon stance.
+
+A simple toggle implementation can easily break because the vanilla melee key does several things:
+
+```text
+draw melee
+hold melee
+attack
+block
+sheathe
+```
+
+This mod separates those states and keeps them stable.
+
+## Tap / hold melee key behavior
+
+The melee key has two behaviors:
+
+```text
+Tap melee key
+→ Toggle melee stance
+
+Hold melee key
+→ Pass through to the original melee behavior
+→ Release to perform the original melee attack
+→ Return to the previous weapon
+```
+
+This keeps the original game melee behavior available while still allowing toggle stance.
+
+The tap / hold threshold is configurable:
+
+```ini
+[Melee]
+EnableTapHoldMeleeKey = true
+MeleeToggleTapThreshold = 0.13
+```
+
+Lower values make hold behavior activate faster.
+
+Higher values make tap behavior easier.
+
+## Toggle melee stance system
+
+The state is stored per `EquipmentManager`.
+
+Core state:
+
+```text
+IsToggled
+AttackInProgress
+SheatheAfterAttack
+SuppressMeleeUntilReleased
+NextChargeAttemptTime
+```
+
+Tap / hold state:
+
+```text
+PendingTapHold
+LongPressPassThrough
+WasMeleeHeldLastFrame
+MeleePressStartTime
+```
+
+This allows the mod to distinguish between:
+
+- Drawing melee
+- Keeping it drawn
+- Performing an attack
+- Waiting for an attack to finish
+- Sheathing after the attack
+- Suppressing the same melee input until it is released
+- Waiting to determine whether melee input is a tap or a hold
+- Passing long melee input through to vanilla behavior
+
+## Fire input as melee attack
+
+When melee stance is toggled on, the normal Fire input is converted into one melee attack.
+
+The mod calls the game's own method:
+
+```text
+EquipmentManager.UseBasicMelee()
+```
+
+This is important because the original game already handles melee animation events, hit timing, damage, and weapon state.
+
+The mod does not create a fake attack system.
+
+## Aim / block behavior
+
+The original game has special melee behavior when melee and Aim / Alt Fire are held together.
+
+The mod preserves this by maintaining the game's internal alternative melee state:
+
+```text
+alternativeMeleePressed
+AlternativePressed animator bool
+```
+
+It reads the game's own `altFireAction` instead of checking raw mouse input.
+
+## Attack then sheathe behavior
+
+If the player presses melee while an attack is already in progress, the mod does not instantly sheathe.
+
+Instead:
+
+```text
+AttackInProgress = true
+Player presses melee to sheathe
+→ SheatheAfterAttack = true
+→ wait for Weapon.ReportMeleeDone()
+→ then sheathe
+```
+
+This avoids:
+
+- Double attacks
+- Interrupted attack animations
+- Stale melee state
+- Incorrect weapon switching
+
+## External weapon switch compatibility
+
+This mod includes compatibility handling for mods that can change the player's current weapon externally.
+
+One known case is a weapon-randomizing mod that switches the player's weapon after a kill.
+
+Without compatibility handling, this can create a broken state:
+
+```text
+melee stance is active
+→ another mod switches the player to a gun
+→ the player visually holds the gun
+→ melee stance still intercepts Fire input
+→ the gun cannot shoot
+```
+
+The default fix is:
+
+```text
+melee stance is active
+→ another mod switches the player to a gun
+→ the player tries to fire
+→ this mod detects that the current holdable is no longer melee
+→ this mod exits melee stance
+→ Fire input is passed through
+→ the gun fires normally
+```
+
+This behavior is configurable:
+
+```ini
+[Compatibility]
+KeepMeleeStanceAfterExternalWeaponSwitch = false
+```
+
+Recommended default:
+
+```text
+false
+```
+
+Important implementation rule:
+
+```text
+Do not clear melee stance immediately when the current holdable appears to be non-melee.
+```
+
+The check is delayed until the player actually tries to fire.
+
+This avoids false state loss during normal weapon transitions.
+
+## Animator flicker fix
+
+Some melee weapons can briefly flash an attack animation on repeated draw.
+
+The issue is caused by the melee weapon animator keeping a stale state after repeated draw / attack / sheathe cycles.
+
+The solution is to cache only a safe Equip state.
+
+A state is only considered safe if it contains:
+
+```text
+Equip
+```
+
+and does not contain:
+
+```text
+Slash
+Attack
+Fire
+ADS
+ToADS
+Charge
+Charged
+```
+
+Before sheathing, the mod resets volatile animator state:
+
+```text
+SetAlternativeState(0)
+currentParries = 0
+Charge = false
+Sprinting = false
+AlternativePressed = false
+ResetTrigger("Parry")
+```
+
+Then it restores the cached safe Equip state:
+
+```text
+Animator.Play(cachedSafeEquipState, 0, 0f)
+Animator.Update(0f)
+```
+
+This prevents the next draw from starting from a stale attack / idle / ADS state.
+
+## Public API for other mods
+
+The public API is exposed through:
+
+```text
+ToggleMeleeStance.Plugin
+```
+
+Available API:
+
+```text
+IsRuntimeReady
+IsMeleeStanceActive(object equipmentManager)
+IsAttackInProgress(object equipmentManager)
+IsSheatheAfterAttack(object equipmentManager)
+IsMeleeChargeActive(object equipmentManager)
+GetCurrentHoldableForExternal(object equipmentManager)
+IsCurrentHoldableMeleeForExternal(object equipmentManager)
+```
+
+These methods are intended for mods such as The Dragonblade to check melee stance state without patching the same input methods again.
+
+## Dragonblade integration
+
+Starting from The Dragonblade `0.3.0`, Dragonblade should depend on Toggle Melee Stance instead of duplicating the base stance system.
+
+Layering:
+
+```text
+Toggle Melee Stance
+→ owns base melee stance patches
+→ owns tap / hold melee input
+→ owns Fire-to-melee conversion
+→ owns external weapon-switch compatibility
+→ exposes stance state through public API
+
+The Dragonblade
+→ depends on Toggle Melee Stance
+→ reads stance state through public API
+→ adds katana dash
+→ adds dash damage
+→ adds kill refresh
+→ adds enemy-kill healing
+→ adds dash HUD
+```
+
+This reduces the risk of:
+
+- double-patching the same input methods
+- fixing one mod but forgetting the other
+- two mods fighting over the same internal melee state
+- bugs where the player visually holds a gun but melee stance still blocks Fire input
+
+## Main patched systems
 
 This mod uses BepInEx and Harmony.
 
-It patches several methods from:
+Patched systems:
 
 ```text
 PerfectRandom.Sulfur.Core.Items.EquipmentManager
 PerfectRandom.Sulfur.Core.Weapons.Weapon
-````
+```
 
-Main patched methods:
+Important patched methods:
 
 ```text
 EquipmentManager.HandleMeleeInput(bool)
@@ -38,388 +376,7 @@ Weapon.ReportMeleeDone()
 Weapon.ChargeMelee(bool)
 ```
 
-The mod keeps a per-`EquipmentManager` state object with:
-
-```text
-IsToggled
-AttackInProgress
-SheatheAfterAttack
-SuppressMeleeUntilReleased
-NextChargeAttemptTime
-```
-
-It also keeps a per-weapon cached safe animator state to prevent animation flicker after repeated draw / sheathe cycles.
-
-## Key game methods / fields used
-
-Important methods:
-
-```text
-EquipmentManager.HandleMeleeInput(bool)
-EquipmentManager.HandleAimInput(bool)
-EquipmentManager.ChargeBasicMelee()
-EquipmentManager.UseBasicMelee()
-EquipmentManager.OnMeleeDone()
-Weapon.ReportMeleeDone()
-Weapon.IsMeleeCharging()
-Weapon.ChargeMelee(bool)
-Weapon.SetAlternativeState(int)
-```
-
-Important fields / properties:
-
-```text
-EquipmentManager.currentHoldable
-EquipmentManager.isInMeleeCharge
-EquipmentManager.meleePressed
-EquipmentManager.alternativeMeleePressed
-EquipmentManager.AimingInputHeld
-EquipmentManager.meleeInputCooldown
-EquipmentManager.altFireAction
-EquipmentManager.meleeFireAction
-EquipmentManager.meleeFireActionAlternative
-Weapon.IsMelee
-Holdable.Animator
-Weapon.equipmentManager
-Weapon.currentParries
-```
-
-Most of these are accessed through reflection because they are private or internal game members.
-
-## Why this approach
-
-The important design rule is:
-
-```text
-Do not read raw mouse buttons or keyboard keys.
-```
-
-The mod reads the game's own `InputAction` fields:
-
-```text
-meleeFireAction
-meleeFireActionAlternative
-altFireAction
-```
-
-This keeps the mod compatible with:
-
-* Custom key bindings
-* Controller input
-* Non-default mouse bindings
-* Future input rebinding by the player
-
-The mod also calls the game's own melee methods:
-
-```text
-ChargeBasicMelee()
-UseBasicMelee()
-OnMeleeDone()
-```
-
-instead of trying to create a separate weapon system.
-
-This keeps the original animation events, hit detection, damage logic, and blocking behavior mostly intact.
-
-## Core behavior
-
-### Drawing melee weapon
-
-When the melee input is pressed and the stance is not toggled:
-
-```text
-ToggleOn()
-→ IsToggled = true
-→ ChargeBasicMelee()
-→ meleePressed = true
-```
-
-The game enters its normal melee charge state.
-
-### Keeping melee weapon drawn
-
-While toggled, the mod repeatedly maintains the melee state.
-
-If the game exits melee charge after an attack, the mod retries `ChargeBasicMelee()` after a short delay:
-
-```ini
-ReChargeRetryInterval = 0.08
-```
-
-This delay is important because immediately forcing charge again can conflict with the weapon's own attack completion flow.
-
-### Attacking with Fire
-
-When the stance is toggled and the player presses Fire:
-
-```text
-PullTrigger()
-→ UseBasicMelee()
-```
-
-The normal Fire input is converted into one melee attack.
-
-The mod blocks repeated attack starts while:
-
-```text
-AttackInProgress = true
-```
-
-### Sheathing melee weapon
-
-When the player presses the melee key again while toggled:
-
-```text
-ToggleOff()
-```
-
-If no attack is happening, the mod calls:
-
-```text
-OnMeleeDone()
-```
-
-to return to the previous weapon.
-
-If an attack is currently happening, the mod does not interrupt immediately.
-
-Instead:
-
-```text
-SheatheAfterAttack = true
-```
-
-Then when `Weapon.ReportMeleeDone()` runs, the mod finishes the sheathe.
-
-This avoids adding a second attack or breaking the current attack animation.
-
-## Important behavior fixes
-
-### Pressing melee to sheathe must not attack
-
-A major bug during development was:
-
-```text
-Press melee to draw
-Press melee again to sheathe
-→ the game performs another melee attack before switching back
-```
-
-The fix was to separate "melee key pressed for toggle off" from "melee key pressed for vanilla attack".
-
-When toggled, `HandleMeleeInput()` is intercepted and the mod manually decides whether to toggle off or maintain stance.
-
-The mod also uses:
-
-```text
-SuppressMeleeUntilReleased
-```
-
-After manual sheathe, the melee input must be released before it can toggle again.
-
-This prevents the same held input from being interpreted twice.
-
-### Fire attack then immediate sheathe
-
-Another issue was:
-
-```text
-Draw melee
-Press Fire to attack
-Immediately press melee to sheathe
-→ two attacks could play before switching back
-```
-
-The fix was:
-
-```text
-If AttackInProgress:
-    set SheatheAfterAttack = true
-    do not call OnMeleeDone immediately
-    wait for Weapon.ReportMeleeDone()
-```
-
-This ensures:
-
-```text
-Only the current attack finishes.
-No extra attack is started.
-Then the weapon is sheathed.
-```
-
-### Aim / block behavior must remain intact
-
-Vanilla melee has special behavior when holding melee and right-click / aim.
-
-The mod preserves this by:
-
-* Keeping `HandleAimInput(bool)` aware that melee is held while toggled.
-* Maintaining `alternativeMeleePressed` from the game's own `altFireAction`.
-* Updating the current melee weapon animator bool:
-
-```text
-AlternativePressed
-```
-
-This allows the original aim / block behavior to continue working while the melee stance is toggled.
-
-## Animator flicker problem
-
-This was the hardest part of the mod.
-
-After repeated draw / attack / sheathe cycles, the next draw could briefly show the wrong frame.
-
-Observed problem:
-
-```text
-Weapon held normally
-Press melee
-First frame shows stale melee idle / A pose
-Then draw animation plays from bottom to final pose
-```
-
-This was visible as a brief flash.
-
-## Failed approaches
-
-### Failed approach 1: Simply call ChargeBasicMelee again
-
-At first, it seemed natural to just call `ChargeBasicMelee()` whenever the toggled stance should be maintained.
-
-This works for basic functionality, but it does not fully solve stale animation state.
-
-The weapon animator can still keep a previous state such as idle, slash, charge, or alternative state.
-
-Result:
-
-```text
-The weapon stays functionally correct,
-but the first visible frame of the next draw can flicker.
-```
-
-### Failed approach 2: Hide the weapon model during draw
-
-Another attempted fix was to hide the weapon renderer or suppress visibility for a short time while forcing the animation state.
-
-This caused worse visual issues.
-
-Observed problem:
-
-```text
-The main weapon could remain visible for a moment.
-The melee weapon could appear late.
-The transition looked less reliable than the original small flicker.
-```
-
-This approach was rejected.
-
-### Failed approach 3: Force a random animation state
-
-Forcing a generic animation state without confirming it was safe can also break visuals.
-
-If the cached state is an attack / slash / ADS / charge state, restoring it before sheathing makes the next draw worse.
-
-The mod must only cache a known safe draw / equip state.
-
-## Final animator solution
-
-The final solution is:
-
-```text
-Cache a safe melee Equip animation state.
-Before sheathing, restore the weapon animator to that safe state.
-Then let the game sheathe normally.
-```
-
-The mod listens to:
-
-```text
-Weapon.ChargeMelee(true)
-```
-
-and caches the current animator state only if the current clip name looks safe.
-
-Safe state rules:
-
-```text
-Must contain: Equip
-
-Must not contain:
-Slash
-Attack
-Fire
-ADS
-ToADS
-Charge
-Charged
-```
-
-Before sheathing, the mod:
-
-```text
-SetAlternativeState(0)
-currentParries = 0
-Animator.SetBool("Charge", false)
-Animator.SetBool("Sprinting", false)
-Animator.SetBool("AlternativePressed", false)
-Animator.ResetTrigger("Parry")
-Animator.Play(cached safe Equip state, 0, 0f)
-Animator.Update(0f)
-```
-
-This prevents the next draw from starting from a stale attack or idle state.
-
-## Why the safe Equip cache matters
-
-The game may not expose a clean public method like:
-
-```text
-ResetMeleeAnimatorToDrawStart()
-```
-
-So the mod has to infer a good state from the weapon's own animator while it is behaving correctly.
-
-The cached state approach is less invasive than replacing animations or hiding renderers.
-
-It also stays per weapon through `ConditionalWeakTable`, so different melee weapons can have their own safe state.
-
-## State storage design
-
-The mod uses:
-
-```text
-ConditionalWeakTable<object, ToggleState>
-ConditionalWeakTable<object, SafeAnimatorState>
-```
-
-This avoids global static state tied to one object forever.
-
-It is safer when:
-
-* EquipmentManager instances are recreated
-* Weapons are swapped
-* Scenes change
-* Objects are destroyed
-
-## Compatibility with The Dragonblade / Melee Expansion
-
-This standalone mod has a soft dependency on:
-
-```text
-kumo.sulfur.melee_expansion
-```
-
-If that plugin is detected and the config option is enabled:
-
-```ini
-DisableWhenMeleeExpansionDetected = true
-```
-
-Toggle Melee Stance does not patch anything.
-
-This prevents double-patching when another larger melee expansion already includes the same toggle stance functionality.
-
-## Configuration
+## Config
 
 Config file:
 
@@ -436,174 +393,258 @@ EnableMod = true
 [Melee]
 FirePerformsMeleeAttack = true
 ReChargeRetryInterval = 0.08
+EnableTapHoldMeleeKey = true
+MeleeToggleTapThreshold = 0.13
 
 [Visual]
 ResetMeleeAnimatorBeforeSheathe = true
 
 [Compatibility]
-DisableWhenMeleeExpansionDetected = true
+DisableWhenMeleeExpansionDetected = false
+KeepMeleeStanceAfterExternalWeaponSwitch = false
 
 [Debug]
 LogStateChanges = false
 ```
 
-### EnableMod
+## Config details
 
-Enables or disables the mod.
+### General
 
 ```ini
+[General]
 EnableMod = true
 ```
 
-### FirePerformsMeleeAttack
+Enables or disables the mod.
 
-If enabled, normal Fire performs one melee attack while the melee stance is toggled.
+### Melee
 
 ```ini
+[Melee]
 FirePerformsMeleeAttack = true
-```
-
-If disabled, Fire input is blocked while toggled.
-
-### ReChargeRetryInterval
-
-Controls how soon the mod retries melee charge after an attack.
-
-```ini
 ReChargeRetryInterval = 0.08
+EnableTapHoldMeleeKey = true
+MeleeToggleTapThreshold = 0.13
 ```
 
-Recommended range:
+`FirePerformsMeleeAttack`
 
-```text
-0.05 - 0.12
-```
+When enabled, pressing Fire while melee stance is toggled on performs one melee attack.
 
-Too low may fight the original animation flow.
-Too high can make the weapon feel slow to return to held stance.
+`ReChargeRetryInterval`
 
-### ResetMeleeAnimatorBeforeSheathe
+Controls how often the mod retries re-entering melee stance after the game clears the melee charge state.
 
-Enables the safe animator reset before sheathing.
+`EnableTapHoldMeleeKey`
+
+When enabled, tapping the melee key toggles melee stance, while holding the melee key passes through to the original melee behavior.
+
+`MeleeToggleTapThreshold`
+
+Maximum press duration treated as a tap.
+
+Default:
 
 ```ini
+MeleeToggleTapThreshold = 0.13
+```
+
+Lower values make hold behavior activate faster.
+
+Higher values make tap behavior easier.
+
+### Visual
+
+```ini
+[Visual]
 ResetMeleeAnimatorBeforeSheathe = true
 ```
 
-Recommended default is `true`.
+Keeps repeated melee draws visually stable by resetting the melee Animator to a cached safe equip state before sheathing.
 
-Disabling this may bring back the draw-frame flicker.
-
-### DisableWhenMeleeExpansionDetected
-
-If enabled, this standalone mod disables itself when the larger melee expansion plugin is installed.
+### Compatibility
 
 ```ini
-DisableWhenMeleeExpansionDetected = true
+[Compatibility]
+DisableWhenMeleeExpansionDetected = false
+KeepMeleeStanceAfterExternalWeaponSwitch = false
 ```
 
-Recommended default is `true`.
+`DisableWhenMeleeExpansionDetected`
 
-### LogStateChanges
+Deprecated.
 
-Logs toggle state transitions.
+Older versions used this to auto-disable Toggle Melee Stance when `kumo.sulfur.melee_expansion` was installed.
 
-```ini
-LogStateChanges = false
-```
+Starting from this version, The Dragonblade is expected to use Toggle Melee Stance as a prerequisite, so this option defaults to `false` and is no longer recommended.
 
-Useful for debugging, but should stay disabled for normal gameplay.
+`KeepMeleeStanceAfterExternalWeaponSwitch`
 
-## Pitfalls / lessons learned
-
-### Do not treat the melee key as both toggle and attack
-
-The same input cannot safely mean:
+Controls behavior when another mod changes the current weapon while melee stance is toggled on.
 
 ```text
-toggle off
-and
-perform vanilla melee attack
+false
+→ Recommended default.
+→ If another mod switches your weapon while melee stance is active, this mod exits stance when you try to fire.
+→ This allows guns to shoot normally after an external weapon switch.
+
+true
+→ Tries to keep melee stance even after another mod switches your weapon.
+→ This may conflict with weapon-randomizing mods.
 ```
 
-at the same time.
+## Recommended default behavior
 
-If you let vanilla melee handling continue after toggle-off, the game may start another attack before sheathing.
+```text
+Tap melee key:
+    toggle melee stance
 
-### Do not interrupt an attack directly
+Hold melee key:
+    use original melee behavior
 
-If the player sheathes during an attack, wait for `Weapon.ReportMeleeDone()`.
+Fire while toggled:
+    perform melee attack
 
-Interrupting immediately can cause:
+Aim / Alt Fire while toggled:
+    keep vanilla alternative stance / block behavior
 
-* Extra attacks
-* Broken animation state
-* Weapon switching at the wrong time
-* Stale melee charge state
+External weapon switch:
+    exit melee stance when the player tries to fire
+    allow the new weapon to fire normally
+```
 
-### Do not ignore input release
+## Installation
 
-After manual sheathe, suppress melee input until the key is released.
+### With a mod manager
 
-Otherwise, one physical key press can be processed again on the next frame.
+Install through Thunderstore / r2modman if available.
 
-### Do not read raw mouse buttons
+### Manual installation
 
-Raw input checks like `Mouse.current.leftButton` or `Input.GetMouseButton` would ignore game rebinding and controller input.
+1. Install BepInEx for SULFUR.
+2. Extract this package into your SULFUR game folder.
+3. Make sure the DLL ends up here:
 
-Use the game's own `InputAction` fields instead.
+```text
+SULFUR/BepInEx/plugins/ToggleMeleeStance.dll
+```
 
-### Do not globally force melee charging every frame
-
-Calling `ChargeBasicMelee()` too aggressively can fight the original melee state machine.
-
-Use a small retry interval and check whether the game is already in melee charge.
-
-### Do not hide the weapon model to fix animation flicker
-
-Hiding the model can create worse visual artifacts than the original problem.
-
-The safer solution is to restore the animator to a cached safe Equip state before sheathing.
-
-### Do not cache unsafe animation states
-
-Never cache attack, slash, ADS, or charge animation states as the future draw state.
-
-Only cache states that look like safe Equip states.
-
-### Do not patch without compatibility detection
-
-A larger melee expansion may include this same feature.
-
-The standalone version should detect and disable itself when that mod is installed to avoid duplicate input patches.
-
-## What it does not do
-
-This mod does not:
-
-* Add new melee attacks
-* Add dash skills
-* Add new damage logic
-* Change melee weapon damage
-* Change enemy behavior
-* Replace the melee animation controller
-* Edit save data
-* Edit original game files
-
-It only changes how the existing melee stance is entered, maintained, attacked from, and exited.
+4. Start the game once to generate the config file.
 
 ## Compatibility
 
-Potential conflicts:
+This mod does not edit original game files.
 
-* Mods that patch `EquipmentManager.HandleMeleeInput(bool)`
-* Mods that patch `EquipmentManager.HandleAimInput(bool)`
-* Mods that patch `EquipmentManager.PullTrigger()`
-* Mods that patch `Weapon.ReportMeleeDone()`
-* Mods that replace melee weapon animation behavior
-* Mods that also implement toggle melee stance
+Compatibility issues are most likely with mods that also patch:
 
-The mod is designed to disable itself when `kumo.sulfur.melee_expansion` is installed.
+- `EquipmentManager.HandleMeleeInput(bool)`
+- `EquipmentManager.HandleAimInput(bool)`
+- `EquipmentManager.PullTrigger()`
+- `EquipmentManager.ReleaseTrigger()`
+- `Weapon.ReportMeleeDone()`
+- `Weapon.ChargeMelee(bool)`
+- melee weapon Animator behavior
+
+The Dragonblade `0.3.0+` is expected to use this mod as a prerequisite instead of duplicating the same melee stance patches.
+
+## Pitfalls / lessons learned
+
+### Do not read raw input
+
+Use the game's `InputAction` fields.
+
+Raw keyboard / mouse checks break rebinding and controller support.
+
+### Do not let melee sheathe trigger another attack
+
+The same melee input must not be passed to vanilla attack handling when it is meant to toggle off.
+
+### Do not immediately sheathe during an attack
+
+Wait for `Weapon.ReportMeleeDone()`.
+
+### Do not clear melee stance too early
+
+Do not automatically exit melee stance just because the current holdable briefly appears to be non-melee.
+
+During weapon transitions, the current holdable can temporarily look inconsistent.
+
+External weapon-switch compatibility should only exit stance when the player actually tries to fire.
+
+### Do not make tap / hold depend only on release events
+
+Some input paths can make release-frame detection unreliable.
+
+The safer approach is to track held state across frames and compare:
+
+```text
+held this frame
+held last frame
+press start time
+```
+
+### Do not hide the weapon model to fix animation flicker
+
+That causes worse visual artifacts.
+
+Cache and restore a safe Equip animation state instead.
+
+## What it should not own
+
+Toggle Melee Stance should not own Dragonblade-specific systems such as:
+
+- Katana-only dash
+- Dash damage
+- Kill refresh
+- Enemy-kill healing
+- Dash HUD
+- Dash icon loading
+- Post-dash hang
+
+Those belong in The Dragonblade.
+
+## Uninstallation
+
+Remove the DLL from:
+
+```text
+BepInEx/plugins/
+```
+
+Optional: remove the config file:
+
+```text
+BepInEx/config/kumo.sulfur.toggle_melee_stance.cfg
+```
+
+## Changelog
+
+### 1.2.0
+
+- Changed Toggle Melee Stance into the shared stance foundation for Dragonblade and future melee mods.
+- Added public API for other mods to read melee stance state.
+- Changed `DisableWhenMeleeExpansionDetected` default to `false` because Dragonblade now depends on this mod instead of replacing it.
+- Kept tap / hold melee behavior.
+- Kept external weapon-switch safety handling.
+- Changed default `MeleeToggleTapThreshold` to `0.13` for faster hold-melee passthrough.
+
+### 1.1.0
+
+- Added tap / hold melee key behavior.
+- Tap melee key to toggle melee stance.
+- Hold melee key to use the original melee behavior.
+- Added external weapon-switch compatibility.
+- Added config option to keep or exit melee stance after another mod switches weapons.
+
+### 1.0.0
+
+- Initial release.
+- Added toggle melee stance.
+- Added Fire action melee attack while toggled.
+- Preserved vanilla Aim / alternative stance / block behavior.
+- Added safe sheathe behavior so pressing melee again does not trigger an extra attack.
+- Added melee Animator safe-state reset to prevent repeated draw animation flashes.
 
 ## Source notes
 
@@ -611,4 +652,4 @@ This folder contains the main source file only.
 
 To compile it yourself, you need your own local SULFUR installation, BepInEx, Harmony, Unity Input System, and the required game / Unity assemblies.
 
-This repository does not include game files, Unity assemblies, BepInEx binaries, or decompiled game source.
+This repository does not include game files, Unity assemblies, BepInEx binaries, copyrighted assets, or decompiled game source.
