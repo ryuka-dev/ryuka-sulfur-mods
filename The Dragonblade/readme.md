@@ -12,6 +12,9 @@ The Dragonblade is a katana-focused melee expansion for SULFUR.
 It adds:
 
 - Toggleable katana stance
+- Tap / hold melee key behavior
+- Tap melee key to toggle katana stance
+- Hold melee key to use the original melee behavior
 - Fire input as melee attack while the katana is drawn
 - Preserved Aim / Block behavior
 - Sprint key as Dash Strike while holding a katana
@@ -21,6 +24,8 @@ It adds:
 - Kill refresh for Dash Strike
 - Enemy-kill healing
 - Short post-dash hang time to avoid harsh immediate falling
+- Compatibility handling for external weapon-switching mods
+- Configurable behavior when another mod switches your weapon after a kill
 
 ## Public name and internal ID
 
@@ -28,7 +33,7 @@ The public mod name is:
 
 ```text
 The Dragonblade
-````
+```
 
 The internal BepInEx GUID is intentionally kept as:
 
@@ -53,11 +58,16 @@ Depending on the build setup, the generated config file may still use the intern
 While holding a katana-like melee weapon:
 
 ```text
-Melee key
+Tap Melee key
 → Toggle katana stance on / off
 
+Hold Melee key
+→ Use the original melee behavior
+→ Release to perform the original melee attack
+→ Return to the previous weapon
+
 Fire
-→ Perform one melee attack
+→ Perform one melee attack while katana stance is active
 
 Aim
 → Keep original aim / block behavior
@@ -66,7 +76,7 @@ Sprint
 → Dash Strike
 ```
 
-The mod does not hardcode `LeftShift`, mouse buttons, or controller buttons.
+The mod does not hardcode `F`, `LeftShift`, mouse buttons, or controller buttons.
 
 It uses the game's own input actions, so it should respect key rebinding and controller input better than raw key checks.
 
@@ -74,7 +84,7 @@ It uses the game's own input actions, so it should respect key rebinding and con
 
 This mod uses BepInEx and Harmony.
 
-It extends the standalone Toggle Melee Stance concept and adds katana-specific movement, damage, HUD, and kill reward logic.
+It extends the standalone Toggle Melee Stance concept and adds katana-specific movement, damage, HUD, kill reward logic, tap / hold melee input, and compatibility handling for external weapon-switching mods.
 
 Main patched systems:
 
@@ -114,6 +124,11 @@ AttackInProgress
 SheatheAfterAttack
 SuppressMeleeUntilReleased
 NextChargeAttemptTime
+
+PendingTapHold
+LongPressPassThrough
+WasMeleeHeldLastFrame
+MeleePressStartTime
 ```
 
 This allows the mod to distinguish between:
@@ -124,6 +139,36 @@ This allows the mod to distinguish between:
 * Waiting for an attack to finish
 * Sheathing after the attack
 * Suppressing the same melee key press until it is released
+* Waiting to determine whether the melee input is a tap or a hold
+* Passing long melee input through to the original game behavior
+
+## Tap / hold melee key behavior
+
+The melee key has two behaviors:
+
+```text
+Tap melee key
+→ Toggle Dragonblade katana stance
+
+Hold melee key
+→ Pass through to the original melee behavior
+→ Release to perform the original melee attack
+→ Return to the previous weapon
+```
+
+This keeps the original game melee behavior available while still allowing Dragonblade to use a toggle stance.
+
+The tap / hold threshold is configurable:
+
+```ini
+[ToggleMelee]
+EnableTapHoldMeleeKey = true
+MeleeToggleTapThreshold = 0.22
+```
+
+Lower values make hold behavior activate faster.
+
+Higher values make tap behavior easier.
 
 ## Why the melee input is handled this way
 
@@ -157,6 +202,11 @@ When toggled:
     decide toggle on/off manually
     block vanilla handling when needed
     suppress melee input until released after manual sheathe
+
+When not toggled:
+    wait briefly to determine tap vs hold
+    tap toggles Dragonblade stance
+    hold passes through to vanilla melee behavior
 ```
 
 ## Fire input as melee attack
@@ -172,6 +222,62 @@ EquipmentManager.UseBasicMelee()
 This is important because the original game already handles melee animation events, hit timing, damage, and weapon state.
 
 The mod does not create a separate fake attack system for normal melee attacks.
+
+## External weapon switch compatibility
+
+The Dragonblade includes compatibility handling for mods that can change the player's current weapon externally.
+
+One known case is a weapon-randomizing mod that switches the player's weapon after a kill.
+
+Without compatibility handling, this can create a broken state:
+
+```text
+Dragonblade stance is active
+→ another mod switches the player to a gun
+→ the player visually holds the gun
+→ Dragonblade still thinks katana stance is active
+→ Fire input is still intercepted as melee input
+→ the gun cannot shoot
+```
+
+The default fix is:
+
+```text
+Dragonblade stance is active
+→ another mod switches the player to a gun
+→ the player tries to fire
+→ Dragonblade detects that the current holdable is no longer melee
+→ Dragonblade exits katana stance
+→ the fire input is passed through
+→ the gun fires normally
+```
+
+This behavior is configurable:
+
+```ini
+[Compatibility]
+KeepKatanaStanceAfterExternalWeaponSwitch = false
+```
+
+Recommended default:
+
+```text
+false
+```
+
+This means Dragonblade exits stance when the player tries to fire after an external weapon switch.
+
+Setting it to `true` makes Dragonblade try to keep katana stance even after another mod switches the current weapon, but this may conflict with weapon-randomizing mods.
+
+Important implementation rule:
+
+```text
+Do not clear Dragonblade stance immediately when the current holdable appears to be non-melee.
+```
+
+The check is delayed until the player actually tries to fire.
+
+This avoids false state loss where the dash HUD disappears or Dragonblade stance is cleared too early during normal melee transitions.
 
 ## Attack then sheathe behavior
 
@@ -513,6 +619,13 @@ but the HUD should not disappear
 
 This prevents the icon from vanishing every time the player swings the katana.
 
+It also makes state-loss bugs easier to detect during testing:
+
+```text
+If the katana stance is active, the HUD should stay visible.
+If the HUD disappears unexpectedly, stance state was probably cleared.
+```
+
 ## HUD icon loading
 
 The ability icon is loaded from an external PNG file:
@@ -647,6 +760,14 @@ Config file may use the internal plugin GUID:
 BepInEx/config/kumo.sulfur.melee_expansion.cfg
 ```
 
+If you updated from an older version and the new options do not appear, delete the old config file once:
+
+```text
+BepInEx/config/kumo.sulfur.melee_expansion.cfg
+```
+
+The config will be regenerated the next time the game starts.
+
 Main options:
 
 ```ini
@@ -657,6 +778,11 @@ EnableMod = true
 FirePerformsMeleeAttack = true
 ReChargeRetryInterval = 0.08
 ResetMeleeAnimatorBeforeSheathe = true
+EnableTapHoldMeleeKey = true
+MeleeToggleTapThreshold = 0.22
+
+[Compatibility]
+KeepKatanaStanceAfterExternalWeaponSwitch = false
 
 [KatanaDash]
 EnableKatanaDash = true
@@ -693,11 +819,56 @@ LogStateChanges = false
 LogDash = false
 ```
 
+## Config details
+
+### Toggle melee
+
+```ini
+[ToggleMelee]
+EnableTapHoldMeleeKey = true
+MeleeToggleTapThreshold = 0.22
+```
+
+```text
+EnableTapHoldMeleeKey = true
+→ Tap the melee key to toggle Dragonblade stance.
+→ Hold the melee key to use the original melee behavior.
+
+MeleeToggleTapThreshold
+→ Maximum press duration treated as a tap.
+→ Lower values make hold behavior activate faster.
+→ Higher values make tap behavior easier.
+```
+
+### External weapon switch behavior
+
+```ini
+[Compatibility]
+KeepKatanaStanceAfterExternalWeaponSwitch = false
+```
+
+```text
+false
+→ Recommended default.
+→ If another mod switches your weapon while Dragonblade stance is active, Dragonblade exits stance when you try to fire.
+→ This allows guns to shoot normally after an external weapon switch.
+
+true
+→ Dragonblade tries to keep katana stance even after another mod switches your weapon.
+→ This may conflict with weapon-randomizing mods.
+```
+
 ## Recommended default behavior
 
 Recommended public defaults:
 
 ```text
+Tap melee key:
+    toggle Dragonblade stance
+
+Hold melee key:
+    use original melee behavior
+
 Kill enemy:
     refresh Dash Strike
     heal 5 HP, clamped to max health
@@ -705,6 +876,10 @@ Kill enemy:
 Break object:
     no cooldown refresh
     no healing
+
+External weapon switch:
+    exit Dragonblade stance when the player tries to fire
+    allow the new weapon to fire normally
 
 Enable non-NPC refresh manually:
     break object may refresh cooldown
@@ -726,6 +901,26 @@ The same melee input must not be passed to vanilla attack handling when it is me
 ### Do not immediately sheathe during an attack
 
 Wait for `Weapon.ReportMeleeDone()`.
+
+### Do not clear Dragonblade stance too early
+
+Do not automatically exit Dragonblade stance just because the current holdable briefly appears to be non-melee.
+
+During weapon transitions, the current holdable can temporarily look inconsistent.
+
+External weapon-switch compatibility should only exit stance when the player actually tries to fire.
+
+### Do not make tap / hold depend only on release events
+
+Some input paths can make release-frame detection unreliable.
+
+The safer approach is to track held state across frames and compare:
+
+```text
+held this frame
+held last frame
+press start time
+```
 
 ### Do not hide the weapon model to fix animation flicker
 
@@ -787,8 +982,45 @@ Potential conflicts:
 * Mods that patch `CMF.Mover.SetVelocity(Vector3)`
 * Mods that patch `Unit.ReceiveDamage(...)`
 * Other mods that implement toggle melee stance or katana dash behavior
+* Mods that change the player's current weapon after kills
 
 Do not install the standalone Toggle Melee Stance mod together with The Dragonblade unless that standalone mod is configured to disable itself.
+
+## Compatibility with Random Weapon Per Level
+
+The Dragonblade includes compatibility handling for weapon-randomizing mods such as Random Weapon Per Level.
+
+Default behavior:
+
+```text
+Kill enemy
+→ Another mod switches your weapon
+→ You try to fire
+→ Dragonblade exits katana stance
+→ The gun fires normally
+```
+
+This prevents a broken state where the player appears to be holding a gun, but Dragonblade still intercepts the fire input as melee input.
+
+The behavior can be changed with:
+
+```ini
+[Compatibility]
+KeepKatanaStanceAfterExternalWeaponSwitch = false
+```
+
+Keeping this option set to `false` is recommended when using weapon-randomizing mods.
+
+## Version notes
+
+### v0.2.1
+
+- Added tap / hold melee key behavior.
+- Added compatibility handling for external weapon-switching mods.
+- Added config option to keep or exit katana stance after another mod switches weapons.
+- Fixed an issue where killing an enemy with Random Weapon Per Level installed could leave the player visually holding a gun while Dragonblade still blocked firing input.
+- Changed external weapon-switch detection so Dragonblade only exits stance when the player actually tries to fire.
+- Fixed unintended Dragonblade state loss caused by overly aggressive non-melee holdable checks.
 
 ## Source notes
 
