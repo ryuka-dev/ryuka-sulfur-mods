@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using ToggleMeleeStancePlugin = ToggleMeleeStance.Plugin;
 
 namespace MeleeExpansion
 {
@@ -17,11 +18,16 @@ namespace MeleeExpansion
         PluginName,
         PluginVersion
     )]
+    [BepInDependency(
+        ToggleMeleeStanceGuid,
+        BepInDependency.DependencyFlags.HardDependency
+    )]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string PluginGuid = "kumo.sulfur.melee_expansion";
         public const string PluginName = "The Dragonblade";
-        public const string PluginVersion = "0.2.1";
+        public const string PluginVersion = "0.3.0";
+        public const string ToggleMeleeStanceGuid = "kumo.sulfur.toggle_melee_stance";
 
         internal static ManualLogSource Log;
 
@@ -168,54 +174,6 @@ namespace MeleeExpansion
                 "EnableMod",
                 true,
                 "Enable Melee Expansion."
-            );
-
-            FirePerformsMeleeAttack = Config.Bind(
-                "ToggleMelee",
-                "FirePerformsMeleeAttack",
-                true,
-                "When melee stance is toggled on, pressing the normal Fire action performs one melee attack."
-            );
-
-            EnableTapHoldMeleeKey = Config.Bind(
-                "ToggleMelee",
-                "EnableTapHoldMeleeKey",
-                true,
-                "If true, tap the melee key to toggle Dragonblade stance, but hold the melee key to use the original melee behavior."
-            );
-
-            MeleeToggleTapThreshold = Config.Bind(
-                "ToggleMelee",
-                "MeleeToggleTapThreshold",
-                0.22f,
-                new ConfigDescription(
-                    "Maximum press duration treated as a tap for toggling Dragonblade stance. Holding longer uses original melee behavior.",
-                    new AcceptableValueRange<float>(0.05f, 0.6f)
-                )
-            );
-
-            KeepKatanaStanceAfterExternalWeaponSwitch = Config.Bind(
-                "Compatibility",
-                "KeepKatanaStanceAfterExternalWeaponSwitch",
-                false,
-                "When another mod changes the current weapon while Dragonblade stance is active, keep katana stance instead of exiting it. Default false exits stance and lets the new gun fire normally."
-            );
-
-            ReChargeRetryInterval = Config.Bind(
-                "ToggleMelee",
-                "ReChargeRetryInterval",
-                0.08f,
-                new ConfigDescription(
-                    "Seconds between retry attempts when the mod tries to re-enter melee charge after an attack.",
-                    new AcceptableValueRange<float>(0.01f, 0.5f)
-                )
-            );
-
-            ResetMeleeAnimatorBeforeSheathe = Config.Bind(
-                "ToggleMelee",
-                "ResetMeleeAnimatorBeforeSheathe",
-                true,
-                "Before sheathing a toggled melee weapon, reset its Animator to the cached safe equip state."
             );
 
             EnableKatanaDash = Config.Bind(
@@ -434,12 +392,6 @@ namespace MeleeExpansion
 
             harmony = new Harmony(PluginGuid);
 
-            Patch(mHandleAimInput, prefix: nameof(HandleAimInputPrefix));
-            Patch(mHandleMeleeInput, prefix: nameof(HandleMeleeInputPrefix));
-            Patch(mPullTrigger, prefix: nameof(PullTriggerPrefix));
-            Patch(mReleaseTrigger, prefix: nameof(ReleaseTriggerPrefix));
-            Patch(mReportMeleeDone, prefix: nameof(ReportMeleeDonePrefix), postfix: nameof(ReportMeleeDonePostfix));
-            Patch(mChargeMelee, postfix: nameof(ChargeMeleePostfix));
 
             Patch(mUpdateSprinting, prefix: nameof(UpdateSprintingPrefix));
             Patch(mMoverSetVelocity, prefix: nameof(MoverSetVelocityPrefix));
@@ -450,7 +402,7 @@ namespace MeleeExpansion
                 postfix: nameof(UnitReceiveDamageDamageSourcePostfix)
             );
 
-            Logger.LogInfo("Melee Expansion loaded.");
+            Logger.LogInfo("The Dragonblade loaded. Toggle melee stance is provided by Toggle Melee Stance.");
         }
 
         private void OnDestroy()
@@ -474,11 +426,9 @@ namespace MeleeExpansion
             if (equipmentManager == null)
                 return;
 
-            ToggleState toggleState = GetToggleState(equipmentManager);
-
             object katana;
 
-            if (!IsKatanaDashHudContext(lastKnownWalkerController, equipmentManager, toggleState, out katana))
+            if (!IsKatanaDashHudContext(lastKnownWalkerController, equipmentManager, out katana))
                 return;
 
             KatanaDashState dashState = GetDashState(lastKnownWalkerController);
@@ -486,7 +436,6 @@ namespace MeleeExpansion
             bool canUseDashNow = IsKatanaDashContext(
                 lastKnownWalkerController,
                 equipmentManager,
-                toggleState,
                 out _
             );
 
@@ -1283,11 +1232,9 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             if (equipmentManager == null)
                 return true;
 
-            ToggleState toggleState = GetToggleState(equipmentManager);
-
             object katana;
 
-            if (!IsKatanaDashContext(__instance, equipmentManager, toggleState, out katana))
+            if (!IsKatanaDashContext(__instance, equipmentManager, out katana))
             {
                 dashState.ForcedSprintActive = false;
                 return true;
@@ -1465,8 +1412,6 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             if (equipmentManager == null)
                 return;
 
-            ToggleState toggleState = GetToggleState(equipmentManager);
-
             if (RefreshRequiresKatanaStance != null &&
                 RefreshRequiresKatanaStance.Value)
             {
@@ -1475,7 +1420,6 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
                 if (!IsKatanaDashHudContext(
                     walkerController,
                     equipmentManager,
-                    toggleState,
                     out katana
                 ))
                 {
@@ -1729,22 +1673,17 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
         private static bool IsKatanaDashContext(
             object walkerController,
             object equipmentManager,
-            ToggleState toggleState,
             out object katana
         )
         {
             katana = null;
 
-            if (walkerController == null ||
-                equipmentManager == null ||
-                toggleState == null)
-            {
+            if (walkerController == null || equipmentManager == null)
                 return false;
-            }
 
-            if (!toggleState.IsToggled ||
-                toggleState.AttackInProgress ||
-                toggleState.SheatheAfterAttack)
+            if (!ToggleMeleeStancePlugin.IsMeleeStanceActive(equipmentManager) ||
+                ToggleMeleeStancePlugin.IsAttackInProgress(equipmentManager) ||
+                ToggleMeleeStancePlugin.IsSheatheAfterAttack(equipmentManager))
             {
                 return false;
             }
@@ -1754,7 +1693,7 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             if (!IsKatanaWeapon(currentHoldable))
                 return false;
 
-            if (!IsInMeleeCharge(equipmentManager))
+            if (!ToggleMeleeStancePlugin.IsMeleeChargeActive(equipmentManager))
                 return false;
 
             katana = currentHoldable;
@@ -1764,21 +1703,16 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
         private static bool IsKatanaDashHudContext(
             object walkerController,
             object equipmentManager,
-            ToggleState toggleState,
             out object katana
         )
         {
             katana = null;
 
-            if (walkerController == null ||
-                equipmentManager == null ||
-                toggleState == null)
-            {
+            if (walkerController == null || equipmentManager == null)
                 return false;
-            }
 
-            if (!toggleState.IsToggled ||
-                toggleState.SheatheAfterAttack)
+            if (!ToggleMeleeStancePlugin.IsMeleeStanceActive(equipmentManager) ||
+                ToggleMeleeStancePlugin.IsSheatheAfterAttack(equipmentManager))
             {
                 return false;
             }
@@ -3544,7 +3478,6 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             public int ShortNameHash;
             public string ClipName;
         }
-
         private sealed class KatanaDashState
         {
             public bool IsDashing;
