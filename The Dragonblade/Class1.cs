@@ -21,12 +21,15 @@ namespace MeleeExpansion
     {
         public const string PluginGuid = "kumo.sulfur.melee_expansion";
         public const string PluginName = "The Dragonblade";
-        public const string PluginVersion = "0.2.0";
+        public const string PluginVersion = "0.2.1";
 
         internal static ManualLogSource Log;
 
         internal static ConfigEntry<bool> EnableMod;
         internal static ConfigEntry<bool> FirePerformsMeleeAttack;
+        internal static ConfigEntry<bool> KeepKatanaStanceAfterExternalWeaponSwitch;
+        internal static ConfigEntry<bool> EnableTapHoldMeleeKey;
+        internal static ConfigEntry<float> MeleeToggleTapThreshold;
         internal static ConfigEntry<bool> ResetMeleeAnimatorBeforeSheathe;
         internal static ConfigEntry<float> ReChargeRetryInterval;
         internal static ConfigEntry<bool> LogStateChanges;
@@ -172,6 +175,30 @@ namespace MeleeExpansion
                 "FirePerformsMeleeAttack",
                 true,
                 "When melee stance is toggled on, pressing the normal Fire action performs one melee attack."
+            );
+
+            EnableTapHoldMeleeKey = Config.Bind(
+                "ToggleMelee",
+                "EnableTapHoldMeleeKey",
+                true,
+                "If true, tap the melee key to toggle Dragonblade stance, but hold the melee key to use the original melee behavior."
+            );
+
+            MeleeToggleTapThreshold = Config.Bind(
+                "ToggleMelee",
+                "MeleeToggleTapThreshold",
+                0.22f,
+                new ConfigDescription(
+                    "Maximum press duration treated as a tap for toggling Dragonblade stance. Holding longer uses original melee behavior.",
+                    new AcceptableValueRange<float>(0.05f, 0.6f)
+                )
+            );
+
+            KeepKatanaStanceAfterExternalWeaponSwitch = Config.Bind(
+                "Compatibility",
+                "KeepKatanaStanceAfterExternalWeaponSwitch",
+                false,
+                "When another mod changes the current weapon while Dragonblade stance is active, keep katana stance instead of exiting it. Default false exits stance and lets the new gun fire normally."
             );
 
             ReChargeRetryInterval = Config.Bind(
@@ -1039,14 +1066,17 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
 
             ToggleState state = GetToggleState(__instance);
 
+            UpdateMeleeHeldEdgeState(__instance, state, holdingMeleeAction);
+
             if (state.SuppressMeleeUntilReleased)
             {
-                if (IsMeleeHeld(__instance))
+                if (state.MeleeHeldThisFrame)
                 {
                     return false;
                 }
 
                 state.SuppressMeleeUntilReleased = false;
+                ClearTapHoldState(state, false);
 
                 if (LogStateChanges.Value)
                 {
@@ -1056,13 +1086,23 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
                 return false;
             }
 
-            bool meleePressedThisFrame = WasMeleePressedThisFrame(__instance);
-
             if (!state.IsToggled && IsAimingInputHeld(__instance) && holdingMeleeAction)
                 return true;
 
             if (!state.IsToggled && IsMeleeInputCoolingDown(__instance))
                 return true;
+
+            if (!state.IsToggled && EnableTapHoldMeleeKey != null && EnableTapHoldMeleeKey.Value)
+            {
+                bool prefixResult;
+
+                if (HandleTapHoldMeleeInput(__instance, state, out prefixResult))
+                {
+                    return prefixResult;
+                }
+            }
+
+            bool meleePressedThisFrame = WasMeleePressedThisFrame(__instance);
 
             if (meleePressedThisFrame)
             {
@@ -1095,6 +1135,11 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             if (!state.IsToggled)
                 return true;
 
+            if (ExitToggledStateIfExternalNonMeleeHoldable(__instance, state, "PullTrigger"))
+            {
+                return true;
+            }
+
             if (!FirePerformsMeleeAttack.Value)
                 return false;
 
@@ -1118,6 +1163,7 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             state.AttackInProgress = true;
             state.SheatheAfterAttack = false;
             state.SuppressMeleeUntilReleased = false;
+            ClearTapHoldState(state, false);
 
             if (LogStateChanges.Value)
             {
@@ -1608,6 +1654,7 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             state.SheatheAfterAttack = false;
             state.SuppressMeleeUntilReleased = false;
             state.NextChargeAttemptTime = Time.time + ClampRetryInterval();
+            ClearTapHoldState(state, false);
 
             if (LogStateChanges.Value)
             {
@@ -1628,6 +1675,7 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             state.IsToggled = false;
             state.NextChargeAttemptTime = 0f;
             state.SuppressMeleeUntilReleased = true;
+            ClearTapHoldState(state, false);
 
             SetAlternativeMeleePressed(equipmentManager, false);
             SetMeleePressed(equipmentManager, false);
@@ -2640,6 +2688,194 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             return Mathf.Clamp(value, 0f, 3f);
         }
 
+        private static bool HandleTapHoldMeleeInput(
+            object equipmentManager,
+            ToggleState state,
+            out bool prefixResult
+        )
+        {
+            prefixResult = true;
+
+            if (state.LongPressPassThrough)
+            {
+                if (state.MeleeReleasedThisFrame || !state.MeleeHeldThisFrame)
+                {
+                    ClearTapHoldState(state, false);
+
+                    if (LogStateChanges.Value)
+                    {
+                        Log?.LogInfo("Long melee input released. Original melee behavior should finish.");
+                    }
+                }
+
+                prefixResult = true;
+                return true;
+            }
+
+            if (state.PendingTapHold)
+            {
+                float heldTime = Time.time - state.MeleePressStartTime;
+
+                if (state.MeleeReleasedThisFrame || !state.MeleeHeldThisFrame)
+                {
+                    state.PendingTapHold = false;
+
+                    if (heldTime <= GetMeleeToggleTapThreshold())
+                    {
+                        ToggleOn(equipmentManager, state);
+
+                        if (LogStateChanges.Value)
+                        {
+                            Log?.LogInfo("Melee key tap detected. Toggle melee ON.");
+                        }
+
+                        prefixResult = false;
+                        return true;
+                    }
+
+                    ClearTapHoldState(state, false);
+                    prefixResult = true;
+                    return true;
+                }
+
+                if (heldTime >= GetMeleeToggleTapThreshold())
+                {
+                    state.PendingTapHold = false;
+                    state.LongPressPassThrough = true;
+
+                    if (LogStateChanges.Value)
+                    {
+                        Log?.LogInfo("Melee key hold detected. Passing through to original melee behavior.");
+                    }
+
+                    prefixResult = true;
+                    return true;
+                }
+
+                prefixResult = false;
+                return true;
+            }
+
+            if (state.MeleePressedThisFrame)
+            {
+                state.PendingTapHold = true;
+                state.MeleePressStartTime = Time.time;
+
+                prefixResult = false;
+                return true;
+            }
+
+            return false;
+        }
+
+        private static void UpdateMeleeHeldEdgeState(
+            object equipmentManager,
+            ToggleState state,
+            bool holdingMeleeAction
+        )
+        {
+            bool held = holdingMeleeAction || IsMeleeHeld(equipmentManager);
+
+            state.MeleePressedThisFrame = held && !state.WasMeleeHeldLastFrame;
+            state.MeleeReleasedThisFrame = !held && state.WasMeleeHeldLastFrame;
+            state.MeleeHeldThisFrame = held;
+            state.WasMeleeHeldLastFrame = held;
+        }
+
+        private static void ClearTapHoldState(ToggleState state, bool preserveHeldEdge)
+        {
+            if (state == null)
+                return;
+
+            state.PendingTapHold = false;
+            state.LongPressPassThrough = false;
+            state.MeleePressStartTime = 0f;
+            state.MeleePressedThisFrame = false;
+            state.MeleeReleasedThisFrame = false;
+
+            if (!preserveHeldEdge)
+            {
+                state.MeleeHeldThisFrame = false;
+                state.WasMeleeHeldLastFrame = false;
+            }
+        }
+
+        private static float GetMeleeToggleTapThreshold()
+        {
+            if (MeleeToggleTapThreshold == null)
+                return 0.22f;
+
+            float value = MeleeToggleTapThreshold.Value;
+
+            if (float.IsNaN(value) || float.IsInfinity(value))
+                return 0.22f;
+
+            return Mathf.Clamp(value, 0.05f, 0.6f);
+        }
+
+        private static bool ExitToggledStateIfExternalNonMeleeHoldable(
+            object equipmentManager,
+            ToggleState state,
+            string source
+        )
+        {
+            if (equipmentManager == null || state == null)
+                return false;
+
+            if (!state.IsToggled)
+                return false;
+
+            if (KeepKatanaStanceAfterExternalWeaponSwitch != null &&
+                KeepKatanaStanceAfterExternalWeaponSwitch.Value)
+            {
+                return false;
+            }
+
+            object currentHoldable = GetCurrentHoldable(equipmentManager);
+
+            if (currentHoldable == null)
+                return false;
+
+            if (IsMeleeWeapon(currentHoldable))
+                return false;
+
+            ForceExitToggledStateAfterExternalWeaponSwitch(
+                equipmentManager,
+                state,
+                currentHoldable,
+                source
+            );
+
+            return true;
+        }
+
+        private static void ForceExitToggledStateAfterExternalWeaponSwitch(
+            object equipmentManager,
+            ToggleState state,
+            object currentHoldable,
+            string source
+        )
+        {
+            state.IsToggled = false;
+            state.AttackInProgress = false;
+            state.SheatheAfterAttack = false;
+            state.SuppressMeleeUntilReleased = false;
+            state.NextChargeAttemptTime = 0f;
+            ClearTapHoldState(state, false);
+
+            SetMeleePressed(equipmentManager, false);
+            SetAlternativeMeleePressed(equipmentManager, false);
+
+            if (LogStateChanges != null && LogStateChanges.Value)
+            {
+                Log?.LogInfo(
+                    "Exited Dragonblade stance because current holdable is no longer melee. " +
+                    "source=" + source +
+                    " holdable=" + currentHoldable
+                );
+            }
+        }
+
         private static bool WasMeleePressedThisFrame(object equipmentManager)
         {
             InputAction melee = GetInputAction(fMeleeFireAction, equipmentManager);
@@ -3291,6 +3527,14 @@ Require(mEntityStatsGetStatus, "EntityStats.GetStatus(EntityAttributes)") &&
             public bool SheatheAfterAttack;
             public bool SuppressMeleeUntilReleased;
             public float NextChargeAttemptTime;
+
+            public bool PendingTapHold;
+            public bool LongPressPassThrough;
+            public bool WasMeleeHeldLastFrame;
+            public bool MeleeHeldThisFrame;
+            public bool MeleePressedThisFrame;
+            public bool MeleeReleasedThisFrame;
+            public float MeleePressStartTime;
         }
 
         private sealed class SafeAnimatorState
