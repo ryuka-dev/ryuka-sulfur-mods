@@ -2678,9 +2678,7 @@ namespace RandomWeaponPerLevel
             if (weapon.caliber == CaliberTypes.None)
                 return false;
 
-            bool hasProjectile =
-                weapon.projectileType != ProjectileTypes.None ||
-                weapon.customProjectile != null;
+            bool hasProjectile = weapon.projectileType != ProjectileTypes.None;
 
             if (!hasProjectile)
                 return false;
