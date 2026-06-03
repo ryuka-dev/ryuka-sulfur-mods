@@ -8,16 +8,20 @@ using BepInEx.Logging;
 using HarmonyLib;
 using PerfectRandom.Sulfur.Core;
 using PerfectRandom.Sulfur.Core.Input;
+using PerfectRandom.Sulfur.Core.Movement;
+using PerfectRandom.Sulfur.Core.Stats;
 using PerfectRandom.Sulfur.Core.Units;
 using PerfectRandom.Sulfur.Core.Weapons;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Ryuka.Sulfur.DeadeyeInstinct
 {
     internal enum AssistMode
     {
         Magnet = 0,
-        Natural = 1
+        Natural = 1,
+        HardLock = 2
     }
 
     internal enum AssistPreset
@@ -28,12 +32,20 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
         Custom = 3
     }
 
+    internal enum HardLockTargetPriority
+    {
+        Nearest = 0,
+        LowestHealth = 1,
+        WeakspotThenDistance = 2,
+        ThreatWeighted = 3
+    }
+
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public sealed class DeadeyeInstinctPlugin : BaseUnityPlugin
     {
         private const string PluginGuid = "ryuka.sulfur.deadeyeinstinct";
         private const string PluginName = "Deadeye Instinct";
-        private const string PluginVersion = "1.1.0";
+        private const string PluginVersion = "1.2.5";
 
         internal static ManualLogSource Log;
         private Harmony harmony;
@@ -115,6 +127,34 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
         internal static ConfigEntry<float> WeakspotDebugLineWidth;
         internal static ConfigEntry<float> WeakspotDebugDepthOffset;
 
+        internal static ConfigEntry<bool> EnableAimbot;
+        internal static ConfigEntry<KeyCode> HoldDisableKey;
+
+        internal static ConfigEntry<float> HardLockMaxDistance;
+        internal static ConfigEntry<float> HardLockMaxDistanceCap;
+        internal static ConfigEntry<bool> HardLockPreferWeakspot;
+        internal static ConfigEntry<float> HardLockWeakspotBias;
+        internal static ConfigEntry<float> HardLockRotationSpeed;
+        internal static ConfigEntry<float> HardLockRotationGain;
+        internal static ConfigEntry<float> HardLockMaxDeltaPerFrame;
+        internal static ConfigEntry<bool> HardLockRecoilCompensation;
+        internal static ConfigEntry<bool> HardLockRequireLineOfSight;
+        internal static ConfigEntry<bool> HardLockRequireVisibleTarget;
+        internal static ConfigEntry<HardLockTargetPriority> HardLockTargetPriorityMode;
+        internal static ConfigEntry<float> HardLockDistanceWeight;
+        internal static ConfigEntry<float> HardLockLowHealthWeight;
+        internal static ConfigEntry<float> HardLockWeakspotWeight;
+        internal static ConfigEntry<float> HardLockStickyTargetBonus;
+
+        internal static ConfigEntry<bool> EnableAutoFire;
+        internal static ConfigEntry<bool> AutoFireOnlyInHardLock;
+        internal static ConfigEntry<bool> AutoFireRequireAligned;
+        internal static ConfigEntry<float> AutoFireMaxAngleDegrees;
+        internal static ConfigEntry<bool> AutoFireRequireWeaponReady;
+        internal static ConfigEntry<bool> AutoFireRespectSemiAuto;
+        internal static ConfigEntry<float> AutoFirePulseSeconds;
+        internal static ConfigEntry<float> AutoFireReleaseSeconds;
+
         private void Awake()
         {
             Log = Logger;
@@ -152,6 +192,36 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
             else
             {
                 Logger.LogError("Could not find InputReader.Update().");
+            }
+
+            MethodInfo weaponLateUpdate = AccessTools.Method(typeof(Weapon), "LateUpdate");
+            if (weaponLateUpdate != null)
+            {
+                harmony.Patch(
+                    weaponLateUpdate,
+                    prefix: new HarmonyMethod(typeof(WeaponLateUpdatePatch), nameof(WeaponLateUpdatePatch.Prefix))
+                );
+
+                Logger.LogInfo("Patched Weapon.LateUpdate().");
+            }
+            else
+            {
+                Logger.LogWarning("Could not find Weapon.LateUpdate(). AutoFire will be unavailable.");
+            }
+
+            MethodInfo cameraRecoilLateUpdate = AccessTools.Method(typeof(CameraRecoil), "LateUpdate");
+            if (cameraRecoilLateUpdate != null)
+            {
+                harmony.Patch(
+                    cameraRecoilLateUpdate,
+                    postfix: new HarmonyMethod(typeof(CameraRecoilLateUpdatePatch), nameof(CameraRecoilLateUpdatePatch.Postfix))
+                );
+
+                Logger.LogInfo("Patched CameraRecoil.LateUpdate().");
+            }
+            else
+            {
+                Logger.LogWarning("Could not find CameraRecoil.LateUpdate(). HardLock recoil compensation will be unavailable.");
             }
 
             CreateWeakspotDebugOverlay();
@@ -819,6 +889,207 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
             return entry != null ? entry.Value : fallback;
         }
 
+        internal static bool IsAimbotRuntimeEnabled()
+        {
+            if (EnableMod == null || !EnableMod.Value)
+            {
+                return false;
+            }
+
+            if (EnableAimbot != null && !EnableAimbot.Value)
+            {
+                return false;
+            }
+
+            KeyCode holdKey = HoldDisableKey != null ? HoldDisableKey.Value : KeyCode.LeftAlt;
+            if (IsHoldDisableKeyPressed(holdKey))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool IsHoldDisableKeyPressed(KeyCode keyCode)
+        {
+            if (keyCode == KeyCode.None)
+            {
+                return false;
+            }
+
+            Keyboard keyboard = Keyboard.current;
+            if (keyboard == null)
+            {
+                return false;
+            }
+
+            Key key;
+            if (!TryConvertUnityKeyCode(keyCode, out key))
+            {
+                return false;
+            }
+
+            try
+            {
+                return keyboard[key].isPressed;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static bool TryConvertUnityKeyCode(KeyCode keyCode, out Key key)
+        {
+            switch (keyCode)
+            {
+                case KeyCode.LeftAlt:
+                    key = Key.LeftAlt;
+                    return true;
+                case KeyCode.RightAlt:
+                    key = Key.RightAlt;
+                    return true;
+                case KeyCode.LeftControl:
+                    key = Key.LeftCtrl;
+                    return true;
+                case KeyCode.RightControl:
+                    key = Key.RightCtrl;
+                    return true;
+                case KeyCode.LeftShift:
+                    key = Key.LeftShift;
+                    return true;
+                case KeyCode.RightShift:
+                    key = Key.RightShift;
+                    return true;
+                case KeyCode.Space:
+                    key = Key.Space;
+                    return true;
+                case KeyCode.Tab:
+                    key = Key.Tab;
+                    return true;
+                case KeyCode.Return:
+                    key = Key.Enter;
+                    return true;
+                case KeyCode.Escape:
+                    key = Key.Escape;
+                    return true;
+                case KeyCode.Backspace:
+                    key = Key.Backspace;
+                    return true;
+                case KeyCode.Delete:
+                    key = Key.Delete;
+                    return true;
+                case KeyCode.Insert:
+                    key = Key.Insert;
+                    return true;
+                case KeyCode.Home:
+                    key = Key.Home;
+                    return true;
+                case KeyCode.End:
+                    key = Key.End;
+                    return true;
+                case KeyCode.PageUp:
+                    key = Key.PageUp;
+                    return true;
+                case KeyCode.PageDown:
+                    key = Key.PageDown;
+                    return true;
+                case KeyCode.UpArrow:
+                    key = Key.UpArrow;
+                    return true;
+                case KeyCode.DownArrow:
+                    key = Key.DownArrow;
+                    return true;
+                case KeyCode.LeftArrow:
+                    key = Key.LeftArrow;
+                    return true;
+                case KeyCode.RightArrow:
+                    key = Key.RightArrow;
+                    return true;
+                case KeyCode.Alpha0:
+                    key = Key.Digit0;
+                    return true;
+                case KeyCode.Alpha1:
+                    key = Key.Digit1;
+                    return true;
+                case KeyCode.Alpha2:
+                    key = Key.Digit2;
+                    return true;
+                case KeyCode.Alpha3:
+                    key = Key.Digit3;
+                    return true;
+                case KeyCode.Alpha4:
+                    key = Key.Digit4;
+                    return true;
+                case KeyCode.Alpha5:
+                    key = Key.Digit5;
+                    return true;
+                case KeyCode.Alpha6:
+                    key = Key.Digit6;
+                    return true;
+                case KeyCode.Alpha7:
+                    key = Key.Digit7;
+                    return true;
+                case KeyCode.Alpha8:
+                    key = Key.Digit8;
+                    return true;
+                case KeyCode.Alpha9:
+                    key = Key.Digit9;
+                    return true;
+                case KeyCode.F1:
+                    key = Key.F1;
+                    return true;
+                case KeyCode.F2:
+                    key = Key.F2;
+                    return true;
+                case KeyCode.F3:
+                    key = Key.F3;
+                    return true;
+                case KeyCode.F4:
+                    key = Key.F4;
+                    return true;
+                case KeyCode.F5:
+                    key = Key.F5;
+                    return true;
+                case KeyCode.F6:
+                    key = Key.F6;
+                    return true;
+                case KeyCode.F7:
+                    key = Key.F7;
+                    return true;
+                case KeyCode.F8:
+                    key = Key.F8;
+                    return true;
+                case KeyCode.F9:
+                    key = Key.F9;
+                    return true;
+                case KeyCode.F10:
+                    key = Key.F10;
+                    return true;
+                case KeyCode.F11:
+                    key = Key.F11;
+                    return true;
+                case KeyCode.F12:
+                    key = Key.F12;
+                    return true;
+            }
+
+            int keyCodeInt = (int)keyCode;
+            if (keyCodeInt >= (int)KeyCode.A && keyCodeInt <= (int)KeyCode.Z)
+            {
+                key = Key.A + (keyCodeInt - (int)KeyCode.A);
+                return true;
+            }
+
+            key = Key.None;
+            return false;
+        }
+
+        internal static bool IsHardLockModeActive()
+        {
+            return IsAimbotRuntimeEnabled() && ActiveMode() == AssistMode.HardLock;
+        }
+
         private void CreateWeakspotDebugOverlay()
         {
             if (weakspotDebugOverlayObject != null)
@@ -860,7 +1131,7 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
             Mode = Config.Bind(
                 "Assist Mode",
                 "Mode",
-                AssistMode.Natural,
+                AssistMode.Magnet,
                 "Magnet = magnetic pull. Natural = input-shaped sticky assist.");
 
             MagnetPreset = Config.Bind(
@@ -1317,6 +1588,182 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
                 new ConfigDescription(
                     "Move overlay vertices slightly toward the player camera to reduce z-fighting.",
                     new AcceptableValueRange<float>(0f, 0.25f)));
+
+            EnableAimbot = Config.Bind(
+                "Master Switch",
+                "EnableAimbot",
+                true,
+                "Master switch for Deadeye Instinct aim assist and HardLock AutoFire.");
+
+            HoldDisableKey = Config.Bind(
+                "Master Switch",
+                "HoldDisableKey",
+                KeyCode.LeftAlt,
+                "Hold this key to temporarily disable aim assist and release AutoFire trigger. Use None to disable this keybind.");
+
+            HardLockMaxDistance = Config.Bind(
+                "HardLock",
+                "HardLockMaxDistance",
+                20f,
+                new ConfigDescription(
+                    "Maximum configured distance for HardLock target search.",
+                    new AcceptableValueRange<float>(5f, 1000f)));
+
+            HardLockMaxDistanceCap = Config.Bind(
+                "HardLock",
+                "HardLockMaxDistanceCap",
+                20f,
+                new ConfigDescription(
+                    "Safety cap applied on top of HardLockMaxDistance. This keeps old configs with very large distances from locking enemies too far away. Set to 0 to disable the cap.",
+                    new AcceptableValueRange<float>(0f, 1000f)));
+
+            HardLockPreferWeakspot = Config.Bind(
+                "HardLock",
+                "HardLockPreferWeakspot",
+                true,
+                "HardLock aims at the best weakspot center when available.");
+
+            HardLockWeakspotBias = Config.Bind(
+                "HardLock",
+                "HardLockWeakspotBias",
+                1f,
+                new ConfigDescription(
+                    "0 = target body point, 1 = weakspot center.",
+                    new AcceptableValueRange<float>(0f, 1f)));
+
+            HardLockRotationSpeed = Config.Bind(
+                "HardLock",
+                "HardLockRotationSpeed",
+                420f,
+                new ConfigDescription(
+                    "Maximum HardLock correction speed per second. High values create near-instant lock.",
+                    new AcceptableValueRange<float>(1f, 5000f)));
+
+            HardLockRotationGain = Config.Bind(
+                "HardLock",
+                "HardLockRotationGain",
+                0.18f,
+                new ConfigDescription(
+                    "Scales angular error into camera rotation delta. Higher values are more aggressive.",
+                    new AcceptableValueRange<float>(0.01f, 10f)));
+
+            HardLockMaxDeltaPerFrame = Config.Bind(
+                "HardLock",
+                "HardLockMaxDeltaPerFrame",
+                12f,
+                new ConfigDescription(
+                    "Hard cap for HardLock rotation delta per frame.",
+                    new AcceptableValueRange<float>(0.01f, 100f)));
+
+            HardLockRecoilCompensation = Config.Bind(
+                "HardLock",
+                "HardLockRecoilCompensation",
+                true,
+                "Apply an extra HardLock correction after CameraRecoil.LateUpdate().");
+
+            HardLockRequireLineOfSight = Config.Bind(
+                "HardLock",
+                "HardLockRequireLineOfSight",
+                true,
+                "Legacy line-of-sight switch. Kept for compatibility. HardLockRequireVisibleTarget is the safer release switch.");
+
+            HardLockRequireVisibleTarget = Config.Bind(
+                "HardLock",
+                "HardLockRequireVisibleTarget",
+                true,
+                "Require official geometry-layer visibility before selecting a HardLock target. This prevents locking enemies behind walls or before the player can see them.");
+
+            HardLockTargetPriorityMode = Config.Bind(
+                "HardLock Target Priority",
+                "HardLockTargetPriority",
+                HardLockTargetPriority.ThreatWeighted,
+                "Nearest / LowestHealth / WeakspotThenDistance / ThreatWeighted.");
+
+            HardLockDistanceWeight = Config.Bind(
+                "HardLock Target Priority",
+                "DistanceWeight",
+                0.75f,
+                new ConfigDescription(
+                    "ThreatWeighted score weight for nearby enemies. Default is 50% higher than v1.2.4.",
+                    new AcceptableValueRange<float>(0f, 2f)));
+
+            HardLockLowHealthWeight = Config.Bind(
+                "HardLock Target Priority",
+                "LowHealthWeight",
+                0.25f,
+                new ConfigDescription(
+                    "ThreatWeighted score weight for low health enemies.",
+                    new AcceptableValueRange<float>(0f, 2f)));
+
+            HardLockWeakspotWeight = Config.Bind(
+                "HardLock Target Priority",
+                "WeakspotWeight",
+                0.15f,
+                new ConfigDescription(
+                    "ThreatWeighted score weight for high-multiplier weakspots.",
+                    new AcceptableValueRange<float>(0f, 2f)));
+
+            HardLockStickyTargetBonus = Config.Bind(
+                "HardLock Target Priority",
+                "StickyTargetBonus",
+                0.20f,
+                new ConfigDescription(
+                    "Extra score for the current HardLock target to prevent rapid target switching.",
+                    new AcceptableValueRange<float>(0f, 2f)));
+
+            EnableAutoFire = Config.Bind(
+                "Auto Fire",
+                "EnableAutoFire",
+                false,
+                "Automatically holds or pulses the weapon trigger when HardLock is aligned.");
+
+            AutoFireOnlyInHardLock = Config.Bind(
+                "Auto Fire",
+                "AutoFireOnlyInHardLock",
+                true,
+                "Only allow AutoFire while Mode = HardLock.");
+
+            AutoFireRequireAligned = Config.Bind(
+                "Auto Fire",
+                "AutoFireRequireAligned",
+                true,
+                "Only fire when HardLock target angle is within AutoFireMaxAngleDegrees.");
+
+            AutoFireMaxAngleDegrees = Config.Bind(
+                "Auto Fire",
+                "AutoFireMaxAngleDegrees",
+                1.0f,
+                new ConfigDescription(
+                    "Maximum angle error for AutoFire alignment.",
+                    new AcceptableValueRange<float>(0.01f, 30f)));
+
+            AutoFireRequireWeaponReady = Config.Bind(
+                "Auto Fire",
+                "AutoFireRequireWeaponReady",
+                true,
+                "Check ammo / reload / cooldown fields before pressing the trigger when available.");
+
+            AutoFireRespectSemiAuto = Config.Bind(
+                "Auto Fire",
+                "AutoFireRespectSemiAuto",
+                true,
+                "Pulse semi-auto weapons instead of holding the trigger down.");
+
+            AutoFirePulseSeconds = Config.Bind(
+                "Auto Fire",
+                "AutoFirePulseSeconds",
+                0.04f,
+                new ConfigDescription(
+                    "Trigger-down duration for semi-auto AutoFire pulses.",
+                    new AcceptableValueRange<float>(0.005f, 0.5f)));
+
+            AutoFireReleaseSeconds = Config.Bind(
+                "Auto Fire",
+                "AutoFireReleaseSeconds",
+                0.04f,
+                new ConfigDescription(
+                    "Trigger-up duration between semi-auto AutoFire pulses.",
+                    new AcceptableValueRange<float>(0.005f, 0.5f)));
         }
     }
 
@@ -1609,6 +2056,42 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
 
             InputReaderUpdatePatch.InputSnapshot inputSnapshot;
             bool hasInputSnapshot = InputReaderUpdatePatch.TryGetSnapshot(__instance, out inputSnapshot);
+
+            if (!DeadeyeInstinctPlugin.IsAimbotRuntimeEnabled())
+            {
+                __instance.rotationPullDelta = Vector2.zero;
+                CurrentTrackedTargetForDebug = null;
+                HardLockController.ClearRuntimeTarget();
+                DecayNaturalDelta();
+                return;
+            }
+
+            if (DeadeyeInstinctPlugin.ActiveMode() == AssistMode.HardLock)
+            {
+                Camera hardLockCamera = Get(FieldPlayerCamera, __instance) as Camera;
+                CurrentPlayerCameraForDebug = hardLockCamera;
+
+                // HardLock is intentionally independent from the normal rotationPullDelta pipeline.
+                // rotationPullDelta is a small input-like value consumed by InputReader and then
+                // multiplied by camera speed. Feeding yaw/pitch degrees into it causes over-rotation.
+                __instance.rotationPullDelta = Vector2.zero;
+
+                Unit hardLockTarget;
+                Vector3 hardLockPoint;
+                if (HardLockController.TryUpdateFromCamera(hardLockCamera, out hardLockTarget, out hardLockPoint))
+                {
+                    CurrentTrackedTargetForDebug = hardLockTarget;
+                    UpdateTargetSwitchState(hardLockTarget);
+                }
+                else
+                {
+                    CurrentTrackedTargetForDebug = null;
+                    ClearTargetState();
+                }
+
+                DecayNaturalDelta();
+                return;
+            }
 
             // Natural mode must not include the official mouse ADS snap/pull.
             // Keep controller official pull when configured, because controller is the original supported path.
@@ -2553,6 +3036,1002 @@ namespace Ryuka.Sulfur.DeadeyeInstinct
         }
     }
 
+
+
+    internal static class HardLockController
+    {
+        internal struct HardLockTargetState
+        {
+            public bool HasTarget;
+            public bool IsAligned;
+            public Unit Target;
+            public Vector3 TargetPoint;
+            public float AngleDegrees;
+            public float Distance;
+            public float WeakspotMultiplier;
+        }
+
+        private static HardLockTargetState currentState;
+        private static readonly MethodInfo MethodIsHostileTo = AccessTools.Method(typeof(Npc), "IsHostileTo", new[] { typeof(FactionIds) });
+        private static readonly MethodInfo MethodGetPositionToAimAt = AccessTools.Method(typeof(Unit), "GetPositionToAimAt");
+
+        internal static HardLockTargetState CurrentState => currentState;
+
+        internal static void ClearRuntimeTarget()
+        {
+            currentState = new HardLockTargetState();
+        }
+
+        internal static bool TryUpdateFromCamera(Camera camera, out Unit target, out Vector3 targetPoint)
+        {
+            target = null;
+            targetPoint = Vector3.zero;
+
+            if (camera == null || !DeadeyeInstinctPlugin.IsHardLockModeActive())
+            {
+                ClearRuntimeTarget();
+                return false;
+            }
+
+            HardLockTargetState state;
+            if (!TrySelectTarget(camera, out state))
+            {
+                ClearRuntimeTarget();
+                return false;
+            }
+
+            state.AngleDegrees = ComputeHardLockAngle(camera, state.TargetPoint);
+
+            object controller = CameraRecoilLateUpdatePatch.GetExtendedCameraController(camera);
+            if (controller != null)
+            {
+                CameraRecoilLateUpdatePatch.RotateTowardPosition(controller, state.TargetPoint);
+                state.AngleDegrees = ComputeHardLockAngle(camera, state.TargetPoint);
+            }
+
+            state.IsAligned =
+                !float.IsNaN(state.AngleDegrees) &&
+                !float.IsInfinity(state.AngleDegrees) &&
+                state.AngleDegrees <= Mathf.Max(0.01f, DeadeyeInstinctPlugin.AutoFireMaxAngleDegrees.Value);
+
+            currentState = state;
+            target = state.Target;
+            targetPoint = state.TargetPoint;
+            return true;
+        }
+
+        internal static void ApplyImmediateRecoilCompensation(CameraRecoil recoil)
+        {
+            if (!DeadeyeInstinctPlugin.IsHardLockModeActive() || !DeadeyeInstinctPlugin.HardLockRecoilCompensation.Value)
+            {
+                return;
+            }
+
+            if (!currentState.HasTarget || currentState.Target == null ||
+                !IsValidHardLockTarget(currentState.Target as Npc) ||
+                !IsFiniteVector(currentState.TargetPoint) ||
+                !IsPointNearTargetBounds(currentState.Target, currentState.TargetPoint, 3.5f))
+            {
+                ClearRuntimeTarget();
+                return;
+            }
+
+            Camera camera = AimAssistLateUpdatePatch.CurrentPlayerCameraForDebug;
+            if (camera == null)
+            {
+                return;
+            }
+
+            object controller = CameraRecoilLateUpdatePatch.GetExtendedCameraController(recoil);
+            if (controller == null)
+            {
+                return;
+            }
+
+            CameraRecoilLateUpdatePatch.RotateTowardPosition(controller, currentState.TargetPoint);
+            currentState.AngleDegrees = ComputeHardLockAngle(camera, currentState.TargetPoint);
+            currentState.IsAligned = currentState.AngleDegrees <= Mathf.Max(0.01f, DeadeyeInstinctPlugin.AutoFireMaxAngleDegrees.Value);
+        }
+
+        private static float ComputeHardLockAngle(Camera camera, Vector3 point)
+        {
+            if (camera == null)
+            {
+                return 180f;
+            }
+
+            Vector3 toTarget = point - camera.transform.position;
+            if (toTarget.sqrMagnitude <= 0.000001f)
+            {
+                return 0f;
+            }
+
+            return Vector3.Angle(camera.transform.forward, toTarget.normalized);
+        }
+
+        private static bool TrySelectTarget(Camera camera, out HardLockTargetState bestState)
+        {
+            bestState = new HardLockTargetState();
+
+            List<Npc> aliveNpcs = GetAliveNpcs();
+            if (aliveNpcs == null)
+            {
+                return false;
+            }
+
+            float maxDistance = GetEffectiveHardLockMaxDistance();
+            Unit previousTarget = currentState.Target;
+            bool found = false;
+            float bestScore = float.NegativeInfinity;
+            for (int i = 0; i < aliveNpcs.Count; i++)
+            {
+                Npc npc = aliveNpcs[i];
+                if (!IsValidHardLockTarget(npc))
+                {
+                    continue;
+                }
+
+                Vector3 targetPoint;
+                float weakspotMultiplier;
+                if (!TryResolveHardLockPoint(npc, camera, out targetPoint, out weakspotMultiplier))
+                {
+                    continue;
+                }
+
+                float distance = Vector3.Distance(camera.transform.position, targetPoint);
+                if (distance > maxDistance)
+                {
+                    continue;
+                }
+
+                bool requireVisible =
+                    (DeadeyeInstinctPlugin.HardLockRequireVisibleTarget != null && DeadeyeInstinctPlugin.HardLockRequireVisibleTarget.Value) ||
+                    (DeadeyeInstinctPlugin.HardLockRequireLineOfSight != null && DeadeyeInstinctPlugin.HardLockRequireLineOfSight.Value);
+
+                if (requireVisible && !HasLineOfSight(camera, npc, targetPoint, distance))
+                {
+                    continue;
+                }
+
+                float score = ScoreTarget(npc, distance, maxDistance, weakspotMultiplier, previousTarget);
+                if (!found || score > bestScore)
+                {
+                    found = true;
+                    bestScore = score;
+                    bestState = new HardLockTargetState
+                    {
+                        HasTarget = true,
+                        Target = npc,
+                        TargetPoint = targetPoint,
+                        Distance = distance,
+                        WeakspotMultiplier = weakspotMultiplier,
+                        IsAligned = false,
+                        AngleDegrees = 180f
+                    };
+                }
+            }
+
+            return found;
+        }
+
+        private static float GetEffectiveHardLockMaxDistance()
+        {
+            float configured = Mathf.Max(1f, DeadeyeInstinctPlugin.HardLockMaxDistance.Value);
+            float cap = DeadeyeInstinctPlugin.HardLockMaxDistanceCap != null
+                ? DeadeyeInstinctPlugin.HardLockMaxDistanceCap.Value
+                : 90f;
+
+            if (cap > 0f)
+            {
+                configured = Mathf.Min(configured, Mathf.Max(1f, cap));
+            }
+
+            return configured;
+        }
+
+        private static List<Npc> GetAliveNpcs()
+        {
+            try
+            {
+                UnitManager unitManager = StaticInstance<UnitManager>.Instance;
+                if (unitManager == null)
+                {
+                    return null;
+                }
+
+                Npc[] npcs = unitManager.GetAllNpcs(false);
+                if (npcs == null || npcs.Length == 0)
+                {
+                    return null;
+                }
+
+                return new List<Npc>(npcs);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private static bool IsHostileToPlayer(Npc npc)
+        {
+            if (npc == null || MethodIsHostileTo == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                object value = MethodIsHostileTo.Invoke(npc, new object[] { FactionIds.Player });
+                return value is bool b && b;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static bool IsValidHardLockTarget(Npc npc)
+        {
+            if (npc == null || npc.transform == null || !npc.gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+
+            if (npc.UnitState == UnitState.Dead || npc.IsProtectedNpc || npc.IsPlayerFaction || npc.mainCollider == null)
+            {
+                return false;
+            }
+
+            return IsHostileToPlayer(npc);
+        }
+
+        private static float ScoreTarget(Npc npc, float distance, float maxDistance, float weakspotMultiplier, Unit previousTarget)
+        {
+            float distanceScore = 1f - Mathf.Clamp01(distance / Mathf.Max(1f, maxDistance));
+            float lowHealthScore = GetLowHealthScore(npc);
+            float weakspotScore = Mathf.Clamp01(weakspotMultiplier / 1.5f);
+            float stickyBonus = (previousTarget != null && npc == previousTarget)
+                ? Mathf.Max(0f, DeadeyeInstinctPlugin.HardLockStickyTargetBonus.Value)
+                : 0f;
+
+            switch (DeadeyeInstinctPlugin.HardLockTargetPriorityMode.Value)
+            {
+                case HardLockTargetPriority.Nearest:
+                    return distanceScore + stickyBonus;
+
+                case HardLockTargetPriority.LowestHealth:
+                    return lowHealthScore + distanceScore * 0.375f + stickyBonus;
+
+                case HardLockTargetPriority.WeakspotThenDistance:
+                    return weakspotScore + distanceScore * 0.75f + stickyBonus;
+
+                default:
+                    return
+                        distanceScore * Mathf.Max(0f, DeadeyeInstinctPlugin.HardLockDistanceWeight.Value) +
+                        lowHealthScore * Mathf.Max(0f, DeadeyeInstinctPlugin.HardLockLowHealthWeight.Value) +
+                        weakspotScore * Mathf.Max(0f, DeadeyeInstinctPlugin.HardLockWeakspotWeight.Value) +
+                        stickyBonus;
+            }
+        }
+
+        private static float GetLowHealthScore(Unit unit)
+        {
+            if (unit == null || unit.Stats == null)
+            {
+                return 0f;
+            }
+
+            try
+            {
+                float current = Mathf.Max(0f, unit.GetCurrentHealth());
+                float max = unit.Stats.GetAttribute(EntityAttributes.Stat_MaxHealth);
+                if (max <= 0.001f)
+                {
+                    return 0f;
+                }
+
+                return 1f - Mathf.Clamp01(current / max);
+            }
+            catch
+            {
+                return 0f;
+            }
+        }
+
+        private static bool TryResolveHardLockPoint(Unit target, Camera camera, out Vector3 point, out float weakspotMultiplier)
+        {
+            point = Vector3.zero;
+            weakspotMultiplier = 0.5f;
+
+            if (target == null)
+            {
+                return false;
+            }
+
+            Vector3 basePoint = GetFallbackTargetPoint(target);
+            if (!IsFiniteVector(basePoint) || !IsPointNearTargetBounds(target, basePoint, 3.5f))
+            {
+                return false;
+            }
+
+            point = basePoint;
+
+            if (!DeadeyeInstinctPlugin.HardLockPreferWeakspot.Value)
+            {
+                return true;
+            }
+
+            Vector3 weakspotPoint;
+            float multiplier;
+            if (TryGetBestWeakspotCenterPoint(target, basePoint, out weakspotPoint, out multiplier) &&
+                IsFiniteVector(weakspotPoint) &&
+                IsPointNearTargetBounds(target, weakspotPoint, 3.5f))
+            {
+                weakspotMultiplier = multiplier;
+                float bias = Mathf.Clamp01(DeadeyeInstinctPlugin.HardLockWeakspotBias.Value);
+                Vector3 blended = Vector3.Lerp(basePoint, weakspotPoint, bias);
+                if (IsFiniteVector(blended) && IsPointNearTargetBounds(target, blended, 3.5f))
+                {
+                    point = blended;
+                }
+            }
+
+            return true;
+        }
+
+        private static Vector3 GetFallbackTargetPoint(Unit target)
+        {
+            if (target == null)
+            {
+                return Vector3.zero;
+            }
+
+            try
+            {
+                if (MethodGetPositionToAimAt != null)
+                {
+                    object value = MethodGetPositionToAimAt.Invoke(target, null);
+                    if (value is Vector3 aimPosition && IsFiniteVector(aimPosition) && IsPointNearTargetBounds(target, aimPosition, 2.5f))
+                    {
+                        return aimPosition;
+                    }
+                }
+            }
+            catch
+            {
+                // Fall through to collider center.
+            }
+
+            try
+            {
+                if (target.mainCollider != null)
+                {
+                    return target.mainCollider.bounds.center;
+                }
+            }
+            catch
+            {
+                // Fall through to transform position.
+            }
+
+            return target.transform.position + Vector3.up;
+        }
+
+        private static bool IsFiniteVector(Vector3 value)
+        {
+            return
+                !float.IsNaN(value.x) && !float.IsInfinity(value.x) &&
+                !float.IsNaN(value.y) && !float.IsInfinity(value.y) &&
+                !float.IsNaN(value.z) && !float.IsInfinity(value.z);
+        }
+
+        private static bool IsPointNearTargetBounds(Unit target, Vector3 point, float padding)
+        {
+            if (target == null || !IsFiniteVector(point))
+            {
+                return false;
+            }
+
+            try
+            {
+                if (target.mainCollider != null)
+                {
+                    Bounds bounds = target.mainCollider.bounds;
+                    bounds.Expand(Mathf.Max(0.1f, padding));
+                    return bounds.Contains(point);
+                }
+            }
+            catch
+            {
+                // Fall through to transform-distance fallback.
+            }
+
+            try
+            {
+                return Vector3.Distance(target.transform.position + Vector3.up, point) <= Mathf.Max(2f, padding);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static bool TryGetBestWeakspotCenterPoint(Unit target, Vector3 referenceWorldPoint, out Vector3 point, out float multiplier)
+        {
+            point = Vector3.zero;
+            multiplier = 0f;
+
+            Hitmesh[] hitmeshes = null;
+            try
+            {
+                hitmeshes = target.GetComponentsInChildren<Hitmesh>(true);
+            }
+            catch
+            {
+                return false;
+            }
+
+            if (hitmeshes == null || hitmeshes.Length == 0)
+            {
+                return false;
+            }
+
+            bool found = false;
+            Vector3 bestPoint = Vector3.zero;
+            float bestMultiplier = 0f;
+            float bestDistanceSqr = float.MaxValue;
+            int bestPriority = -1;
+
+            for (int i = 0; i < hitmeshes.Length; i++)
+            {
+                Hitmesh hitmesh = hitmeshes[i];
+                if (hitmesh == null || hitmesh.hitShapes == null || hitmesh.hitShapes.Length == 0)
+                {
+                    continue;
+                }
+
+                if (hitmesh.owner != null && hitmesh.owner != target)
+                {
+                    continue;
+                }
+
+                for (int j = 0; j < hitmesh.hitShapes.Length; j++)
+                {
+                    Hitmesh.Data data = hitmesh.hitShapes[j];
+                    if (data.isInvulnerable)
+                    {
+                        continue;
+                    }
+
+                    float shapeMultiplier = data.GetShapeMultiplier();
+                    if (shapeMultiplier <= 0f)
+                    {
+                        continue;
+                    }
+
+                    Vector3 candidatePoint;
+                    float distanceSqr;
+                    if (!TryGetShapeCenterPoint(hitmesh, data.shapeId, referenceWorldPoint, out candidatePoint, out distanceSqr))
+                    {
+                        continue;
+                    }
+
+                    int priority = GetPartPriority(data.shapeId.part);
+                    bool better =
+                        !found ||
+                        shapeMultiplier > bestMultiplier + 0.0001f ||
+                        (Mathf.Abs(shapeMultiplier - bestMultiplier) <= 0.0001f && priority > bestPriority) ||
+                        (Mathf.Abs(shapeMultiplier - bestMultiplier) <= 0.0001f && priority == bestPriority && distanceSqr < bestDistanceSqr);
+
+                    if (!better)
+                    {
+                        continue;
+                    }
+
+                    found = true;
+                    bestMultiplier = shapeMultiplier;
+                    bestPriority = priority;
+                    bestDistanceSqr = distanceSqr;
+                    bestPoint = candidatePoint;
+                    multiplier = shapeMultiplier;
+                }
+            }
+
+            if (!found)
+            {
+                return false;
+            }
+
+            point = bestPoint;
+            return true;
+        }
+
+        private static bool TryGetShapeCenterPoint(Hitmesh hitmesh, HitboxColliders.ShapeId shapeId, Vector3 referenceWorldPoint, out Vector3 point, out float distanceSqr)
+        {
+            point = Vector3.zero;
+            distanceSqr = float.MaxValue;
+
+            if (hitmesh == null || shapeId.part == HitboxColliders.Parts.None)
+            {
+                return false;
+            }
+
+            try
+            {
+                HitboxColliders loadedHitboxColliders = StaticInstance<AsyncAssetLoading>.Instance.loadedHitboxColliders;
+                if (loadedHitboxColliders == null ||
+                    !loadedHitboxColliders.runtimeHitmeshData.IsCreated ||
+                    !loadedHitboxColliders.runtimeVertexData.IsCreated)
+                {
+                    return false;
+                }
+
+                int frameIndex = hitmesh.hitboxFrameIndex;
+                if (frameIndex < 0 || frameIndex >= loadedHitboxColliders.runtimeHitmeshData.Length)
+                {
+                    return false;
+                }
+
+                HitboxColliders.RuntimeHitboxData runtimeHitboxData =
+                    loadedHitboxColliders.runtimeHitmeshData[frameIndex];
+
+                Vector3 localReference3 = hitmesh.transform.InverseTransformPoint(referenceWorldPoint);
+
+                for (int i = 0; i < runtimeHitboxData.shapes.Length; i++)
+                {
+                    HitboxColliders.ShapeData shapeData = runtimeHitboxData.shapes[i];
+                    if (shapeData.shapeId != shapeId)
+                    {
+                        continue;
+                    }
+
+                    int length = (int)shapeData.length;
+                    if (length <= 1)
+                    {
+                        return false;
+                    }
+
+                    Vector2 sum = Vector2.zero;
+                    int count = 0;
+                    for (int j = 0; j < length; j++)
+                    {
+                        int vertexIndex = shapeData.index + j;
+                        if (vertexIndex < 0 || vertexIndex >= loadedHitboxColliders.runtimeVertexData.Length)
+                        {
+                            return false;
+                        }
+
+                        Unity.Mathematics.float2 vertex = loadedHitboxColliders.runtimeVertexData[vertexIndex];
+                        sum += new Vector2(vertex.x, vertex.y);
+                        count++;
+                    }
+
+                    if (count <= 0)
+                    {
+                        return false;
+                    }
+
+                    Vector2 center = sum / count;
+                    Vector3 localPoint = new Vector3(center.x, center.y, localReference3.z);
+                    point = hitmesh.transform.TransformPoint(localPoint);
+                    if (!IsFiniteVector(point))
+                    {
+                        return false;
+                    }
+
+                    distanceSqr = (point - referenceWorldPoint).sqrMagnitude;
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return false;
+        }
+
+        private static int GetPartPriority(HitboxColliders.Parts part)
+        {
+            if (part == HitboxColliders.Parts.Eye)
+            {
+                return 30;
+            }
+
+            if (part == HitboxColliders.Parts.Head)
+            {
+                return 20;
+            }
+
+            if (part == HitboxColliders.Parts.Thorax)
+            {
+                return 10;
+            }
+
+            return 0;
+        }
+
+        private static bool HasLineOfSight(Camera camera, Unit target, Vector3 point, float distance)
+        {
+            if (camera == null || target == null)
+            {
+                return false;
+            }
+
+            Vector3 origin = camera.transform.position;
+            Vector3 direction = point - origin;
+            if (direction.sqrMagnitude <= 0.000001f)
+            {
+                return false;
+            }
+
+            try
+            {
+                float maxDistance = Mathf.Max(0.01f, distance);
+                return !Physics.Raycast(origin, direction.normalized, maxDistance, StaticInstance<GameManager>.Instance.geometryLayer);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+    }
+
+    internal static class WeaponLateUpdatePatch
+    {
+        private sealed class AutoFireState
+        {
+            public bool Controlled;
+            public bool PulseDown;
+            public float PulseEndTime;
+            public float NextPulseTime;
+        }
+
+        private static readonly Dictionary<Weapon, AutoFireState> AutoFireStates = new Dictionary<Weapon, AutoFireState>();
+        private static readonly FieldInfo FieldBOwnerIsNpc = AccessTools.Field(typeof(Holdable), "bOwnerIsNpc");
+        private static readonly FieldInfo FieldIsReloading = AccessTools.Field(typeof(Weapon), "isReloading");
+        private static readonly FieldInfo FieldBIsOnCooldown = AccessTools.Field(typeof(Weapon), "bIsOnCooldown");
+        private static readonly PropertyInfo PropertyIsFullAutoEnabled = AccessTools.Property(typeof(Weapon), "IsFullAutoEnabled");
+
+        public static void Prefix(Weapon __instance)
+        {
+            if (__instance == null)
+            {
+                return;
+            }
+
+            if (!ShouldAutoFire(__instance))
+            {
+                ReleaseTrigger(__instance);
+                return;
+            }
+
+            bool isFullAuto = IsFullAuto(__instance);
+            if (isFullAuto || !DeadeyeInstinctPlugin.AutoFireRespectSemiAuto.Value)
+            {
+                MarkControlled(__instance);
+                __instance.SetTrigger(true);
+                return;
+            }
+
+            PulseSemiAuto(__instance);
+        }
+
+        private static bool ShouldAutoFire(Weapon weapon)
+        {
+            if (!DeadeyeInstinctPlugin.EnableMod.Value || !DeadeyeInstinctPlugin.EnableAutoFire.Value)
+            {
+                return false;
+            }
+
+            if (!DeadeyeInstinctPlugin.IsAimbotRuntimeEnabled())
+            {
+                return false;
+            }
+
+            if (DeadeyeInstinctPlugin.AutoFireOnlyInHardLock.Value && DeadeyeInstinctPlugin.ActiveMode() != AssistMode.HardLock)
+            {
+                return false;
+            }
+
+            if (IsNpcWeapon(weapon))
+            {
+                return false;
+            }
+
+            HardLockController.HardLockTargetState state = HardLockController.CurrentState;
+            if (!state.HasTarget || state.Target == null)
+            {
+                return false;
+            }
+
+            if (DeadeyeInstinctPlugin.AutoFireRequireAligned.Value && !state.IsAligned)
+            {
+                return false;
+            }
+
+            if (DeadeyeInstinctPlugin.AutoFireRequireWeaponReady.Value && !IsWeaponReady(weapon))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool IsNpcWeapon(Weapon weapon)
+        {
+            try
+            {
+                object value = FieldBOwnerIsNpc?.GetValue(weapon);
+                return value is bool b && b;
+            }
+            catch
+            {
+                return true;
+            }
+        }
+
+        private static bool IsWeaponReady(Weapon weapon)
+        {
+            try
+            {
+                if (FieldIsReloading != null && FieldIsReloading.GetValue(weapon) is bool reloading && reloading)
+                {
+                    return false;
+                }
+
+                if (FieldBIsOnCooldown != null && FieldBIsOnCooldown.GetValue(weapon) is bool cooldown && cooldown)
+                {
+                    return false;
+                }
+
+                // Do not reject empty magazines here.
+                // Weapon.AttemptShoot() owns empty-click and auto-reload behavior.
+                // If AutoFire stops before AttemptShoot(), auto-reload can never trigger.
+            }
+            catch
+            {
+                return true;
+            }
+
+            return true;
+        }
+
+        private static bool IsFullAuto(Weapon weapon)
+        {
+            try
+            {
+                if (PropertyIsFullAutoEnabled != null)
+                {
+                    object value = PropertyIsFullAutoEnabled.GetValue(weapon, null);
+                    if (value is bool b)
+                    {
+                        return b;
+                    }
+                }
+            }
+            catch
+            {
+                // Fall back to semi-auto pulse.
+            }
+
+            return false;
+        }
+
+        private static void PulseSemiAuto(Weapon weapon)
+        {
+            AutoFireState state;
+            if (!AutoFireStates.TryGetValue(weapon, out state))
+            {
+                state = new AutoFireState();
+                AutoFireStates[weapon] = state;
+            }
+
+            state.Controlled = true;
+            float now = Time.unscaledTime;
+
+            if (state.PulseDown)
+            {
+                if (now >= state.PulseEndTime)
+                {
+                    weapon.SetTrigger(false);
+                    state.PulseDown = false;
+                    state.NextPulseTime = now + Mathf.Max(0.005f, DeadeyeInstinctPlugin.AutoFireReleaseSeconds.Value);
+                }
+                else
+                {
+                    weapon.SetTrigger(true);
+                }
+
+                return;
+            }
+
+            if (now < state.NextPulseTime)
+            {
+                weapon.SetTrigger(false);
+                return;
+            }
+
+            weapon.SetTrigger(true);
+            state.PulseDown = true;
+            state.PulseEndTime = now + Mathf.Max(0.005f, DeadeyeInstinctPlugin.AutoFirePulseSeconds.Value);
+        }
+
+        private static void MarkControlled(Weapon weapon)
+        {
+            AutoFireState state;
+            if (!AutoFireStates.TryGetValue(weapon, out state))
+            {
+                state = new AutoFireState();
+                AutoFireStates[weapon] = state;
+            }
+
+            state.Controlled = true;
+        }
+
+        private static void ReleaseTrigger(Weapon weapon)
+        {
+            AutoFireState state;
+            if (!AutoFireStates.TryGetValue(weapon, out state) || !state.Controlled)
+            {
+                return;
+            }
+
+            try
+            {
+                weapon.SetTrigger(false);
+            }
+            catch
+            {
+                // Ignore release failures.
+            }
+
+            state.Controlled = false;
+            state.PulseDown = false;
+            state.PulseEndTime = 0f;
+            state.NextPulseTime = Time.unscaledTime;
+        }
+    }
+
+    internal static class CameraRecoilLateUpdatePatch
+    {
+        private static readonly FieldInfo FieldExtendedCameraController =
+            AccessTools.Field(typeof(CameraRecoil), "extendedCameraController");
+
+        private static readonly Dictionary<Type, MethodInfo> InsertRotationMethods = new Dictionary<Type, MethodInfo>();
+        private static readonly Dictionary<Type, MethodInfo> RotateTowardPositionMethods = new Dictionary<Type, MethodInfo>();
+        private static readonly Dictionary<Type, MethodInfo> RotateTowardDirectionMethods = new Dictionary<Type, MethodInfo>();
+
+        public static void Postfix(CameraRecoil __instance)
+        {
+            HardLockController.ApplyImmediateRecoilCompensation(__instance);
+        }
+
+        internal static object GetExtendedCameraController(Camera camera)
+        {
+            if (camera == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                ExtendedCameraController controller = camera.GetComponentInParent<ExtendedCameraController>();
+                if (controller != null)
+                {
+                    return controller;
+                }
+            }
+            catch
+            {
+                // Fall through.
+            }
+
+            return null;
+        }
+
+        internal static object GetExtendedCameraController(CameraRecoil recoil)
+        {
+            if (recoil == null || FieldExtendedCameraController == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                return FieldExtendedCameraController.GetValue(recoil);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        internal static void RotateTowardPosition(object cameraController, Vector3 targetPoint)
+        {
+            if (cameraController == null)
+            {
+                return;
+            }
+
+            Vector3 direction = targetPoint - ((Component)cameraController).transform.position;
+            if (direction.sqrMagnitude <= 0.000001f)
+            {
+                return;
+            }
+
+            Type type = cameraController.GetType();
+            MethodInfo method;
+            if (!RotateTowardPositionMethods.TryGetValue(type, out method))
+            {
+                method = AccessTools.Method(type, "RotateTowardPosition", new[] { typeof(Vector3), typeof(float) });
+                RotateTowardPositionMethods[type] = method;
+            }
+
+            try
+            {
+                if (method != null)
+                {
+                    method.Invoke(cameraController, new object[] { targetPoint, 0f });
+                    return;
+                }
+            }
+            catch
+            {
+                // Try direction fallback below.
+            }
+
+            MethodInfo directionMethod;
+            if (!RotateTowardDirectionMethods.TryGetValue(type, out directionMethod))
+            {
+                directionMethod = AccessTools.Method(type, "RotateTowardDirection", new[] { typeof(Vector3), typeof(float) });
+                RotateTowardDirectionMethods[type] = directionMethod;
+            }
+
+            try
+            {
+                if (directionMethod != null)
+                {
+                    directionMethod.Invoke(cameraController, new object[] { direction.normalized, 0f });
+                }
+            }
+            catch
+            {
+                // Keep HardLock correction optional and silent.
+            }
+        }
+
+        internal static void InsertRotationValue(object cameraController, Vector2 delta)
+        {
+            if (cameraController == null || delta.sqrMagnitude <= 0.000001f)
+            {
+                return;
+            }
+
+            Type type = cameraController.GetType();
+            MethodInfo method;
+            if (!InsertRotationMethods.TryGetValue(type, out method))
+            {
+                method = AccessTools.Method(type, "InsertRotationValue", new[] { typeof(Vector2) });
+                InsertRotationMethods[type] = method;
+            }
+
+            if (method == null)
+            {
+                return;
+            }
+
+            try
+            {
+                method.Invoke(cameraController, new object[] { delta });
+            }
+            catch
+            {
+                // Keep recoil compensation optional and silent.
+            }
+        }
+    }
 
     internal sealed class WeakspotDebugOverlayController : MonoBehaviour
     {
