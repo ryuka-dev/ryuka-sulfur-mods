@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Better Low Health Warning"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Adds a configurable low-health vignette warning."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Visual"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Enable Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable the better low health warning."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Hide When HUD Hidden"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Hide the warning when the game HUD is hidden."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Warning Health Percent"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Show the warning below this health percentage. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Critical Health Percent"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Use a stronger warning below this health percentage. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Border Thickness"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Soft red vignette thickness in pixels."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Minimum Opacity"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Warning opacity at the warning threshold."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Maximum Opacity"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Warning opacity at or below the critical threshold."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Enable Pulse"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Pulse the warning when health is low."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Pulse Speed"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Pulse speed. Higher values pulse faster."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Fade Speed"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Fade in/out speed for the warning."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Fullscreen Tint Opacity"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Very subtle full-screen red tint multiplier. Set to 0 to disable."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Log Errors"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Log patch errors. Keep this off for normal gameplay."
+    }
+  ]
+}

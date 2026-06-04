@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Avviso salute bassa migliorato"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Aggiunge un avviso vignetta configurabile quando la salute è bassa."
+    },
+    {
+      "key": "section.General",
+      "value": "Generale"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Visivo"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Abilita mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Abilita l’avviso salute bassa migliorato."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Nascondi quando l’HUD è nascosto"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Nasconde l’avviso quando l’HUD del gioco è nascosto."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Percentuale salute avviso"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Mostra l’avviso sotto questa percentuale di salute. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Percentuale salute critica"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Usa un avviso più forte sotto questa percentuale di salute. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Spessore bordo"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Spessore della vignetta rossa morbida in pixel."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Opacità minima"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Opacità dell’avviso alla soglia di avviso."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Opacità massima"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Opacità dell’avviso alla soglia critica o sotto di essa."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Abilita pulsazione"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Fa pulsare l’avviso quando la salute è bassa."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Velocità pulsazione"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Velocità della pulsazione. Valori più alti pulsano più velocemente."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Velocità dissolvenza"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Velocità di dissolvenza in entrata/uscita dell’avviso."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Opacità tinta a schermo intero"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Moltiplicatore molto leggero della tinta rossa a schermo intero. Imposta 0 per disattivare."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Registra errori"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Registra gli errori della patch. Lascia disattivato per il gioco normale."
+    }
+  ]
+}

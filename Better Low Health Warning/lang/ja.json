@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "低体力警告強化"
+    },
+    {
+      "key": "plugin.description",
+      "value": "低体力時に表示される赤いビネット警告を設定可能にします。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Visual",
+      "value": "表示"
+    },
+    {
+      "key": "section.Debug",
+      "value": "デバッグ"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod を有効化"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "低体力警告強化を有効化します。"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "HUD 非表示時に隠す"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "ゲーム HUD が非表示のとき、警告も非表示にします。"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "警告体力割合"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "この体力割合を下回ると警告を表示します。0.35 は 35% です。"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "危険体力割合"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "この体力割合を下回るとより強い警告を使用します。0.15 は 15% です。"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "縁の太さ"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "柔らかい赤いビネットの太さをピクセル単位で指定します。"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "最小不透明度"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "警告しきい値での警告の不透明度です。"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "最大不透明度"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "危険しきい値以下での警告の不透明度です。"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "点滅を有効化"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "低体力時に警告を脈動させます。"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "点滅速度"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "点滅速度です。値が高いほど速く点滅します。"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "フェード速度"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "警告のフェードイン・フェードアウト速度です。"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "全画面赤色ティント不透明度"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "非常に控えめな全画面赤色ティント倍率です。0 にすると無効化します。"
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "エラーログ"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "パッチエラーをログに出力します。通常プレイではオフ推奨です。"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Meilleure alerte de santé basse"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ajoute une alerte de vignette configurable quand la santé est basse."
+    },
+    {
+      "key": "section.General",
+      "value": "Général"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Visuel"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Débogage"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Activer le mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Active la meilleure alerte de santé basse."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Masquer si le HUD est masqué"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Masque l’alerte quand le HUD du jeu est masqué."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Pourcentage de santé d’alerte"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Affiche l’alerte sous ce pourcentage de santé. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Pourcentage de santé critique"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Utilise une alerte plus forte sous ce pourcentage de santé. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Épaisseur de bordure"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Épaisseur de la vignette rouge douce en pixels."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Opacité minimale"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Opacité de l’alerte au seuil d’avertissement."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Opacité maximale"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Opacité de l’alerte au seuil critique ou en dessous."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Activer la pulsation"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Fait pulser l’alerte quand la santé est basse."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Vitesse de pulsation"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Vitesse de pulsation. Les valeurs plus élevées pulsent plus vite."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Vitesse de fondu"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Vitesse de fondu entrant/sortant de l’alerte."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Opacité de teinte plein écran"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Multiplicateur de teinte rouge plein écran très subtil. Mettez 0 pour désactiver."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Journaliser les erreurs"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Journalise les erreurs de patch. À laisser désactivé pour une partie normale."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "武器双倍经验"
+    },
+    {
+      "key": "plugin.description",
+      "value": "让武器通过 Weapon.AddExperience 获得的经验变为双倍。"
+    }
+  ]
+}

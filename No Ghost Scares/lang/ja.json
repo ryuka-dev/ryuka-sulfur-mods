@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "幽霊びっくり演出無効化"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ability_Ghost_*_Scare オブジェクトを検出し、必要に応じてブロックします。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Debug",
+      "value": "デバッグ"
+    },
+    {
+      "key": "section.Performance",
+      "value": "パフォーマンス"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "オーバーレイ"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "ブロックを有効化"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Ability_Ghost_*_Scare オブジェクトを無効化します。オフにすると検出のみ行います。"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "デバッグオーバーレイ表示"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "検出またはブロックされた幽霊びっくり演出オブジェクトを画面に表示します。"
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "操作ログ"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "検出またはブロックされた幽霊びっくり演出オブジェクトを BepInEx ログに出力します。"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "広範囲の幽霊名を検出"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "デバッグ専用。GhostParticles や Unit_Enemy_Ghost などの広い幽霊関連名も表示します。これらはブロックされません。"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "スキャン間隔"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "読み込み済みシーン内の幽霊びっくり演出トリガーをスキャンする頻度です。"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "オーバーレイ保持秒数"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "最後の検出またはブロック後、画面オーバーレイを表示し続ける時間です。"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "最大オーバーレイ項目数"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "画面に表示する最近の記録の最大数です。"
+    }
+  ]
+}

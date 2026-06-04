@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Bez straszaków duchów"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Wykrywa i opcjonalnie blokuje obiekty Ability_Ghost_*_Scare."
+    },
+    {
+      "key": "section.General",
+      "value": "Ogólne"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debugowanie"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Wydajność"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Nakładka"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Włącz blokowanie"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Wyłącza obiekty Ability_Ghost_*_Scare. Wyłącz, aby tylko je wykrywać."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Pokaż nakładkę debugowania"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Pokazuje na ekranie wykryte lub zablokowane obiekty straszaków duchów."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Loguj działania"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Zapisuje wykryte lub zablokowane obiekty straszaków duchów w logu BepInEx."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Wykrywaj ogólne nazwy duchów"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Tylko debugowanie. Pokazuje też szerokie nazwy związane z duchami, takie jak GhostParticles lub Unit_Enemy_Ghost. Nigdy nie są blokowane."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Interwał skanowania"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "Jak często skanować załadowane sceny w poszukiwaniu wyzwalaczy straszaków duchów."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Czas nakładki"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "Jak długo nakładka pozostaje widoczna po ostatnim wykryciu lub zablokowaniu."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Maks. elementów nakładki"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Maksymalna liczba ostatnich rekordów pokazywanych na ekranie."
+    }
+  ]
+}

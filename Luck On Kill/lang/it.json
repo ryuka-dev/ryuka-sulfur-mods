@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Fortuna all’uccisione"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Concede fortuna quando i nemici muoiono, con opzioni per ricompensa, filtri, sicurezza e compatibilità."
+    },
+    {
+      "key": "section.General",
+      "value": "Generale"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Ricompensa"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Compatibilità"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filtro"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Sicurezza"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Abilita mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Abilita Fortuna all’uccisione."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Moltiplicatore ricompensa uccisione"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Moltiplicatore della fortuna ottenuta quando un nemico muore. La ricompensa base usa lo Stat_LuckGain attuale, pari a un minuto di recupero fortuna originale."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Bonus fisso uccisione"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Bonus fisso aggiunto alla ricompensa fortuna dopo il moltiplicatore."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Sostituzione ricompensa uccisione"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Se impostato a 0 o più, sostituisce la ricompensa fortuna con questo valore fisso. -1 lo disattiva."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Applica tramite ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Applica le ricompense tramite ModifyStatus così Controllo fortuna può modificarle."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Richiedi ostilità verso il giocatore"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Solo le unità ostili al giocatore concedono fortuna."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Richiedi unità con XP"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Solo le unità con ExperienceOnKill maggiore di 0 concedono fortuna. Lascia disattivato per permettere nemici ostili speciali con 0 XP."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Ricompensa civili"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Permette alle unità civili di concedere fortuna."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Ricompensa distruttibili"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Permette agli oggetti distruttibili di concedere fortuna. Consigliato: disattivato."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Impedisci ricompense duplicate"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Impedisce che la stessa morte di unità conceda fortuna più di una volta. Il riuso del pool viene gestito quando Unit.Spawn() cancella lo stato della ricompensa."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Registra ricompense"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Registra le ricompense fortuna ottenute dalle morti dei nemici."
+    }
+  ]
+}

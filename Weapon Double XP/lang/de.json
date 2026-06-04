@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Doppelte Waffen-XP"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Verdoppelt die über Weapon.AddExperience erhaltene Waffen-XP."
+    }
+  ]
+}

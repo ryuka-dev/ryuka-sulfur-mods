@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Lepsze ostrzeżenie o niskim zdrowiu"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Dodaje konfigurowalne ostrzeżenie winietą przy niskim zdrowiu."
+    },
+    {
+      "key": "section.General",
+      "value": "Ogólne"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Wizualne"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debugowanie"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Włącz mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Włącza lepsze ostrzeżenie o niskim zdrowiu."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Ukryj, gdy HUD jest ukryty"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Ukrywa ostrzeżenie, gdy HUD gry jest ukryty."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Procent zdrowia ostrzeżenia"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Pokazuje ostrzeżenie poniżej tego procentu zdrowia. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Procent zdrowia krytycznego"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Używa silniejszego ostrzeżenia poniżej tego procentu zdrowia. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Grubość obramowania"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Grubość miękkiej czerwonej winiety w pikselach."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Minimalna nieprzezroczystość"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Nieprzezroczystość ostrzeżenia przy progu ostrzeżenia."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Maksymalna nieprzezroczystość"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Nieprzezroczystość ostrzeżenia na progu krytycznym lub poniżej."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Włącz pulsowanie"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Sprawia, że ostrzeżenie pulsuje przy niskim zdrowiu."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Szybkość pulsowania"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Szybkość pulsowania. Wyższe wartości pulsują szybciej."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Szybkość zanikania"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Szybkość pojawiania się i zanikania ostrzeżenia."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Nieprzezroczystość pełnoekranowego zabarwienia"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Bardzo subtelny mnożnik czerwonego zabarwienia pełnoekranowego. Ustaw 0, aby wyłączyć."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Loguj błędy"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Zapisuje błędy patcha. Do normalnej gry zostaw wyłączone."
+    }
+  ]
+}

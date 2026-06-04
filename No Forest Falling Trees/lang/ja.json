@@ -1,0 +1,92 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "森の倒木演出無効化"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Forest Ambush の倒木演出を中和し、遭遇ロジックは維持します。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Performance",
+      "value": "パフォーマンス"
+    },
+    {
+      "key": "entry.General.LogActions.name",
+      "value": "操作ログ"
+    },
+    {
+      "key": "entry.General.LogActions.description",
+      "value": "中和された Forest Ambush の視覚オブジェクトをログに出力します。"
+    },
+    {
+      "key": "entry.General.MuteAmbushContentAudio.name",
+      "value": "伏撃コンテンツ音声をミュート"
+    },
+    {
+      "key": "entry.General.MuteAmbushContentAudio.description",
+      "value": "Forest Ambush Contents の AudioSource をコンポーネント無効化なしでミュートします。"
+    },
+    {
+      "key": "entry.General.HideTreeRenderers.name",
+      "value": "木のレンダラーを隠す"
+    },
+    {
+      "key": "entry.General.HideTreeRenderers.description",
+      "value": "Forest Ambush の木のレンダラーを隠します。"
+    },
+    {
+      "key": "entry.General.DisableTreeColliders.name",
+      "value": "木のコライダーを無効化"
+    },
+    {
+      "key": "entry.General.DisableTreeColliders.description",
+      "value": "Forest Ambush の木のコライダーを無効化します。"
+    },
+    {
+      "key": "entry.General.DisableTreeShakeable.name",
+      "value": "TreeShakeable を無効化"
+    },
+    {
+      "key": "entry.General.DisableTreeShakeable.description",
+      "value": "Forest Ambush の木オブジェクト上の TreeShakeable コンポーネントのみ無効化します。"
+    },
+    {
+      "key": "entry.General.StopParticles.name",
+      "value": "パーティクル停止"
+    },
+    {
+      "key": "entry.General.StopParticles.description",
+      "value": "Forest Ambush のパーティクル効果を停止して隠します。"
+    },
+    {
+      "key": "entry.Performance.SceneSignatureCheckInterval.name",
+      "value": "シーン署名チェック間隔"
+    },
+    {
+      "key": "entry.Performance.SceneSignatureCheckInterval.description",
+      "value": "読み込み済みシーン階層の変化を低コストで確認する頻度です。"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstIterations.name",
+      "value": "クリーンアップバースト回数"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstIterations.description",
+      "value": "シーン階層の変化後に実行するクリーンアップ回数です。"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstInterval.name",
+      "value": "クリーンアップバースト間隔"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstInterval.description",
+      "value": "クリーンアップバースト中の各処理間の遅延です。"
+    }
+  ]
+}

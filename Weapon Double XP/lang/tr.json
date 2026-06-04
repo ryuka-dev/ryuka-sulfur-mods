@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Çift Silah XP"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Weapon.AddExperience ile kazanılan silah XP miktarını ikiye katlar."
+    }
+  ]
+}

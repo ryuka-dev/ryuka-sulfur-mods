@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Bättre varning vid låg hälsa"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Lägger till en konfigurerbar vinjettvarning vid låg hälsa."
+    },
+    {
+      "key": "section.General",
+      "value": "Allmänt"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Visuellt"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Felsökning"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Aktivera mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktivera den bättre varningen vid låg hälsa."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Dölj när HUD är dold"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Dölj varningen när spelets HUD är dold."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Varningshälsa i procent"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Visa varningen under denna hälsoprocent. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Kritisk hälsa i procent"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Använd en starkare varning under denna hälsoprocent. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Kanttjocklek"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Tjocklek för mjuk röd vinjett i pixlar."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Minsta opacitet"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Varningens opacitet vid varningströskeln."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Högsta opacitet"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Varningens opacitet vid eller under den kritiska tröskeln."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Aktivera pulsering"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Låt varningen pulsera när hälsan är låg."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Pulshastighet"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Pulshastighet. Högre värden pulserar snabbare."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Toningshastighet"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Hastighet för in- och uttoning av varningen."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Opacitet för helskärmsfärg"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Mycket subtil röd helskärmsfärg. Sätt till 0 för att inaktivera."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Logga fel"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Logga patchfel. Ha avstängt vid normalt spelande."
+    }
+  ]
+}

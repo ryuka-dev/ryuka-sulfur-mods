@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "무기 경험치 2배"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Weapon.AddExperience로 얻는 무기 경험치를 2배로 만듭니다."
+    }
+  ]
+}

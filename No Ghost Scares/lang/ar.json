@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "منع إخافات الأشباح"
+    },
+    {
+      "key": "plugin.description",
+      "value": "يكتشف كائنات Ability_Ghost_*_Scare ويمكنه حظرها اختياريًا."
+    },
+    {
+      "key": "section.General",
+      "value": "عام"
+    },
+    {
+      "key": "section.Debug",
+      "value": "تصحيح"
+    },
+    {
+      "key": "section.Performance",
+      "value": "الأداء"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "التراكب"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "تفعيل الحظر"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "يعطل كائنات Ability_Ghost_*_Scare. أوقفه للاكتشاف فقط."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "إظهار تراكب التصحيح"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "يعرض على الشاشة كائنات إخافة الأشباح المكتشفة أو المحظورة."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "تسجيل الإجراءات"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "يكتب كائنات إخافة الأشباح المكتشفة أو المحظورة في سجل BepInEx."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "اكتشاف أسماء أشباح عامة"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "للتصحيح فقط. يعرض أيضًا أسماء عامة متعلقة بالأشباح مثل GhostParticles أو Unit_Enemy_Ghost. لا يتم حظرها أبدًا."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "فاصل الفحص"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "مدى تكرار فحص المشاهد المحملة بحثًا عن محفزات إخافة الأشباح."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "مدة بقاء التراكب"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "مدة بقاء التراكب ظاهرًا بعد آخر اكتشاف أو حظر."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "أقصى عناصر التراكب"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "الحد الأقصى لعدد السجلات الحديثة المعروضة على الشاشة."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "무기 내구도 손실 배율"
+    },
+    {
+      "key": "plugin.description",
+      "value": "사격으로 인한 무기 내구도 손실을 조정합니다."
+    },
+    {
+      "key": "section.General",
+      "value": "일반"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "무기"
+    },
+    {
+      "key": "section.Debug",
+      "value": "디버그"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "모드 활성화"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "무기 내구도 손실 배율을 활성화합니다."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "무기 내구도 손실 배율"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "사격으로 인한 최종 무기 내구도 손실에 적용되는 배율입니다. 1.0은 기본값, 0.5는 손실 절반, 0은 손실 없음, 2는 손실 2배입니다."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "내구도 변경 로그"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "조정된 사격 내구도 손실을 로그에 출력합니다. 일반 플레이에서는 꺼 두는 것이 좋습니다."
+    }
+  ]
+}

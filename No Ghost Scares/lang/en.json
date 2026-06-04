@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "No Ghost Scares"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Detects and optionally blocks Ability_Ghost_*_Scare objects."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Performance"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Overlay"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Enable Blocking"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Disable Ability_Ghost_*_Scare objects. Turn this off to only detect them."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Show Debug Overlay"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Show detected or blocked ghost scare objects on screen."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Log Actions"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Write detected or blocked ghost scare objects to the BepInEx log."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Detect Broad Ghost Names"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Debug only. Also show broad ghost-related names like GhostParticles or Unit_Enemy_Ghost. These are never blocked."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Scan Interval"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "How often to scan loaded scenes for ghost scare triggers."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Overlay Keep Seconds"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "How long the on-screen overlay remains visible after the latest detection or block."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Max Overlay Items"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Maximum number of recent records shown on screen."
+    }
+  ]
+}

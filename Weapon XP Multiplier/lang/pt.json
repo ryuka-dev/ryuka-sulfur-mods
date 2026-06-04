@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Multiplicador de XP de arma"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ajusta a XP de arma recebida por Weapon.AddExperience."
+    },
+    {
+      "key": "section.General",
+      "value": "Geral"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Depuração"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Ativar mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Ativa o multiplicador de XP de arma."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "Multiplicador de XP"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "Multiplicador de XP de arma. 1.0 = padrão, 2.0 = XP em dobro, 10.0 = dez vezes XP."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "Registrar mudanças de XP"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "Registra mudanças de XP de arma no log do BepInEx. Mantenha desligado para jogar normalmente."
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "キル時ラック獲得"
+    },
+    {
+      "key": "plugin.description",
+      "value": "敵の死亡時にラックを獲得します。報酬量、フィルター、安全設定、互換性を設定できます。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Reward",
+      "value": "報酬"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "互換性"
+    },
+    {
+      "key": "section.Filter",
+      "value": "フィルター"
+    },
+    {
+      "key": "section.Safety",
+      "value": "安全"
+    },
+    {
+      "key": "section.Debug",
+      "value": "デバッグ"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod を有効化"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "キル時ラック獲得を有効化します。"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "キル報酬倍率"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "敵が死亡したときに得るラックの倍率です。基礎報酬は現在の Stat_LuckGain で、バニラのラック回復 1 分分に相当します。"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "キル報酬固定ボーナス"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "倍率計算後、キル時のラック報酬に加算する固定値です。"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "キル報酬上書き値"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "0 以上にすると、キル時ラック報酬をこの固定値に置き換えます。-1 で無効化します。"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "ModifyStatus 経由で適用"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "キル報酬を ModifyStatus 経由で適用し、ラック調整でも報酬を変更できるようにします。"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "プレイヤーへの敵対を要求"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "プレイヤーに敵対しているユニットだけがラックを付与します。"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "経験値ユニットのみ"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "ExperienceOnKill が 0 より大きいユニットだけがラックを付与します。オフにすると、経験値 0 の特殊な敵対ユニットも対象になります。"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "民間人も報酬対象"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "民間人ユニットがラックを付与できるようにします。"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "破壊可能オブジェクトも報酬対象"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "破壊可能オブジェクトがラックを付与できるようにします。推奨：オフ。"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "重複報酬を防止"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "同じユニットの死亡でラック報酬が複数回発生しないようにします。オブジェクトプールの再利用は Unit.Spawn() で報酬状態をクリアして処理されます。"
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "報酬ログ"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "敵の死亡によるラック報酬をログに出力します。"
+    }
+  ]
+}

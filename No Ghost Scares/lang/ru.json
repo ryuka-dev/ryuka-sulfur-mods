@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Без призрачных скримеров"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Обнаруживает и при необходимости блокирует объекты Ability_Ghost_*_Scare."
+    },
+    {
+      "key": "section.General",
+      "value": "Общее"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Отладка"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Производительность"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Оверлей"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Включить блокировку"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Отключает объекты Ability_Ghost_*_Scare. Выключите, чтобы только обнаруживать их."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Показать отладочный оверлей"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Показывает на экране обнаруженные или заблокированные объекты призрачных скримеров."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Журнал действий"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Записывать обнаруженные или заблокированные объекты призрачных скримеров в журнал BepInEx."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Обнаруживать широкие имена призраков"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Только для отладки. Также показывает широкие имена, связанные с призраками, например GhostParticles или Unit_Enemy_Ghost. Они никогда не блокируются."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Интервал сканирования"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "Как часто сканировать загруженные сцены на триггеры призрачных скримеров."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Время оверлея"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "Как долго экранный оверлей остаётся видимым после последнего обнаружения или блокировки."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Макс. элементов оверлея"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Максимальное число недавних записей, показываемых на экране."
+    }
+  ]
+}

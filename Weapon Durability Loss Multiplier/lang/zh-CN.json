@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "武器耐久损耗倍率"
+    },
+    {
+      "key": "plugin.description",
+      "value": "调整射击造成的武器耐久损耗。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "武器"
+    },
+    {
+      "key": "section.Debug",
+      "value": "调试"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "启用 Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "启用武器耐久损耗倍率。"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "武器耐久损耗倍率"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "应用于射击最终武器耐久损耗的倍率。1.0 表示原版，0.5 表示损耗减半，0 表示不损耗，2 表示双倍损耗。"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "记录耐久变化"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "记录调整后的射击耐久损耗。正常游玩建议关闭。"
+    }
+  ]
+}

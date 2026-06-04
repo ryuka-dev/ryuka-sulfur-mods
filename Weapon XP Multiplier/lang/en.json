@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Weapon XP Multiplier"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Adjusts weapon XP gained from Weapon.AddExperience."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Enable Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable the weapon XP multiplier."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "XP Multiplier"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "Weapon XP multiplier. 1.0 = vanilla, 2.0 = double XP, 10.0 = ten times XP."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "Log XP Changes"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "Log weapon XP changes to the BepInEx log. Keep this off for normal gameplay."
+    }
+  ]
+}

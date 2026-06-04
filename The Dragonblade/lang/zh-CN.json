@@ -1,0 +1,236 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "龙刃"
+    },
+    {
+      "key": "plugin.description",
+      "value": "为武士刀类近战添加冲刺斩、击杀刷新、治疗和 HUD 功能。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.KatanaDash",
+      "value": "武士刀冲刺"
+    },
+    {
+      "key": "section.UI",
+      "value": "界面"
+    },
+    {
+      "key": "section.Debug",
+      "value": "调试"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "启用Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable Melee Expansion."
+    },
+    {
+      "key": "entry.KatanaDash.EnableKatanaDash.name",
+      "value": "启用武士刀冲刺"
+    },
+    {
+      "key": "entry.KatanaDash.EnableKatanaDash.description",
+      "value": "Enable Katana Dash Strike."
+    },
+    {
+      "key": "entry.KatanaDash.KatanaNameKeywords.name",
+      "value": "武士刀名称关键词"
+    },
+    {
+      "key": "entry.KatanaDash.KatanaNameKeywords.description",
+      "value": "Comma-separated keywords used to detect katana-like melee weapons."
+    },
+    {
+      "key": "entry.KatanaDash.Cooldown.name",
+      "value": "冷却"
+    },
+    {
+      "key": "entry.KatanaDash.Cooldown.description",
+      "value": "Dash cooldown in seconds."
+    },
+    {
+      "key": "entry.KatanaDash.Distance.name",
+      "value": "距离"
+    },
+    {
+      "key": "entry.KatanaDash.Distance.description",
+      "value": "Dash distance."
+    },
+    {
+      "key": "entry.KatanaDash.Duration.name",
+      "value": "持续时间"
+    },
+    {
+      "key": "entry.KatanaDash.Duration.description",
+      "value": "Dash duration in seconds."
+    },
+    {
+      "key": "entry.KatanaDash.HitRadius.name",
+      "value": "命中半径"
+    },
+    {
+      "key": "entry.KatanaDash.HitRadius.description",
+      "value": "Radius used to scan units along the dash path."
+    },
+    {
+      "key": "entry.KatanaDash.DamageMultiplier.name",
+      "value": "伤害倍率"
+    },
+    {
+      "key": "entry.KatanaDash.DamageMultiplier.description",
+      "value": "Dash damage multiplier applied to the current katana weapon damage."
+    },
+    {
+      "key": "entry.KatanaDash.HitEachUnitOnce.name",
+      "value": "命中每个单位一次"
+    },
+    {
+      "key": "entry.KatanaDash.HitEachUnitOnce.description",
+      "value": "If true, each unit can only be damaged once per dash."
+    },
+    {
+      "key": "entry.KatanaDash.RefreshCooldownOnPlayerKill.name",
+      "value": "刷新冷却On玩家击杀"
+    },
+    {
+      "key": "entry.KatanaDash.RefreshCooldownOnPlayerKill.description",
+      "value": "Refresh Katana Dash cooldown when the player kills an enemy."
+    },
+    {
+      "key": "entry.KatanaDash.RefreshRequiresKatanaStance.name",
+      "value": "刷新需要武士刀姿态"
+    },
+    {
+      "key": "entry.KatanaDash.RefreshRequiresKatanaStance.description",
+      "value": "If true, kill refresh only works while the player is in toggled katana stance."
+    },
+    {
+      "key": "entry.KatanaDash.RefreshCooldownOnNonNpcUnitKill.name",
+      "value": "刷新冷却On非NPC单位击杀"
+    },
+    {
+      "key": "entry.KatanaDash.RefreshCooldownOnNonNpcUnitKill.description",
+      "value": "If true, killing non-NPC Units such as breakable obstacles can also refresh Katana Dash cooldown. Healing never triggers from non-NPC Units."
+    },
+    {
+      "key": "entry.KatanaDash.HealOnEnemyKill.name",
+      "value": "治疗On敌人击杀"
+    },
+    {
+      "key": "entry.KatanaDash.HealOnEnemyKill.description",
+      "value": "Heal the player when killing an enemy NPC while in katana stance. This never triggers from breakable obstacles."
+    },
+    {
+      "key": "entry.KatanaDash.HealAmountOnEnemyKill.name",
+      "value": "治疗数量On敌人击杀"
+    },
+    {
+      "key": "entry.KatanaDash.HealAmountOnEnemyKill.description",
+      "value": "Health restored when killing an enemy NPC."
+    },
+    {
+      "key": "entry.KatanaDash.PostHangDuration.name",
+      "value": "后滞空持续时间"
+    },
+    {
+      "key": "entry.KatanaDash.PostHangDuration.description",
+      "value": "Short hang time after Katana Dash ends. This prevents the player from immediately dropping at full falling speed."
+    },
+    {
+      "key": "entry.KatanaDash.PostHangMaxDownwardSpeed.name",
+      "value": "后滞空最大下落速度"
+    },
+    {
+      "key": "entry.KatanaDash.PostHangMaxDownwardSpeed.description",
+      "value": "Maximum downward speed during post-dash hang. 0 means no downward velocity during hang."
+    },
+    {
+      "key": "entry.KatanaDash.SuppressFallingAnimationDuringPostHang.name",
+      "value": "抑制下落动画期间后滞空"
+    },
+    {
+      "key": "entry.KatanaDash.SuppressFallingAnimationDuringPostHang.description",
+      "value": "Temporarily suppress the Falling animation during post-dash hang."
+    },
+    {
+      "key": "entry.UI.EnableDashHud.name",
+      "value": "启用冲刺HUD"
+    },
+    {
+      "key": "entry.UI.EnableDashHud.description",
+      "value": "Show a bottom-right Katana Dash cooldown HUD."
+    },
+    {
+      "key": "entry.UI.DashIconFileName.name",
+      "value": "冲刺图标文件名称"
+    },
+    {
+      "key": "entry.UI.DashIconFileName.description",
+      "value": "PNG file name for the Katana Dash HUD icon. Place it next to MeleeExpansion.dll."
+    },
+    {
+      "key": "entry.UI.DashHudIconSize.name",
+      "value": "冲刺HUD图标大小"
+    },
+    {
+      "key": "entry.UI.DashHudIconSize.description",
+      "value": "Dash HUD icon size in pixels."
+    },
+    {
+      "key": "entry.UI.DashHudUseActualSprintBinding.name",
+      "value": "冲刺HUD使用实际冲刺按键绑定"
+    },
+    {
+      "key": "entry.UI.DashHudUseActualSprintBinding.description",
+      "value": "Show the actual Sprint binding from the game's InputAction when possible."
+    },
+    {
+      "key": "entry.UI.DashHudFallbackKeyLabel.name",
+      "value": "冲刺HUD备用键标签"
+    },
+    {
+      "key": "entry.UI.DashHudFallbackKeyLabel.description",
+      "value": "Fallback key label shown on the Dash HUD."
+    },
+    {
+      "key": "entry.UI.DashKillRefreshFeedbackDuration.name",
+      "value": "冲刺击杀刷新反馈持续时间"
+    },
+    {
+      "key": "entry.UI.DashKillRefreshFeedbackDuration.description",
+      "value": "Seconds to flash the Dash HUD when a kill refreshes the cooldown."
+    },
+    {
+      "key": "entry.UI.DashHealFeedbackDuration.name",
+      "value": "冲刺治疗反馈持续时间"
+    },
+    {
+      "key": "entry.UI.DashHealFeedbackDuration.description",
+      "value": "Seconds to show +HP feedback on enemy kill."
+    },
+    {
+      "key": "entry.Debug.LogStateChanges.name",
+      "value": "记录状态变化"
+    },
+    {
+      "key": "entry.Debug.LogStateChanges.description",
+      "value": "Log toggle melee state changes."
+    },
+    {
+      "key": "entry.Debug.LogDash.name",
+      "value": "记录冲刺"
+    },
+    {
+      "key": "entry.Debug.LogDash.description",
+      "value": "Log Katana Dash debug events."
+    }
+  ]
+}

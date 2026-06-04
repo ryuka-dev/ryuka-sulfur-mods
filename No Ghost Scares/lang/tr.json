@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Hayalet korkutmaları yok"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ability_Ghost_*_Scare nesnelerini algılar ve isteğe bağlı olarak engeller."
+    },
+    {
+      "key": "section.General",
+      "value": "Genel"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Hata ayıklama"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Performans"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Kaplama"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Engellemeyi etkinleştir"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Ability_Ghost_*_Scare nesnelerini devre dışı bırakır. Yalnızca algılamak için kapatın."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Hata ayıklama kaplamasını göster"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Algılanan veya engellenen hayalet korkutma nesnelerini ekranda gösterir."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Eylemleri kaydet"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Algılanan veya engellenen hayalet korkutma nesnelerini BepInEx günlüğüne yazar."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Geniş hayalet adlarını algıla"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Yalnızca hata ayıklama. GhostParticles veya Unit_Enemy_Ghost gibi geniş hayalet ilişkili adları da gösterir. Bunlar asla engellenmez."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Tarama aralığı"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "Yüklü sahnelerde hayalet korkutma tetikleyicilerinin ne sıklıkla taranacağı."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Kaplama kalma süresi"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "Son algılama veya engellemeden sonra ekran kaplamasının ne kadar görünür kalacağı."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Maksimum kaplama öğesi"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Ekranda gösterilen son kayıtların maksimum sayısı."
+    }
+  ]
+}

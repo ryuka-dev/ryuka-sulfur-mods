@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Sorte ao matar"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Concede sorte quando inimigos morrem, com opções de recompensa, filtros, segurança e compatibilidade."
+    },
+    {
+      "key": "section.General",
+      "value": "Geral"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Recompensa"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Compatibilidade"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filtro"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Segurança"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Depuração"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Ativar mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Ativa Sorte ao matar."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Multiplicador de recompensa por morte"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Multiplicador da sorte recebida quando um inimigo morre. A recompensa base usa o Stat_LuckGain atual, equivalente a um minuto da recuperação de sorte padrão."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Bônus fixo por morte"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Bônus fixo adicionado à recompensa de sorte por morte após o multiplicador."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Substituição da recompensa por morte"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Se definido como 0 ou mais, substitui a recompensa de sorte por morte por este valor fixo. -1 desativa."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Aplicar via ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Aplica recompensas por morte via ModifyStatus para que o Controle de sorte também possa modificá-las."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Exigir hostilidade ao jogador"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Apenas unidades hostis ao jogador concedem sorte."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Apenas unidades com XP"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Apenas unidades com ExperienceOnKill maior que 0 concedem sorte. Deixe desativado para permitir inimigos hostis especiais com 0 XP."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Recompensar civis"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Permite que unidades civis concedam sorte."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Recompensar quebráveis"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Permite que objetos quebráveis concedam sorte. Recomendado: desligado."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Evitar recompensas duplicadas"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Impede que a mesma morte de unidade conceda sorte mais de uma vez. A reutilização pelo pool de objetos é tratada quando Unit.Spawn() limpa o estado da recompensa."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Registrar recompensas"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Registra recompensas de sorte vindas de mortes de inimigos."
+    }
+  ]
+}

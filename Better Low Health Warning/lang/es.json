@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Mejor aviso de salud baja"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Añade un aviso de viñeta configurable cuando la salud es baja."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Visual"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Depuración"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Activar mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Activa el mejor aviso de salud baja."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Ocultar cuando el HUD esté oculto"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Oculta el aviso cuando el HUD del juego esté oculto."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Porcentaje de salud de aviso"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Muestra el aviso por debajo de este porcentaje de salud. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Porcentaje de salud crítica"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Usa un aviso más fuerte por debajo de este porcentaje de salud. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Grosor del borde"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Grosor de la viñeta roja suave en píxeles."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Opacidad mínima"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Opacidad del aviso en el umbral de advertencia."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Opacidad máxima"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Opacidad del aviso en o por debajo del umbral crítico."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Activar pulso"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Hace que el aviso pulse cuando la salud es baja."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Velocidad de pulso"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Velocidad del pulso. Los valores más altos pulsan más rápido."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Velocidad de fundido"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Velocidad de aparición y desaparición del aviso."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Opacidad de tinte a pantalla completa"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Multiplicador muy sutil de tinte rojo a pantalla completa. Ponlo en 0 para desactivarlo."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Registrar errores"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Registra errores del parche. Manténlo desactivado para jugar normalmente."
+    }
+  ]
+}

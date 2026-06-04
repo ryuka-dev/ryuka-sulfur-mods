@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Luck On Kill"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Grants Luck when enemies die, with configurable reward, filters, safety, and compatibility options."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Reward"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Compatibility"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filter"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Safety"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Enable Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable Luck On Kill."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Kill Reward Multiplier"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Multiplier for Luck gained when an enemy dies. Base reward is current Stat_LuckGain, equal to one minute of vanilla Luck recovery."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Kill Reward Flat Bonus"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Flat bonus added to the kill Luck reward after the multiplier."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Kill Reward Override"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "If set to 0 or higher, replaces the kill Luck reward with this fixed value. Set to -1 to disable."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Apply Through ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Apply kill rewards through ModifyStatus so Better Luck Control can modify them too."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Require Hostile To Player"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Only units hostile to the player grant Luck."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Require XP Units"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Only units with ExperienceOnKill greater than 0 grant Luck. Leave off to allow special hostile enemies with 0 XP."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Reward Civilians"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Allow civilian units to grant Luck."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Reward Breakables"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Allow breakable units to grant Luck. Recommended: off."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Prevent Duplicate Rewards"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Prevent the same unit death from granting Luck more than once. Object-pool reuse is handled when Unit.Spawn() clears the reward state."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Log Rewards"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Log Luck rewards from enemy deaths."
+    }
+  ]
+}

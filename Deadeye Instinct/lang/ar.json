@@ -1,0 +1,848 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "غريزة القناص"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Adds configurable aim assist, hard lock, weakspot targeting, and auto-fire support."
+    },
+    {
+      "key": "section.General",
+      "value": "عام"
+    },
+    {
+      "key": "section.Assist Mode",
+      "value": "وضع المساعدة"
+    },
+    {
+      "key": "section.Preset",
+      "value": "إعداد مسبق"
+    },
+    {
+      "key": "section.Official Pipeline",
+      "value": "Official Pipeline"
+    },
+    {
+      "key": "section.Input",
+      "value": "الإدخال"
+    },
+    {
+      "key": "section.Custom Common",
+      "value": "مخصص عام"
+    },
+    {
+      "key": "section.Custom Magnet",
+      "value": "مغناطيس مخصص"
+    },
+    {
+      "key": "section.Custom Target Stability",
+      "value": "ثبات هدف مخصص"
+    },
+    {
+      "key": "section.Custom Natural",
+      "value": "طبيعي مخصص"
+    },
+    {
+      "key": "section.System - Official Scanner",
+      "value": "System - Official Scanner"
+    },
+    {
+      "key": "section.Troubleshooting",
+      "value": "Troubleshooting"
+    },
+    {
+      "key": "section.Debug - Weakspot Overlay",
+      "value": "تصحيح - تراكب نقاط الضعف"
+    },
+    {
+      "key": "section.Master Switch",
+      "value": "Master Switch"
+    },
+    {
+      "key": "section.HardLock",
+      "value": "قفل صارم"
+    },
+    {
+      "key": "section.HardLock Target Priority",
+      "value": "أولوية هدف القفل الصارم"
+    },
+    {
+      "key": "section.Auto Fire",
+      "value": "إطلاق تلقائي"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Enable Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable this mod."
+    },
+    {
+      "key": "entry.General.DebugLogging.name",
+      "value": "Debug Logging"
+    },
+    {
+      "key": "entry.General.DebugLogging.description",
+      "value": "Print aim assist debug logs."
+    },
+    {
+      "key": "entry.Assist Mode.Mode.name",
+      "value": "Mode"
+    },
+    {
+      "key": "entry.Assist Mode.Mode.description",
+      "value": "Magnet = magnetic pull. Natural = input-shaped sticky assist."
+    },
+    {
+      "key": "entry.Preset.MagnetPreset.name",
+      "value": "Magnet Preset"
+    },
+    {
+      "key": "entry.Preset.MagnetPreset.description",
+      "value": "Low / Medium / High / Custom for Magnet mode. Current tested Magnet settings are defined as High."
+    },
+    {
+      "key": "entry.Preset.NaturalPreset.name",
+      "value": "Natural Preset"
+    },
+    {
+      "key": "entry.Preset.NaturalPreset.description",
+      "value": "Low / Medium / High / Custom for Natural mode. Current tested Natural settings are defined as Medium."
+    },
+    {
+      "key": "entry.Official Pipeline.EnableMouseConsumesRotationPullDelta.name",
+      "value": "Enable Mouse Consumes Rotation Pull Delta"
+    },
+    {
+      "key": "entry.Official Pipeline.EnableMouseConsumesRotationPullDelta.description",
+      "value": "Allow mouse input to consume AimAssist.rotationPullDelta inside InputReader.Update()."
+    },
+    {
+      "key": "entry.Official Pipeline.EnableContinuousRotationalAssist.name",
+      "value": "Enable Continuous Rotational Assist"
+    },
+    {
+      "key": "entry.Official Pipeline.EnableContinuousRotationalAssist.description",
+      "value": "Append continuous rotational assist to official AimAssist.rotationPullDelta."
+    },
+    {
+      "key": "entry.Input.RequirePlayerInput.name",
+      "value": "Require Player Input"
+    },
+    {
+      "key": "entry.Input.RequirePlayerInput.description",
+      "value": "Only assist while player has movement or look input."
+    },
+    {
+      "key": "entry.Input.CountLookInput.name",
+      "value": "Count Look Input"
+    },
+    {
+      "key": "entry.Input.CountLookInput.description",
+      "value": "Look input counts as active player input."
+    },
+    {
+      "key": "entry.Input.CountMoveInput.name",
+      "value": "Count Move Input"
+    },
+    {
+      "key": "entry.Input.CountMoveInput.description",
+      "value": "Movement input counts as active player input."
+    },
+    {
+      "key": "entry.Input.LookInputThreshold.name",
+      "value": "Look Input Threshold"
+    },
+    {
+      "key": "entry.Input.LookInputThreshold.description",
+      "value": "Threshold for effective look input after sensitivity."
+    },
+    {
+      "key": "entry.Input.MoveInputThreshold.name",
+      "value": "Move Input Threshold"
+    },
+    {
+      "key": "entry.Input.MoveInputThreshold.description",
+      "value": "Threshold for movement input."
+    },
+    {
+      "key": "entry.Custom Common.AssistCoefficient.name",
+      "value": "Assist Coefficient"
+    },
+    {
+      "key": "entry.Custom Common.AssistCoefficient.description",
+      "value": "Overall assist strength. 0.6 strong, 1.0 very strong, 2.0 extreme."
+    },
+    {
+      "key": "entry.Custom Common.RotationDeltaPerSecond.name",
+      "value": "Rotation Delta Per Second"
+    },
+    {
+      "key": "entry.Custom Common.RotationDeltaPerSecond.description",
+      "value": "Base rotationPullDelta per second before AssistCoefficient scaling."
+    },
+    {
+      "key": "entry.Custom Common.MaxRotationDeltaPerFrame.name",
+      "value": "Max Rotation Delta Per Frame"
+    },
+    {
+      "key": "entry.Custom Common.MaxRotationDeltaPerFrame.description",
+      "value": "Hard cap for added rotationPullDelta per frame."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetCenterBias.name",
+      "value": "Magnet Center Bias"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetCenterBias.description",
+      "value": "For Magnet mode only when weakspot targeting is not available. 0 = official target point, 1 = collider center. Keep low to avoid center locking."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetMovementOnlyScale.name",
+      "value": "Magnet Movement Only Scale"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetMovementOnlyScale.description",
+      "value": "For Magnet mode only. Strength scale when player is moving but not moving aim."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSmoothing.name",
+      "value": "Magnet Smoothing"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSmoothing.description",
+      "value": "For Magnet mode only. Active pull smoothing speed. Higher = more responsive."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetReleaseSmoothing.name",
+      "value": "Magnet Release Smoothing"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetReleaseSmoothing.description",
+      "value": "For Magnet mode only. Release smoothing speed. Lower = softer release."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetPreferWeakspot.name",
+      "value": "Magnet Prefer Weakspot"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetPreferWeakspot.description",
+      "value": "For Magnet mode only. Prefer the highest base Hitmesh.Data.GetShapeMultiplier() part when available."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotBias.name",
+      "value": "Magnet Weakspot Bias"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotBias.description",
+      "value": "For MagnetPreferWeakspot. 0 = normal Magnet target, 1 = weakspot point."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotOverrideOfficialPull.name",
+      "value": "Magnet Weakspot Override Official Pull"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotOverrideOfficialPull.description",
+      "value": "When Magnet weakspot targeting succeeds, clear the official center pull before adding the weakspot pull."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetEdgeSofteningPower.name",
+      "value": "Magnet Edge Softening Power"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetEdgeSofteningPower.description",
+      "value": "For Magnet mode only. Extra falloff near the outer assist bubble edge. Higher = softer near edge."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetOuterEdgeStrength.name",
+      "value": "Magnet Outer Edge Strength"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetOuterEdgeStrength.description",
+      "value": "For Magnet mode only. Minimum pull strength near the outer edge. Lower reduces snap-back jitter."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSnapBackAnglePadding.name",
+      "value": "Magnet Snap Back Angle Padding"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSnapBackAnglePadding.description",
+      "value": "For Magnet mode only. Softly scales down pull during the last N degrees before leaving the bubble."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetAllowLookAwayEscape.name",
+      "value": "Magnet Allow Look Away Escape"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetAllowLookAwayEscape.description",
+      "value": "For Magnet mode only. Reduce pull when player look input is clearly moving away from the target."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayThreshold.name",
+      "value": "Magnet Look Away Threshold"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayThreshold.description",
+      "value": "For Magnet escape. Dot threshold for detecting look-away input. 0.10 means only clear away input reduces pull."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMinScale.name",
+      "value": "Magnet Look Away Min Scale"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMinScale.description",
+      "value": "For Magnet escape. Minimum pull scale when player strongly looks away. Lower makes controller escape easier."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayCurvePower.name",
+      "value": "Magnet Look Away Curve Power"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayCurvePower.description",
+      "value": "For Magnet escape. Higher makes pull reduction happen later; lower makes it more sensitive."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMovementScale.name",
+      "value": "Magnet Look Away Movement Scale"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMovementScale.description",
+      "value": "For Magnet escape. Extra scale when movement input is also active. Higher preserves sticky aim while strafing."
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchFadeSeconds.name",
+      "value": "Target Switch Fade Seconds"
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchFadeSeconds.description",
+      "value": "Fade-in time after the official tracked target changes."
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchMinScale.name",
+      "value": "Target Switch Min Scale"
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchMinScale.description",
+      "value": "Minimum assist scale immediately after target switch. 0 = fully fade from zero, 1 = no switch fade."
+    },
+    {
+      "key": "entry.Custom Common.OuterBubbleAngleDegrees.name",
+      "value": "Outer Bubble Angle Degrees"
+    },
+    {
+      "key": "entry.Custom Common.OuterBubbleAngleDegrees.description",
+      "value": "Target must be inside this angle from crosshair."
+    },
+    {
+      "key": "entry.Custom Common.InnerBubbleAngleDegrees.name",
+      "value": "Inner Bubble Angle Degrees"
+    },
+    {
+      "key": "entry.Custom Common.InnerBubbleAngleDegrees.description",
+      "value": "Inside this angle, assist reaches full strength."
+    },
+    {
+      "key": "entry.Custom Common.BubbleCurvePower.name",
+      "value": "Bubble Curve Power"
+    },
+    {
+      "key": "entry.Custom Common.BubbleCurvePower.description",
+      "value": "Higher values make assist weaker near the edge."
+    },
+    {
+      "key": "entry.Custom Common.DistanceFalloffPower.name",
+      "value": "Distance Falloff Power"
+    },
+    {
+      "key": "entry.Custom Common.DistanceFalloffPower.description",
+      "value": "Higher values make far targets weaker."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalTowardAssist.name",
+      "value": "Natural Toward Assist"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalTowardAssist.description",
+      "value": "Extra assist when player is already moving aim toward the target. Default 0 means no boost toward target."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSideAssist.name",
+      "value": "Natural Side Assist"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSideAssist.description",
+      "value": "Small assist when player aim input is mostly perpendicular to target direction."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalAwayDamping.name",
+      "value": "Natural Away Damping"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalAwayDamping.description",
+      "value": "Damping force when player aim input moves away from target."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMovementOnlyScale.name",
+      "value": "Natural Movement Only Scale"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMovementOnlyScale.description",
+      "value": "Assist when only movement input exists and no look input exists. Default 0 disables hands-free pull."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMaxInputFraction.name",
+      "value": "Natural Max Input Fraction"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMaxInputFraction.description",
+      "value": "Natural assist cap as a fraction of current player look input."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinDeltaPerFrame.name",
+      "value": "Natural Min Delta Per Frame"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinDeltaPerFrame.description",
+      "value": "Minimum allowed natural delta cap per frame."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSmoothing.name",
+      "value": "Natural Smoothing"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSmoothing.description",
+      "value": "Smoothing speed for natural assist output. Higher is more responsive."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseSmoothing.name",
+      "value": "Natural Release Smoothing"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseSmoothing.description",
+      "value": "Smoothing speed when Natural assist is releasing. Lower = softer release."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalDirectionSmoothing.name",
+      "value": "Natural Direction Smoothing"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalDirectionSmoothing.description",
+      "value": "Smoothing speed for target direction in Natural mode. Lower reduces jitter from target point changes."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinLookInput.name",
+      "value": "Natural Min Look Input"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinLookInput.description",
+      "value": "Minimum look input magnitude before natural aim shaping uses look direction."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalKeepOfficialGamepadPull.name",
+      "value": "Natural Keep Official Gamepad Pull"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalKeepOfficialGamepadPull.description",
+      "value": "In Natural mode, keep the game's original controller ADS pull. Mouse official ADS pull is still removed."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseCurvePower.name",
+      "value": "Natural Release Curve Power"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseCurvePower.description",
+      "value": "Extra falloff used only by Natural mode. Higher values make assist release more smoothly near the edge of the bubble."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalOuterEdgeStrength.name",
+      "value": "Natural Outer Edge Strength"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalOuterEdgeStrength.description",
+      "value": "Minimum Natural strength near the outer bubble edge. Keep low to avoid a sudden breakaway feeling."
+    },
+    {
+      "key": "entry.System - Official Scanner.OverrideOfficialScanner.name",
+      "value": "Override Official Scanner"
+    },
+    {
+      "key": "entry.System - Official Scanner.OverrideOfficialScanner.description",
+      "value": "Tune official AimAssist scanner fields."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialMaxAssistDistance.name",
+      "value": "Official Max Assist Distance"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialMaxAssistDistance.description",
+      "value": "Official scanner max distance."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanConeDegrees.name",
+      "value": "Official Scan Cone Degrees"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanConeDegrees.description",
+      "value": "Official scanner cone. Should be wider than OuterBubbleAngleDegrees."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScoreThreshold.name",
+      "value": "Official Score Threshold"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScoreThreshold.description",
+      "value": "Official scanner score threshold."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialDistanceVsDotBlend.name",
+      "value": "Official Distance Vs Dot Blend"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialDistanceVsDotBlend.description",
+      "value": "Official scanner scoring mix. 0 = aim angle, 1 = distance."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanIntervalFrames.name",
+      "value": "Official Scan Interval Frames"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanIntervalFrames.description",
+      "value": "Frames between official target scans."
+    },
+    {
+      "key": "entry.System - Official Scanner.ScannerKeepAliveStrength.name",
+      "value": "Scanner Keep Alive Strength"
+    },
+    {
+      "key": "entry.System - Official Scanner.ScannerKeepAliveStrength.description",
+      "value": "Tiny internal friction strength to keep official scanner active when all official assist sliders are zero."
+    },
+    {
+      "key": "entry.Troubleshooting.InvertX.name",
+      "value": "Invert X"
+    },
+    {
+      "key": "entry.Troubleshooting.InvertX.description",
+      "value": "Invert horizontal assist direction if it moves away from target."
+    },
+    {
+      "key": "entry.Troubleshooting.InvertY.name",
+      "value": "Invert Y"
+    },
+    {
+      "key": "entry.Troubleshooting.InvertY.description",
+      "value": "Invert vertical assist direction if it moves away from target."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.EnableWeakspotDebugOverlay.name",
+      "value": "Enable Weakspot Debug Overlay"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.EnableWeakspotDebugOverlay.description",
+      "value": "Enable a runtime overlay that draws actual weakspot polygons from Hitmesh / HitboxColliders data."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugOnlyTrackedTarget.name",
+      "value": "Weakspot Debug Only Tracked Target"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugOnlyTrackedTarget.description",
+      "value": "Only draw weakspot polygons for the current AimAssist tracked target."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugShowAllPositiveShapes.name",
+      "value": "Weakspot Debug Show All Positive Shapes"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugShowAllPositiveShapes.description",
+      "value": "Draw every non-invulnerable positive-multiplier shape. If false, only draw the highest-multiplier shape(s) per target."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugMinimumMultiplier.name",
+      "value": "Weakspot Debug Minimum Multiplier"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugMinimumMultiplier.description",
+      "value": "Minimum base GetShapeMultiplier() required for overlay drawing when WeakspotDebugShowAllPositiveShapes is true."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugLineWidth.name",
+      "value": "Weakspot Debug Line Width"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugLineWidth.description",
+      "value": "World-space line width for the weakspot overlay."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugDepthOffset.name",
+      "value": "Weakspot Debug Depth Offset"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugDepthOffset.description",
+      "value": "Move overlay vertices slightly toward the player camera to reduce z-fighting."
+    },
+    {
+      "key": "entry.Master Switch.EnableAimbot.name",
+      "value": "Enable Aimbot"
+    },
+    {
+      "key": "entry.Master Switch.EnableAimbot.description",
+      "value": "Master switch for Deadeye Instinct aim assist and HardLock AutoFire."
+    },
+    {
+      "key": "entry.Master Switch.HoldDisableKey.name",
+      "value": "Hold Disable Key"
+    },
+    {
+      "key": "entry.Master Switch.HoldDisableKey.description",
+      "value": "Hold this key to temporarily disable aim assist and release AutoFire trigger. Use None to disable this keybind."
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistance.name",
+      "value": "Hard Lock Max Distance"
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistance.description",
+      "value": "Maximum configured distance for HardLock target search."
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistanceCap.name",
+      "value": "Hard Lock Max Distance Cap"
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistanceCap.description",
+      "value": "Safety cap applied on top of HardLockMaxDistance. This keeps old configs with very large distances from locking enemies too far away. Set to 0 to disable the cap."
+    },
+    {
+      "key": "entry.HardLock.HardLockPreferWeakspot.name",
+      "value": "Hard Lock Prefer Weakspot"
+    },
+    {
+      "key": "entry.HardLock.HardLockPreferWeakspot.description",
+      "value": "HardLock aims at the best weakspot center when available."
+    },
+    {
+      "key": "entry.HardLock.HardLockWeakspotBias.name",
+      "value": "Hard Lock Weakspot Bias"
+    },
+    {
+      "key": "entry.HardLock.HardLockWeakspotBias.description",
+      "value": "0 = target body point, 1 = weakspot center."
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationSpeed.name",
+      "value": "Hard Lock Rotation Speed"
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationSpeed.description",
+      "value": "Maximum HardLock correction speed per second. High values create near-instant lock."
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationGain.name",
+      "value": "Hard Lock Rotation Gain"
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationGain.description",
+      "value": "Scales angular error into camera rotation delta. Higher values are more aggressive."
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDeltaPerFrame.name",
+      "value": "Hard Lock Max Delta Per Frame"
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDeltaPerFrame.description",
+      "value": "Hard cap for HardLock rotation delta per frame."
+    },
+    {
+      "key": "entry.HardLock.HardLockRecoilCompensation.name",
+      "value": "Hard Lock Recoil Compensation"
+    },
+    {
+      "key": "entry.HardLock.HardLockRecoilCompensation.description",
+      "value": "Apply an extra HardLock correction after CameraRecoil.LateUpdate()."
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireLineOfSight.name",
+      "value": "Hard Lock Require Line Of Sight"
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireLineOfSight.description",
+      "value": "Legacy line-of-sight switch. Kept for compatibility. HardLockRequireVisibleTarget is the safer release switch."
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireVisibleTarget.name",
+      "value": "Hard Lock Require Visible Target"
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireVisibleTarget.description",
+      "value": "Require official geometry-layer visibility before selecting a HardLock target. This prevents locking enemies behind walls or before the player can see them."
+    },
+    {
+      "key": "entry.HardLock Target Priority.HardLockTargetPriority.name",
+      "value": "Hard Lock Target Priority"
+    },
+    {
+      "key": "entry.HardLock Target Priority.HardLockTargetPriority.description",
+      "value": "Nearest / LowestHealth / WeakspotThenDistance / ThreatWeighted."
+    },
+    {
+      "key": "entry.HardLock Target Priority.DistanceWeight.name",
+      "value": "Distance Weight"
+    },
+    {
+      "key": "entry.HardLock Target Priority.DistanceWeight.description",
+      "value": "ThreatWeighted score weight for nearby enemies. Default is 50% higher than v1.2.4."
+    },
+    {
+      "key": "entry.HardLock Target Priority.LowHealthWeight.name",
+      "value": "Low Health Weight"
+    },
+    {
+      "key": "entry.HardLock Target Priority.LowHealthWeight.description",
+      "value": "ThreatWeighted score weight for low health enemies."
+    },
+    {
+      "key": "entry.HardLock Target Priority.WeakspotWeight.name",
+      "value": "Weakspot Weight"
+    },
+    {
+      "key": "entry.HardLock Target Priority.WeakspotWeight.description",
+      "value": "ThreatWeighted score weight for high-multiplier weakspots."
+    },
+    {
+      "key": "entry.HardLock Target Priority.StickyTargetBonus.name",
+      "value": "Sticky Target Bonus"
+    },
+    {
+      "key": "entry.HardLock Target Priority.StickyTargetBonus.description",
+      "value": "Extra score for the current HardLock target to prevent rapid target switching."
+    },
+    {
+      "key": "entry.Auto Fire.EnableAutoFire.name",
+      "value": "Enable Auto Fire"
+    },
+    {
+      "key": "entry.Auto Fire.EnableAutoFire.description",
+      "value": "Automatically holds or pulses the weapon trigger when HardLock is aligned."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireOnlyInHardLock.name",
+      "value": "Auto Fire Only In Hard Lock"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireOnlyInHardLock.description",
+      "value": "Only allow AutoFire while Mode = HardLock."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireAligned.name",
+      "value": "Auto Fire Require Aligned"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireAligned.description",
+      "value": "Only fire when HardLock target angle is within AutoFireMaxAngleDegrees."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireMaxAngleDegrees.name",
+      "value": "Auto Fire Max Angle Degrees"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireMaxAngleDegrees.description",
+      "value": "Maximum angle error for AutoFire alignment."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireWeaponReady.name",
+      "value": "Auto Fire Require Weapon Ready"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireWeaponReady.description",
+      "value": "Check ammo / reload / cooldown fields before pressing the trigger when available."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRespectSemiAuto.name",
+      "value": "Auto Fire Respect Semi Auto"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRespectSemiAuto.description",
+      "value": "Pulse semi-auto weapons instead of holding the trigger down."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFirePulseSeconds.name",
+      "value": "Auto Fire Pulse Seconds"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFirePulseSeconds.description",
+      "value": "Trigger-down duration for semi-auto AutoFire pulses."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireReleaseSeconds.name",
+      "value": "Auto Fire Release Seconds"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireReleaseSeconds.description",
+      "value": "Trigger-up duration between semi-auto AutoFire pulses."
+    },
+    {
+      "key": "value.Assist Mode.Mode.Magnet",
+      "value": "مغناطيس"
+    },
+    {
+      "key": "value.Assist Mode.Mode.Natural",
+      "value": "طبيعي"
+    },
+    {
+      "key": "value.Assist Mode.Mode.HardLock",
+      "value": "قفل صارم"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.Low",
+      "value": "منخفض"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.Medium",
+      "value": "متوسط"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.High",
+      "value": "مرتفع"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.Custom",
+      "value": "مخصص"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.Low",
+      "value": "منخفض"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.Medium",
+      "value": "متوسط"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.High",
+      "value": "مرتفع"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.Custom",
+      "value": "مخصص"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.Nearest",
+      "value": "الأقرب"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.LowestHealth",
+      "value": "أقل صحة"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.WeakspotThenDistance",
+      "value": "نقطة الضعف ثم المسافة"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.ThreatWeighted",
+      "value": "موزون حسب التهديد"
+    }
+  ]
+}

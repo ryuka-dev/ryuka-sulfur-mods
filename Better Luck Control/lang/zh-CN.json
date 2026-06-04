@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "幸运值控制"
+    },
+    {
+      "key": "plugin.description",
+      "value": "调整 Status_Luck 的恢复倍率与消耗倍率。"
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "幸运值恢复"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "幸运值消耗"
+    },
+    {
+      "key": "section.Debug",
+      "value": "调试"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "恢复倍率"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "正向幸运值变化的倍率。1 表示原版，2 表示双倍幸运值恢复。"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "恢复固定加成"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "在倍率计算后，给每次正向幸运值恢复额外增加的固定值。"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "恢复覆盖值"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "设为 0 或更高时，每次正向幸运值恢复会被替换为该固定值；-1 表示关闭覆盖。"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "消耗倍率"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "负向幸运值变化的倍率。1 表示原版，0.5 表示消耗减半，0 表示不消耗幸运值。"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "详细日志"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "把详细的幸运值变化输出到 BepInEx 日志。"
+    }
+  ]
+}

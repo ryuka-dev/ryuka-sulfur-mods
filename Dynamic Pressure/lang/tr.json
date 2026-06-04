@@ -1,0 +1,340 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Dinamik Baskı"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Adds adaptive enemy pressure and optional dynamic spawning."
+    },
+    {
+      "key": "section.General",
+      "value": "Genel"
+    },
+    {
+      "key": "section.Debug Overlay",
+      "value": "Hata ayıklama kaplaması"
+    },
+    {
+      "key": "section.Pressure",
+      "value": "Baskı"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Güvenlik"
+    },
+    {
+      "key": "section.Anti Loop",
+      "value": "Döngü önleme"
+    },
+    {
+      "key": "section.Candidates",
+      "value": "Adaylar"
+    },
+    {
+      "key": "section.Spawn",
+      "value": "Doğma"
+    },
+    {
+      "key": "section.Style 1 - Light",
+      "value": "Stil 1 - Hafif"
+    },
+    {
+      "key": "section.Style 2 - Heavy",
+      "value": "Stil 2 - Ağır"
+    },
+    {
+      "key": "section.Style 3 - Nightmare",
+      "value": "Stil 3 - Kabus"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Enable Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable Dynamic Pressure."
+    },
+    {
+      "key": "entry.General.EnableAutoSpawn.name",
+      "value": "Enable Auto Spawn"
+    },
+    {
+      "key": "entry.General.EnableAutoSpawn.description",
+      "value": "Enable automatic dynamic pressure spawning. Keep false for first debug testing."
+    },
+    {
+      "key": "entry.General.PressureStyle.name",
+      "value": "Pressure Style"
+    },
+    {
+      "key": "entry.General.PressureStyle.description",
+      "value": "1 = Light, 2 = Heavy, 3 = Nightmare."
+    },
+    {
+      "key": "entry.Debug Overlay.EnableOverlay.name",
+      "value": "Enable Overlay"
+    },
+    {
+      "key": "entry.Debug Overlay.EnableOverlay.description",
+      "value": "Show debug overlay."
+    },
+    {
+      "key": "entry.Debug Overlay.OverlayToggleKey.name",
+      "value": "Overlay Toggle Key"
+    },
+    {
+      "key": "entry.Debug Overlay.OverlayToggleKey.description",
+      "value": "Toggle overlay key."
+    },
+    {
+      "key": "entry.Debug Overlay.ManualSpawnKey.name",
+      "value": "Manual Spawn Key"
+    },
+    {
+      "key": "entry.Debug Overlay.ManualSpawnKey.description",
+      "value": "Manual debug spawn key."
+    },
+    {
+      "key": "entry.Pressure.ScanInterval.name",
+      "value": "Scan Interval"
+    },
+    {
+      "key": "entry.Pressure.ScanInterval.description",
+      "value": "Seconds between pressure scans."
+    },
+    {
+      "key": "entry.Pressure.EnemyScanRadius.name",
+      "value": "Enemy Scan Radius"
+    },
+    {
+      "key": "entry.Pressure.EnemyScanRadius.description",
+      "value": "Nearby enemy scan radius."
+    },
+    {
+      "key": "entry.Pressure.CloseEnemyDistance.name",
+      "value": "Close Enemy Distance"
+    },
+    {
+      "key": "entry.Pressure.CloseEnemyDistance.description",
+      "value": "Enemies closer than this add extra pressure."
+    },
+    {
+      "key": "entry.Safety.LowHealthStopThreshold.name",
+      "value": "Low Health Stop Threshold"
+    },
+    {
+      "key": "entry.Safety.LowHealthStopThreshold.description",
+      "value": "Do not spawn if player health is below this normalized value."
+    },
+    {
+      "key": "entry.Safety.RecentDamageStopWindow.name",
+      "value": "Recent Damage Stop Window"
+    },
+    {
+      "key": "entry.Safety.RecentDamageStopWindow.description",
+      "value": "Do not spawn if player was damaged within this many seconds."
+    },
+    {
+      "key": "entry.Anti Loop.MinOriginalEngagedHostilesForSpawn.name",
+      "value": "Min Original Engaged Hostiles For Spawn"
+    },
+    {
+      "key": "entry.Anti Loop.MinOriginalEngagedHostilesForSpawn.description",
+      "value": "Require this many engaged original hostiles before spawning mod enemies."
+    },
+    {
+      "key": "entry.Anti Loop.CooldownAfterModKillOnly.name",
+      "value": "Cooldown After Mod Kill Only"
+    },
+    {
+      "key": "entry.Anti Loop.CooldownAfterModKillOnly.description",
+      "value": "If only mod enemies are dying, pause spawning for this many seconds."
+    },
+    {
+      "key": "entry.Anti Loop.MaxSecondsWithoutOriginalKill.name",
+      "value": "Max Seconds Without Original Kill"
+    },
+    {
+      "key": "entry.Anti Loop.MaxSecondsWithoutOriginalKill.description",
+      "value": "Stop spawning if no original enemy has died for this long after mod spawns."
+    },
+    {
+      "key": "entry.Anti Loop.MaxModSpawnsPerOriginalEngaged.name",
+      "value": "Max Mod Spawns Per Original Engaged"
+    },
+    {
+      "key": "entry.Anti Loop.MaxModSpawnsPerOriginalEngaged.description",
+      "value": "Soft budget: each engaged original enemy can support this many mod spawns."
+    },
+    {
+      "key": "entry.Candidates.AllowEnvironmentFallbackCandidates.name",
+      "value": "Allow Environment Fallback Candidates"
+    },
+    {
+      "key": "entry.Candidates.AllowEnvironmentFallbackCandidates.description",
+      "value": "Use current environment enemy metadata if current level alive NPC candidate pool is empty."
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMin.name",
+      "value": "Spawn Distance Min"
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMin.description",
+      "value": "Minimum spawn distance from player."
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMax.name",
+      "value": "Spawn Distance Max"
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMax.description",
+      "value": "Maximum spawn distance from player."
+    },
+    {
+      "key": "entry.Style 1 - Light.TargetPressure.name",
+      "value": "Target Pressure"
+    },
+    {
+      "key": "entry.Style 1 - Light.TargetPressure.description",
+      "value": "Target pressure."
+    },
+    {
+      "key": "entry.Style 1 - Light.SpawnCooldown.name",
+      "value": "Spawn Cooldown"
+    },
+    {
+      "key": "entry.Style 1 - Light.SpawnCooldown.description",
+      "value": "Spawn cooldown."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxSpawnPerWave.name",
+      "value": "Max Spawn Per Wave"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxSpawnPerWave.description",
+      "value": "Max spawns per wave."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedAlive.name",
+      "value": "Max Mod Spawned Alive"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedAlive.description",
+      "value": "Max alive mod-spawned NPCs."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerRoom.name",
+      "value": "Max Mod Spawned Per Room"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerRoom.description",
+      "value": "Max mod spawns per room."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerLevel.name",
+      "value": "Max Mod Spawned Per Level"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerLevel.description",
+      "value": "Max mod spawns per level."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.TargetPressure.name",
+      "value": "Target Pressure"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.TargetPressure.description",
+      "value": "Target pressure."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.SpawnCooldown.name",
+      "value": "Spawn Cooldown"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.SpawnCooldown.description",
+      "value": "Spawn cooldown."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxSpawnPerWave.name",
+      "value": "Max Spawn Per Wave"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxSpawnPerWave.description",
+      "value": "Max spawns per wave."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedAlive.name",
+      "value": "Max Mod Spawned Alive"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedAlive.description",
+      "value": "Max alive mod-spawned NPCs."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerRoom.name",
+      "value": "Max Mod Spawned Per Room"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerRoom.description",
+      "value": "Max mod spawns per room."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerLevel.name",
+      "value": "Max Mod Spawned Per Level"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerLevel.description",
+      "value": "Max mod spawns per level."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.TargetPressure.name",
+      "value": "Target Pressure"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.TargetPressure.description",
+      "value": "Target pressure."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.SpawnCooldown.name",
+      "value": "Spawn Cooldown"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.SpawnCooldown.description",
+      "value": "Spawn cooldown."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxSpawnPerWave.name",
+      "value": "Max Spawn Per Wave"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxSpawnPerWave.description",
+      "value": "Max spawns per wave."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedAlive.name",
+      "value": "Max Mod Spawned Alive"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedAlive.description",
+      "value": "Max alive mod-spawned NPCs."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerRoom.name",
+      "value": "Max Mod Spawned Per Room"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerRoom.description",
+      "value": "Max mod spawns per room."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerLevel.name",
+      "value": "Max Mod Spawned Per Level"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerLevel.description",
+      "value": "Max mod spawns per level."
+    }
+  ]
+}

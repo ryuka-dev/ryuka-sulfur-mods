@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "무기 경험치 배율"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Weapon.AddExperience로 얻는 무기 경험치 배율을 조정합니다."
+    },
+    {
+      "key": "section.General",
+      "value": "일반"
+    },
+    {
+      "key": "section.Debug",
+      "value": "디버그"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "모드 활성화"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "무기 경험치 배율을 활성화합니다."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "경험치 배율"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "무기 경험치 배율입니다. 1.0은 기본값, 2.0은 경험치 2배, 10.0은 경험치 10배입니다."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "경험치 변경 로그"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "무기 경험치 변경을 BepInEx 로그에 출력합니다. 일반 플레이에서는 꺼 두는 것이 좋습니다."
+    }
+  ]
+}

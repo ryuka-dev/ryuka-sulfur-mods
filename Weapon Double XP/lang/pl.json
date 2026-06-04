@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Podwójne PD broni"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Podwaja PD broni otrzymywane przez Weapon.AddExperience."
+    }
+  ]
+}

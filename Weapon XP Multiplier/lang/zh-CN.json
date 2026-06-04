@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "武器经验倍率"
+    },
+    {
+      "key": "plugin.description",
+      "value": "调整通过 Weapon.AddExperience 获得的武器经验倍率。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.Debug",
+      "value": "调试"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "启用 Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "启用武器经验倍率。"
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "经验倍率"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "武器经验倍率。1.0 表示原版，2.0 表示双倍经验，10.0 表示十倍经验。"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "记录经验变化"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "把武器经验变化输出到 BepInEx 日志。正常游玩建议关闭。"
+    }
+  ]
+}

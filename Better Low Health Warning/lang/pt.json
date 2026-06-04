@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Melhor aviso de vida baixa"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Adiciona um aviso de vinheta configurável quando a vida está baixa."
+    },
+    {
+      "key": "section.General",
+      "value": "Geral"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Visual"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Depuração"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Ativar mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Ativa o melhor aviso de vida baixa."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Ocultar quando a HUD estiver oculta"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Oculta o aviso quando a HUD do jogo estiver oculta."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Percentual de vida para aviso"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Mostra o aviso abaixo deste percentual de vida. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Percentual de vida crítica"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Usa um aviso mais forte abaixo deste percentual de vida. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Espessura da borda"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Espessura da vinheta vermelha suave em pixels."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Opacidade mínima"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Opacidade do aviso no limite de alerta."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Opacidade máxima"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Opacidade do aviso no limite crítico ou abaixo dele."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Ativar pulsação"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Faz o aviso pulsar quando a vida está baixa."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Velocidade da pulsação"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Velocidade da pulsação. Valores maiores pulsam mais rápido."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Velocidade de fade"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Velocidade de fade de entrada e saída do aviso."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Opacidade da tonalidade em tela cheia"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Multiplicador muito sutil de tonalidade vermelha em tela cheia. Defina como 0 para desativar."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Registrar erros"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Registra erros de patch. Mantenha desligado para jogar normalmente."
+    }
+  ]
+}

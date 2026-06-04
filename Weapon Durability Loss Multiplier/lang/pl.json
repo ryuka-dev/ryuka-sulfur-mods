@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Mnożnik utraty wytrzymałości broni"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Dostosowuje utratę wytrzymałości broni podczas strzelania."
+    },
+    {
+      "key": "section.General",
+      "value": "Ogólne"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Broń"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debugowanie"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Włącz mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Włącza mnożnik utraty wytrzymałości broni."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Mnożnik utraty wytrzymałości broni"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Mnożnik końcowej utraty wytrzymałości broni od strzelania. 1.0 = wersja podstawowa, 0.5 = połowa straty, 0 = brak straty, 2 = podwójna strata."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Loguj zmiany wytrzymałości"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Zapisuje dostosowaną utratę wytrzymałości przy strzelaniu. Do normalnej gry zostaw wyłączone."
+    }
+  ]
+}

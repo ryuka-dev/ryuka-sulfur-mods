@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Удача за убийство"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Даёт удачу при смерти врагов, с настройками награды, фильтров, безопасности и совместимости."
+    },
+    {
+      "key": "section.General",
+      "value": "Общее"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Награда"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Совместимость"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Фильтр"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Безопасность"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Отладка"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Включить мод"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Включить Удачу за убийство."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Множитель награды за убийство"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Множитель удачи, получаемой при смерти врага. Базовая награда берётся из текущего Stat_LuckGain и равна одной минуте стандартного восстановления удачи."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Фиксированный бонус за убийство"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Фиксированный бонус к награде удачи за убийство после множителя."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Замена награды за убийство"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Если значение 0 или выше, награда удачи за убийство заменяется этим фиксированным значением. -1 отключает замену."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Применять через ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Применять награды за убийство через ModifyStatus, чтобы Управление удачей тоже могло их изменять."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Требовать враждебность к игроку"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Удачу дают только юниты, враждебные игроку."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Только юниты с опытом"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Удачу дают только юниты с ExperienceOnKill больше 0. Отключите, чтобы разрешить особых враждебных врагов с 0 опыта."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Награждать за гражданских"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Разрешить гражданским юнитам давать удачу."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Награждать за разрушаемые объекты"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Разрешить разрушаемым объектам давать удачу. Рекомендуется выключить."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Запретить повторные награды"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Не позволяет одной смерти юнита выдать удачу более одного раза. Повторное использование объектов очищается при Unit.Spawn()."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Журнал наград"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Записывать награды удачи за смерти врагов в журнал."
+    }
+  ]
+}

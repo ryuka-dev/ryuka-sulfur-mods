@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Улучшенное предупреждение о низком здоровье"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Добавляет настраиваемое предупреждение-виньетку при низком здоровье."
+    },
+    {
+      "key": "section.General",
+      "value": "Общее"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Визуал"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Отладка"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Включить мод"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Включить улучшенное предупреждение о низком здоровье."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Скрывать при скрытом HUD"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Скрывать предупреждение, когда HUD игры скрыт."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Процент здоровья для предупреждения"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Показывать предупреждение ниже этого процента здоровья. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Процент критического здоровья"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Использовать более сильное предупреждение ниже этого процента здоровья. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Толщина рамки"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Толщина мягкой красной виньетки в пикселях."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Минимальная непрозрачность"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Непрозрачность предупреждения на пороге предупреждения."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Максимальная непрозрачность"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Непрозрачность предупреждения на критическом пороге или ниже."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Включить пульсацию"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Пульсировать предупреждением при низком здоровье."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Скорость пульсации"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Скорость пульсации. Чем выше значение, тем быстрее пульсация."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Скорость появления"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Скорость появления и исчезновения предупреждения."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Непрозрачность полноэкранного оттенка"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Очень слабый множитель красного полноэкранного оттенка. Установите 0, чтобы отключить."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Журнал ошибок"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Записывать ошибки патча. Для обычной игры оставьте выключенным."
+    }
+  ]
+}

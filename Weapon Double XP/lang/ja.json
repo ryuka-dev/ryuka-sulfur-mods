@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "武器経験値 2 倍"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Weapon.AddExperience による武器経験値の獲得量を 2 倍にします。"
+    }
+  ]
+}

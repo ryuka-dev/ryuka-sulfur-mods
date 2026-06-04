@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "تحذير أفضل عند انخفاض الصحة"
+    },
+    {
+      "key": "plugin.description",
+      "value": "يضيف تحذير حواف قابلًا للتخصيص عند انخفاض الصحة."
+    },
+    {
+      "key": "section.General",
+      "value": "عام"
+    },
+    {
+      "key": "section.Visual",
+      "value": "مرئي"
+    },
+    {
+      "key": "section.Debug",
+      "value": "تصحيح"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "تفعيل المود"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "يفعل التحذير الأفضل عند انخفاض الصحة."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "الإخفاء عند إخفاء الواجهة"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "يخفي التحذير عندما تكون واجهة اللعبة مخفية."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "نسبة الصحة للتحذير"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "يعرض التحذير عندما تنخفض الصحة عن هذه النسبة. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "نسبة الصحة الحرجة"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "يستخدم تحذيرًا أقوى عندما تنخفض الصحة عن هذه النسبة. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "سماكة الحافة"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "سماكة تأثير الحواف الحمراء الناعمة بالبكسل."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "أقل شفافية"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "شفافية التحذير عند حد التحذير."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "أعلى شفافية"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "شفافية التحذير عند حد الخطر أو دونه."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "تفعيل النبض"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "يجعل التحذير ينبض عندما تكون الصحة منخفضة."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "سرعة النبض"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "سرعة النبض. القيم الأعلى تجعل النبض أسرع."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "سرعة التلاشي"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "سرعة ظهور واختفاء التحذير."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "شفافية لون ملء الشاشة"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "مضاعف خفيف جدًا للون أحمر على كامل الشاشة. اضبطه على 0 للتعطيل."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "تسجيل الأخطاء"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "يسجل أخطاء التصحيح. يُفضل إبقاؤه معطلًا أثناء اللعب العادي."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Управление удачей"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Настраивает восстановление и расход удачи для изменений Status_Luck."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Восстановление удачи"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Расход удачи"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Отладка"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Множитель восстановления"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Множитель положительных изменений удачи. 1 = как в игре, 2 = двойное восстановление."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Фиксированный бонус восстановления"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Фиксированный бонус к каждому положительному току восстановления удачи после множителя."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Замена восстановления"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Если значение 0 или выше, каждый положительный тик восстановления заменяется этим числом. -1 отключает замену."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Множитель расхода"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Множитель отрицательных изменений удачи. 1 = как в игре, 0.5 = половина расхода, 0 = удача не расходуется."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Подробный журнал"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Выводить подробные изменения удачи в журнал BepInEx."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "更好的低血量警告"
+    },
+    {
+      "key": "plugin.description",
+      "value": "添加可配置的低血量红色边缘警告。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.Visual",
+      "value": "视觉"
+    },
+    {
+      "key": "section.Debug",
+      "value": "调试"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "启用 Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "启用更好的低血量警告。"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "HUD 隐藏时隐藏"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "当游戏 HUD 被隐藏时，同时隐藏低血量警告。"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "警告血量百分比"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "低于该血量百分比时显示警告。0.35 表示 35%。"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "危险血量百分比"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "低于该血量百分比时使用更强的警告。0.15 表示 15%。"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "边缘厚度"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "柔和红色暗角边缘的厚度，单位为像素。"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "最低不透明度"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "刚达到警告阈值时的警告不透明度。"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "最高不透明度"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "达到或低于危险阈值时的警告不透明度。"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "启用脉冲效果"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "低血量时让警告产生脉冲闪烁。"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "脉冲速度"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "脉冲速度。数值越高，闪烁越快。"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "淡入淡出速度"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "警告淡入和淡出的速度。"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "全屏红色滤镜不透明度"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "非常轻微的全屏红色滤镜倍率。设为 0 可关闭。"
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "记录错误"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "记录补丁错误。正常游玩建议关闭。"
+    }
+  ]
+}

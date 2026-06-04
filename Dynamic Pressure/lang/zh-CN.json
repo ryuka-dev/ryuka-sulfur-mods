@@ -1,0 +1,340 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "动态压力"
+    },
+    {
+      "key": "plugin.description",
+      "value": "添加自适应敌人压力和可选动态刷怪。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.Debug Overlay",
+      "value": "调试覆盖层"
+    },
+    {
+      "key": "section.Pressure",
+      "value": "压力"
+    },
+    {
+      "key": "section.Safety",
+      "value": "安全"
+    },
+    {
+      "key": "section.Anti Loop",
+      "value": "防循环"
+    },
+    {
+      "key": "section.Candidates",
+      "value": "候选池"
+    },
+    {
+      "key": "section.Spawn",
+      "value": "刷怪"
+    },
+    {
+      "key": "section.Style 1 - Light",
+      "value": "风格 1 - 轻度"
+    },
+    {
+      "key": "section.Style 2 - Heavy",
+      "value": "风格 2 - 重度"
+    },
+    {
+      "key": "section.Style 3 - Nightmare",
+      "value": "风格 3 - 噩梦"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "启用Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable Dynamic Pressure."
+    },
+    {
+      "key": "entry.General.EnableAutoSpawn.name",
+      "value": "启用自动刷怪"
+    },
+    {
+      "key": "entry.General.EnableAutoSpawn.description",
+      "value": "Enable automatic dynamic pressure spawning. Keep false for first debug testing."
+    },
+    {
+      "key": "entry.General.PressureStyle.name",
+      "value": "压力风格"
+    },
+    {
+      "key": "entry.General.PressureStyle.description",
+      "value": "1 = Light, 2 = Heavy, 3 = Nightmare."
+    },
+    {
+      "key": "entry.Debug Overlay.EnableOverlay.name",
+      "value": "启用覆盖层"
+    },
+    {
+      "key": "entry.Debug Overlay.EnableOverlay.description",
+      "value": "Show debug overlay."
+    },
+    {
+      "key": "entry.Debug Overlay.OverlayToggleKey.name",
+      "value": "覆盖层切换键"
+    },
+    {
+      "key": "entry.Debug Overlay.OverlayToggleKey.description",
+      "value": "Toggle overlay key."
+    },
+    {
+      "key": "entry.Debug Overlay.ManualSpawnKey.name",
+      "value": "手动刷怪键"
+    },
+    {
+      "key": "entry.Debug Overlay.ManualSpawnKey.description",
+      "value": "Manual debug spawn key."
+    },
+    {
+      "key": "entry.Pressure.ScanInterval.name",
+      "value": "扫描间隔"
+    },
+    {
+      "key": "entry.Pressure.ScanInterval.description",
+      "value": "Seconds between pressure scans."
+    },
+    {
+      "key": "entry.Pressure.EnemyScanRadius.name",
+      "value": "敌人扫描半径"
+    },
+    {
+      "key": "entry.Pressure.EnemyScanRadius.description",
+      "value": "Nearby enemy scan radius."
+    },
+    {
+      "key": "entry.Pressure.CloseEnemyDistance.name",
+      "value": "近距离敌人距离"
+    },
+    {
+      "key": "entry.Pressure.CloseEnemyDistance.description",
+      "value": "Enemies closer than this add extra pressure."
+    },
+    {
+      "key": "entry.Safety.LowHealthStopThreshold.name",
+      "value": "低生命值停止阈值"
+    },
+    {
+      "key": "entry.Safety.LowHealthStopThreshold.description",
+      "value": "Do not spawn if player health is below this normalized value."
+    },
+    {
+      "key": "entry.Safety.RecentDamageStopWindow.name",
+      "value": "最近伤害停止窗口"
+    },
+    {
+      "key": "entry.Safety.RecentDamageStopWindow.description",
+      "value": "Do not spawn if player was damaged within this many seconds."
+    },
+    {
+      "key": "entry.Anti Loop.MinOriginalEngagedHostilesForSpawn.name",
+      "value": "最小原始交战敌人用于刷怪"
+    },
+    {
+      "key": "entry.Anti Loop.MinOriginalEngagedHostilesForSpawn.description",
+      "value": "Require this many engaged original hostiles before spawning mod enemies."
+    },
+    {
+      "key": "entry.Anti Loop.CooldownAfterModKillOnly.name",
+      "value": "冷却后Mod击杀仅"
+    },
+    {
+      "key": "entry.Anti Loop.CooldownAfterModKillOnly.description",
+      "value": "If only mod enemies are dying, pause spawning for this many seconds."
+    },
+    {
+      "key": "entry.Anti Loop.MaxSecondsWithoutOriginalKill.name",
+      "value": "最大秒无原始击杀"
+    },
+    {
+      "key": "entry.Anti Loop.MaxSecondsWithoutOriginalKill.description",
+      "value": "Stop spawning if no original enemy has died for this long after mod spawns."
+    },
+    {
+      "key": "entry.Anti Loop.MaxModSpawnsPerOriginalEngaged.name",
+      "value": "最大ModSpawns每原始交战"
+    },
+    {
+      "key": "entry.Anti Loop.MaxModSpawnsPerOriginalEngaged.description",
+      "value": "Soft budget: each engaged original enemy can support this many mod spawns."
+    },
+    {
+      "key": "entry.Candidates.AllowEnvironmentFallbackCandidates.name",
+      "value": "允许环境备用候选"
+    },
+    {
+      "key": "entry.Candidates.AllowEnvironmentFallbackCandidates.description",
+      "value": "Use current environment enemy metadata if current level alive NPC candidate pool is empty."
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMin.name",
+      "value": "刷怪距离最小"
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMin.description",
+      "value": "Minimum spawn distance from player."
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMax.name",
+      "value": "刷怪距离最大"
+    },
+    {
+      "key": "entry.Spawn.SpawnDistanceMax.description",
+      "value": "Maximum spawn distance from player."
+    },
+    {
+      "key": "entry.Style 1 - Light.TargetPressure.name",
+      "value": "目标压力"
+    },
+    {
+      "key": "entry.Style 1 - Light.TargetPressure.description",
+      "value": "Target pressure."
+    },
+    {
+      "key": "entry.Style 1 - Light.SpawnCooldown.name",
+      "value": "刷怪冷却"
+    },
+    {
+      "key": "entry.Style 1 - Light.SpawnCooldown.description",
+      "value": "Spawn cooldown."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxSpawnPerWave.name",
+      "value": "最大刷怪每波次"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxSpawnPerWave.description",
+      "value": "Max spawns per wave."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedAlive.name",
+      "value": "最大ModSpawned存活"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedAlive.description",
+      "value": "Max alive mod-spawned NPCs."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerRoom.name",
+      "value": "最大ModSpawned每房间"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerRoom.description",
+      "value": "Max mod spawns per room."
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerLevel.name",
+      "value": "最大ModSpawned每关卡"
+    },
+    {
+      "key": "entry.Style 1 - Light.MaxModSpawnedPerLevel.description",
+      "value": "Max mod spawns per level."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.TargetPressure.name",
+      "value": "目标压力"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.TargetPressure.description",
+      "value": "Target pressure."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.SpawnCooldown.name",
+      "value": "刷怪冷却"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.SpawnCooldown.description",
+      "value": "Spawn cooldown."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxSpawnPerWave.name",
+      "value": "最大刷怪每波次"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxSpawnPerWave.description",
+      "value": "Max spawns per wave."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedAlive.name",
+      "value": "最大ModSpawned存活"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedAlive.description",
+      "value": "Max alive mod-spawned NPCs."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerRoom.name",
+      "value": "最大ModSpawned每房间"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerRoom.description",
+      "value": "Max mod spawns per room."
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerLevel.name",
+      "value": "最大ModSpawned每关卡"
+    },
+    {
+      "key": "entry.Style 2 - Heavy.MaxModSpawnedPerLevel.description",
+      "value": "Max mod spawns per level."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.TargetPressure.name",
+      "value": "目标压力"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.TargetPressure.description",
+      "value": "Target pressure."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.SpawnCooldown.name",
+      "value": "刷怪冷却"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.SpawnCooldown.description",
+      "value": "Spawn cooldown."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxSpawnPerWave.name",
+      "value": "最大刷怪每波次"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxSpawnPerWave.description",
+      "value": "Max spawns per wave."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedAlive.name",
+      "value": "最大ModSpawned存活"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedAlive.description",
+      "value": "Max alive mod-spawned NPCs."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerRoom.name",
+      "value": "最大ModSpawned每房间"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerRoom.description",
+      "value": "Max mod spawns per room."
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerLevel.name",
+      "value": "最大ModSpawned每关卡"
+    },
+    {
+      "key": "entry.Style 3 - Nightmare.MaxModSpawnedPerLevel.description",
+      "value": "Max mod spawns per level."
+    }
+  ]
+}

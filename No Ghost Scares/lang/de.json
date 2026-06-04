@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Keine Geisterschrecken"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Erkennt und blockiert optional Ability_Ghost_*_Scare-Objekte."
+    },
+    {
+      "key": "section.General",
+      "value": "Allgemein"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Leistung"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Overlay"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Blockierung aktivieren"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Deaktiviert Ability_Ghost_*_Scare-Objekte. Ausschalten, um sie nur zu erkennen."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Debug-Overlay anzeigen"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Zeigt erkannte oder blockierte Geisterschreck-Objekte auf dem Bildschirm an."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Aktionen protokollieren"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Schreibt erkannte oder blockierte Geisterschreck-Objekte in das BepInEx-Log."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Breite Geisternamen erkennen"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Nur Debug. Zeigt auch breite geisterbezogene Namen wie GhostParticles oder Unit_Enemy_Ghost. Diese werden nie blockiert."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Scan-Intervall"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "Wie oft geladene Szenen nach Geisterschreck-Triggern gescannt werden."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Overlay-Anzeigedauer"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "Wie lange das Overlay nach der letzten Erkennung oder Blockierung sichtbar bleibt."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Maximale Overlay-Einträge"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Maximale Anzahl neuerer Einträge auf dem Bildschirm."
+    }
+  ]
+}

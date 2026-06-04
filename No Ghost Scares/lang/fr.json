@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Pas de sursauts fantômes"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Détecte et bloque éventuellement les objets Ability_Ghost_*_Scare."
+    },
+    {
+      "key": "section.General",
+      "value": "Général"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Débogage"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Performance"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Superposition"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Activer le blocage"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Désactive les objets Ability_Ghost_*_Scare. Désactivez cette option pour seulement les détecter."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Afficher la superposition de débogage"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Affiche à l’écran les objets de sursaut fantôme détectés ou bloqués."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Journaliser les actions"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Écrit les objets de sursaut fantôme détectés ou bloqués dans le journal BepInEx."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Détecter les noms fantômes larges"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Débogage uniquement. Affiche aussi les noms larges liés aux fantômes comme GhostParticles ou Unit_Enemy_Ghost. Ils ne sont jamais bloqués."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Intervalle de scan"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "Fréquence de scan des scènes chargées pour les déclencheurs de sursaut fantôme."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Durée de superposition"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "Durée pendant laquelle la superposition reste visible après la dernière détection ou le dernier blocage."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Nombre max d’éléments"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Nombre maximum d’enregistrements récents affichés à l’écran."
+    }
+  ]
+}

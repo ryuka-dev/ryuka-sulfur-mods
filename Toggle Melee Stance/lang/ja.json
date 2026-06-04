@@ -1,0 +1,104 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "近接スタンス切替"
+    },
+    {
+      "key": "plugin.description",
+      "value": "近接キーを設定可能な切替・タップ/長押し式近接スタンスモジュールにします。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Melee",
+      "value": "近接"
+    },
+    {
+      "key": "section.Visual",
+      "value": "表示"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "互換性"
+    },
+    {
+      "key": "section.Debug",
+      "value": "デバッグ"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "有効化Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable Toggle Melee Stance."
+    },
+    {
+      "key": "entry.Melee.FirePerformsMeleeAttack.name",
+      "value": "射撃実行近接攻撃"
+    },
+    {
+      "key": "entry.Melee.FirePerformsMeleeAttack.description",
+      "value": "When melee stance is toggled on, pressing the normal Fire action performs one melee attack."
+    },
+    {
+      "key": "entry.Melee.ReChargeRetryInterval.name",
+      "value": "再チャージ再試行間隔"
+    },
+    {
+      "key": "entry.Melee.ReChargeRetryInterval.description",
+      "value": "Seconds between retry attempts when the mod tries to re-enter melee charge after an attack."
+    },
+    {
+      "key": "entry.Visual.ResetMeleeAnimatorBeforeSheathe.name",
+      "value": "リセット近接Animator前収納"
+    },
+    {
+      "key": "entry.Visual.ResetMeleeAnimatorBeforeSheathe.description",
+      "value": "Before sheathing a toggled melee weapon, reset its Animator to the cached safe equip state. This prevents stale idle states from causing a slash-frame flash on the next draw."
+    },
+    {
+      "key": "entry.Compatibility.DisableWhenMeleeExpansionDetected.name",
+      "value": "無効化時近接Expansion検出時"
+    },
+    {
+      "key": "entry.Compatibility.DisableWhenMeleeExpansionDetected.description",
+      "value": "Deprecated. Kept only for old config compatibility. Toggle Melee Stance no longer auto-disables when The Dragonblade is installed, because it is now the shared prerequisite melee stance module."
+    },
+    {
+      "key": "entry.Compatibility.KeepMeleeStanceAfterExternalWeaponSwitch.name",
+      "value": "維持近接スタンス後外部武器切替"
+    },
+    {
+      "key": "entry.Compatibility.KeepMeleeStanceAfterExternalWeaponSwitch.description",
+      "value": "When another mod changes the current weapon while toggle melee stance is active, keep melee stance instead of exiting it. Default false: exit stance and allow the new weapon to fire normally."
+    },
+    {
+      "key": "entry.Melee.EnableTapHoldMeleeKey.name",
+      "value": "有効化タップ長押し近接キー"
+    },
+    {
+      "key": "entry.Melee.EnableTapHoldMeleeKey.description",
+      "value": "If true, tap the melee key to toggle melee stance, but hold the melee key to use the original melee behavior."
+    },
+    {
+      "key": "entry.Melee.MeleeToggleTapThreshold.name",
+      "value": "近接切替タップしきい値"
+    },
+    {
+      "key": "entry.Melee.MeleeToggleTapThreshold.description",
+      "value": "Maximum press duration treated as a tap for toggling melee stance. Holding longer uses original melee behavior."
+    },
+    {
+      "key": "entry.Debug.LogStateChanges.name",
+      "value": "ログ状態変更"
+    },
+    {
+      "key": "entry.Debug.LogStateChanges.description",
+      "value": "Log toggle melee state changes. Keep false for normal gameplay."
+    }
+  ]
+}

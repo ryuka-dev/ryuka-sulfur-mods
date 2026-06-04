@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Tur vid dödande"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ger tur när fiender dör, med inställningar för belöning, filter, säkerhet och kompatibilitet."
+    },
+    {
+      "key": "section.General",
+      "value": "Allmänt"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Belöning"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Kompatibilitet"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filter"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Säkerhet"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Felsökning"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Aktivera mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktivera Tur vid dödande."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Belöningsmultiplikator vid dödande"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Multiplikator för tur som fås när en fiende dör. Basbelöningen är aktuell Stat_LuckGain, lika med en minut original-turåterhämtning."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Fast belöningsbonus vid dödande"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Fast bonus som läggs till turbelöningen efter multiplikatorn."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Åsidosätt belöning vid dödande"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Om värdet är 0 eller högre ersätts turbelöningen med detta fasta värde. -1 inaktiverar detta."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Använd via ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Använder belöningar via ModifyStatus så att Better Luck Control också kan ändra dem."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Kräv fientlighet mot spelaren"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Endast enheter som är fientliga mot spelaren ger tur."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Kräv XP-enheter"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Endast enheter med ExperienceOnKill över 0 ger tur. Lämna av för att tillåta särskilda fientliga fiender med 0 XP."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Belöna civila"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Tillåt civila enheter att ge tur."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Belöna förstörbara objekt"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Tillåt förstörbara enheter att ge tur. Rekommenderas: av."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Förhindra dubbla belöningar"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Förhindrar att samma enhetsdöd ger tur mer än en gång. Objektpoolens återanvändning hanteras när Unit.Spawn() rensar belöningsstatusen."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Logga belöningar"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Loggar turbelöningar från fiendedödsfall."
+    }
+  ]
+}

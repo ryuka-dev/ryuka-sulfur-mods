@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "武器経験値倍率"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Weapon.AddExperience による武器経験値の獲得倍率を調整します。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Debug",
+      "value": "デバッグ"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod を有効化"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "武器経験値倍率を有効化します。"
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "経験値倍率"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "武器経験値の倍率です。1.0 はバニラ、2.0 は 2 倍、10.0 は 10 倍です。"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "経験値変更ログ"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "武器経験値の変更を BepInEx ログに出力します。通常プレイではオフ推奨です。"
+    }
+  ]
+}

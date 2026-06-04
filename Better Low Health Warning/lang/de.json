@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Bessere Warnung bei niedriger Gesundheit"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Fügt eine konfigurierbare Vignettenwarnung bei niedriger Gesundheit hinzu."
+    },
+    {
+      "key": "section.General",
+      "value": "Allgemein"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Visuell"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod aktivieren"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktiviert die bessere Warnung bei niedriger Gesundheit."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "Ausblenden, wenn HUD verborgen ist"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Blendet die Warnung aus, wenn das Spiel-HUD verborgen ist."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Warn-Gesundheitsprozent"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Zeigt die Warnung unter diesem Gesundheitswert an. 0.35 = 35%."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Kritisches Gesundheitsprozent"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Verwendet unter diesem Gesundheitswert eine stärkere Warnung. 0.15 = 15%."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Randdicke"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Dicke der weichen roten Vignette in Pixeln."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Minimale Deckkraft"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Deckkraft der Warnung an der Warnschwelle."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Maximale Deckkraft"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Deckkraft der Warnung an oder unter der kritischen Schwelle."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Pulsieren aktivieren"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Lässt die Warnung bei niedriger Gesundheit pulsieren."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Pulsgeschwindigkeit"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Pulsgeschwindigkeit. Höhere Werte pulsieren schneller."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Ein-/Ausblendgeschwindigkeit"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Geschwindigkeit zum Ein- und Ausblenden der Warnung."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Deckkraft der Vollbildtönung"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Sehr subtiler roter Vollbild-Tönungsmultiplikator. Auf 0 setzen zum Deaktivieren."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Fehler protokollieren"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Protokolliert Patchfehler. Für normales Spielen ausgeschaltet lassen."
+    }
+  ]
+}

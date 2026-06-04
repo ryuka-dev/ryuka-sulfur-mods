@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Chance à la mort"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Accorde de la chance quand les ennemis meurent, avec des options de récompense, de filtres, de sécurité et de compatibilité."
+    },
+    {
+      "key": "section.General",
+      "value": "Général"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Récompense"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Compatibilité"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filtre"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Sécurité"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Débogage"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Activer le mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Active Chance à la mort."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Multiplicateur de récompense de mort"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Multiplicateur de chance gagnée à la mort d’un ennemi. La récompense de base utilise le Stat_LuckGain actuel, équivalent à une minute de récupération de chance d’origine."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Bonus fixe de mort"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Bonus fixe ajouté à la récompense de chance de mort après le multiplicateur."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Remplacement de récompense de mort"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Si la valeur est 0 ou plus, la récompense de chance de mort est remplacée par cette valeur fixe. -1 désactive ce réglage."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Appliquer via ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Applique les récompenses de mort via ModifyStatus afin que Contrôle de la chance puisse aussi les modifier."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Exiger l’hostilité envers le joueur"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Seules les unités hostiles au joueur accordent de la chance."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Uniquement les unités avec XP"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Seules les unités avec ExperienceOnKill supérieur à 0 accordent de la chance. Désactivez ce réglage pour autoriser les ennemis hostiles spéciaux à 0 XP."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Récompenser les civils"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Permet aux unités civiles d’accorder de la chance."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Récompenser les objets destructibles"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Permet aux objets destructibles d’accorder de la chance. Recommandé : désactivé."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Éviter les récompenses en double"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Empêche une même mort d’unité d’accorder de la chance plusieurs fois. La réutilisation du pool d’objets est gérée quand Unit.Spawn() efface l’état de récompense."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Journaliser les récompenses"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Journalise les récompenses de chance obtenues à la mort des ennemis."
+    }
+  ]
+}

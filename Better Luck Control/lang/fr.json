@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Contrôle de la chance"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ajuste la récupération et la consommation de chance lors des changements de Status_Luck."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Récupération de chance"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Consommation de chance"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Débogage"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Multiplicateur de récupération"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Multiplicateur des changements positifs de chance. 1 = valeur d’origine, 2 = récupération doublée."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Bonus fixe de récupération"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Bonus fixe ajouté à chaque tick positif de récupération de chance après le multiplicateur."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Remplacement de récupération"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Si la valeur est 0 ou plus, chaque tick positif de récupération de chance est remplacé par cette valeur fixe. -1 désactive ce réglage."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Multiplicateur de consommation"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Multiplicateur des changements négatifs de chance. 1 = valeur d’origine, 0.5 = coût réduit de moitié, 0 = aucune consommation de chance."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Journal détaillé"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Affiche les changements détaillés de chance dans le journal BepInEx."
+    }
+  ]
+}

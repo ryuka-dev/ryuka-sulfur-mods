@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Silah XP Çarpanı"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Weapon.AddExperience ile kazanılan silah XP miktarını ayarlar."
+    },
+    {
+      "key": "section.General",
+      "value": "Genel"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Hata ayıklama"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Modu etkinleştir"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Silah XP çarpanını etkinleştirir."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "XP Çarpanı"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "Silah XP çarpanı. 1.0 = varsayılan, 2.0 = çift XP, 10.0 = on kat XP."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "XP değişikliklerini kaydet"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "Silah XP değişikliklerini BepInEx günlüğüne yazar. Normal oynanış için kapalı tutun."
+    }
+  ]
+}

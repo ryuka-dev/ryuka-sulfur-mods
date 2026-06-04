@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "유령 놀람 효과 제거"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ability_Ghost_*_Scare 오브젝트를 감지하고 선택적으로 차단합니다."
+    },
+    {
+      "key": "section.General",
+      "value": "일반"
+    },
+    {
+      "key": "section.Debug",
+      "value": "디버그"
+    },
+    {
+      "key": "section.Performance",
+      "value": "성능"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "오버레이"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "차단 활성화"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Ability_Ghost_*_Scare 오브젝트를 비활성화합니다. 끄면 감지만 합니다."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "디버그 오버레이 표시"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "감지되거나 차단된 유령 놀람 오브젝트를 화면에 표시합니다."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "동작 로그"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "감지되거나 차단된 유령 놀람 오브젝트를 BepInEx 로그에 기록합니다."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "광범위한 유령 이름 감지"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "디버그 전용. GhostParticles 또는 Unit_Enemy_Ghost 같은 광범위한 유령 관련 이름도 표시합니다. 이들은 차단되지 않습니다."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "스캔 간격"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "로드된 씬에서 유령 놀람 트리거를 스캔하는 빈도입니다."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "오버레이 유지 시간"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "마지막 감지 또는 차단 후 화면 오버레이가 유지되는 시간입니다."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "최대 오버레이 항목"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "화면에 표시할 최근 기록의 최대 수입니다."
+    }
+  ]
+}

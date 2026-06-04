@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Control de suerte"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ajusta la recuperación y el consumo de suerte en los cambios de Status_Luck."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Recuperación de suerte"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Consumo de suerte"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Depuración"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Multiplicador de recuperación"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Multiplicador para cambios positivos de suerte. 1 = original, 2 = doble recuperación."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Bonificación fija de recuperación"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Bonificación fija añadida a cada tick positivo de recuperación de suerte después del multiplicador."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Valor fijo de recuperación"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Si se establece en 0 o más, sustituye cada tick positivo de recuperación de suerte por este valor fijo. -1 lo desactiva."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Multiplicador de consumo"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Multiplicador para cambios negativos de suerte. 1 = original, 0.5 = mitad de coste, 0 = sin consumo."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Registro detallado"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Imprime cambios detallados de suerte en el registro de BepInEx."
+    }
+  ]
+}

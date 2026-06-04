@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Geliştirilmiş Düşük Can Uyarısı"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Düşük can için yapılandırılabilir bir vinyet uyarısı ekler."
+    },
+    {
+      "key": "section.General",
+      "value": "Genel"
+    },
+    {
+      "key": "section.Visual",
+      "value": "Görsel"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Hata ayıklama"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Modu etkinleştir"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Geliştirilmiş düşük can uyarısını etkinleştirir."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "HUD gizliyken gizle"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "Oyun HUD’u gizliyken uyarıyı gizler."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "Uyarı can yüzdesi"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "Can bu yüzdenin altındayken uyarıyı gösterir. 0.35 = %35."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "Kritik can yüzdesi"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "Can bu yüzdenin altındayken daha güçlü bir uyarı kullanır. 0.15 = %15."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "Kenar kalınlığı"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "Yumuşak kırmızı vinyet kalınlığı, piksel cinsinden."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "Minimum opaklık"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "Uyarı eşiğindeki uyarı opaklığı."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "Maksimum opaklık"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "Kritik eşikte veya altında uyarı opaklığı."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "Nabız efektini etkinleştir"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "Can düşükken uyarının nabız gibi atmasını sağlar."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "Nabız hızı"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "Nabız hızı. Daha yüksek değerler daha hızlı atar."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "Solma hızı"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "Uyarının girip çıkma solma hızı."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "Tam ekran renk opaklığı"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "Çok hafif tam ekran kırmızı renk çarpanı. Devre dışı bırakmak için 0 yapın."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "Hataları kaydet"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "Patch hatalarını günlüğe yazar. Normal oynanış için kapalı tutun."
+    }
+  ]
+}

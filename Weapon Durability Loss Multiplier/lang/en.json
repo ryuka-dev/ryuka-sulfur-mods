@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Weapon Durability Loss Multiplier"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Adjusts weapon durability loss from shooting."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Weapon"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Enable Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable the weapon durability loss multiplier."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Weapon Durability Loss Multiplier"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Multiplier applied to final weapon durability loss from shooting. 1.0 = vanilla, 0.5 = half loss, 0 = no loss, 2 = double loss."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Log Durability Changes"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Log adjusted shooting durability loss. Keep this off for normal gameplay."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Kontrola szczęścia"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Dostosowuje odzyskiwanie i zużycie szczęścia przy zmianach Status_Luck."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Odzyskiwanie szczęścia"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Zużycie szczęścia"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debugowanie"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Mnożnik odzyskiwania"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Mnożnik dodatnich zmian szczęścia. 1 = wersja podstawowa, 2 = podwójne odzyskiwanie."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Stały bonus odzyskiwania"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Stały bonus dodawany do każdego dodatniego tiku odzyskiwania szczęścia po mnożniku."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Zastąpienie odzyskiwania"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Wartość 0 lub wyższa zastępuje każdy dodatni tik odzyskiwania szczęścia tą stałą wartością. -1 wyłącza zastąpienie."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Mnożnik zużycia"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Mnożnik ujemnych zmian szczęścia. 1 = wersja podstawowa, 0.5 = połowa kosztu, 0 = brak zużycia szczęścia."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Szczegółowe logi"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Wypisuje szczegółowe zmiany szczęścia do logu BepInEx."
+    }
+  ]
+}

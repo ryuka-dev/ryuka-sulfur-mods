@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Glück bei Tötung"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Gewährt Glück, wenn Gegner sterben, mit konfigurierbarer Belohnung, Filtern, Sicherheit und Kompatibilität."
+    },
+    {
+      "key": "section.General",
+      "value": "Allgemein"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Belohnung"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Kompatibilität"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filter"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Sicherheit"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod aktivieren"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktiviert Glück bei Tötung."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Tötungsbelohnungs-Multiplikator"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Multiplikator für Glück, das beim Tod eines Gegners erhalten wird. Die Basisbelohnung ist der aktuelle Stat_LuckGain und entspricht einer Minute Standard-Glücksregeneration."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Fester Tötungsbonus"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Fester Bonus, der nach dem Multiplikator zur Glücksbelohnung für Tötungen addiert wird."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Tötungsbelohnung ersetzen"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Bei 0 oder höher ersetzt dieser feste Wert die Glücksbelohnung für Tötungen. -1 deaktiviert dies."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Über ModifyStatus anwenden"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Wendet Tötungsbelohnungen über ModifyStatus an, damit Glückskontrolle sie ebenfalls verändern kann."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Feindseligkeit gegen Spieler erforderlich"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Nur Einheiten, die dem Spieler feindlich gesinnt sind, gewähren Glück."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Nur XP-Einheiten"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Nur Einheiten mit ExperienceOnKill größer als 0 gewähren Glück. Aus lassen, um besondere feindliche Gegner mit 0 XP zu erlauben."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Zivilisten belohnen"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Erlaubt zivilen Einheiten, Glück zu gewähren."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Zerstörbare Objekte belohnen"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Erlaubt zerstörbaren Objekten, Glück zu gewähren. Empfehlung: aus."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Doppelte Belohnungen verhindern"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Verhindert, dass derselbe Einheitentod mehr als einmal Glück gewährt. Die Wiederverwendung durch Objektpools wird bei Unit.Spawn() bereinigt."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Belohnungen protokollieren"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Protokolliert Glücksbelohnungen durch gegnerische Tode."
+    }
+  ]
+}

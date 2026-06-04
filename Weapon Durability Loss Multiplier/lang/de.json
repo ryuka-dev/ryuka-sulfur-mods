@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Multiplikator für Waffenhaltbarkeitsverlust"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Passt den Haltbarkeitsverlust von Waffen durch Schüsse an."
+    },
+    {
+      "key": "section.General",
+      "value": "Allgemein"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Waffe"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod aktivieren"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktiviert den Multiplikator für Waffenhaltbarkeitsverlust."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Multiplikator für Waffenhaltbarkeitsverlust"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Multiplikator auf den endgültigen Waffenhaltbarkeitsverlust durch Schüsse. 1.0 = Original, 0.5 = halber Verlust, 0 = kein Verlust, 2 = doppelter Verlust."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Haltbarkeitsänderungen protokollieren"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Protokolliert angepassten Haltbarkeitsverlust durch Schüsse. Für normales Spielen ausgeschaltet lassen."
+    }
+  ]
+}

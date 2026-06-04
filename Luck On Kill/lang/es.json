@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Suerte al matar"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Otorga suerte cuando mueren enemigos, con opciones de recompensa, filtros, seguridad y compatibilidad."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Recompensa"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Compatibilidad"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filtro"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Seguridad"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Depuración"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Activar mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Activa Suerte al matar."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Multiplicador de recompensa por muerte"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Multiplicador de la suerte obtenida al morir un enemigo. La recompensa base usa el Stat_LuckGain actual, equivalente a un minuto de recuperación de suerte original."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Bonificación fija por muerte"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Bonificación fija añadida a la recompensa de suerte por muerte después del multiplicador."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Valor fijo de recompensa por muerte"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Si se establece en 0 o más, sustituye la recompensa de suerte por muerte por este valor fijo. -1 lo desactiva."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Aplicar mediante ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Aplica las recompensas por muerte mediante ModifyStatus para que Control de suerte también pueda modificarlas."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Requerir hostilidad al jugador"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Solo las unidades hostiles al jugador otorgan suerte."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Solo unidades con XP"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Solo las unidades con ExperienceOnKill mayor que 0 otorgan suerte. Déjalo desactivado para permitir enemigos hostiles especiales con 0 XP."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Recompensar civiles"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Permite que las unidades civiles otorguen suerte."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Recompensar rompibles"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Permite que los objetos rompibles otorguen suerte. Recomendado: desactivado."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Evitar recompensas duplicadas"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Evita que la misma muerte de unidad otorgue suerte más de una vez. La reutilización del pool de objetos se gestiona al limpiar el estado en Unit.Spawn()."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Registrar recompensas"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Registra las recompensas de suerte por muerte de enemigos."
+    }
+  ]
+}

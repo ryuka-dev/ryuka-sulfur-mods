@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Dubbel vapenerfarenhet"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Fördubblar vapenerfarenhet från Weapon.AddExperience."
+    }
+  ]
+}

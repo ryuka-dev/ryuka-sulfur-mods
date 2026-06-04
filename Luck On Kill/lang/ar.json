@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "الحظ عند القتل"
+    },
+    {
+      "key": "plugin.description",
+      "value": "يمنح الحظ عند موت الأعداء، مع خيارات قابلة للتعديل للمكافأة والفلاتر والأمان والتوافق."
+    },
+    {
+      "key": "section.General",
+      "value": "عام"
+    },
+    {
+      "key": "section.Reward",
+      "value": "المكافأة"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "التوافق"
+    },
+    {
+      "key": "section.Filter",
+      "value": "الفلتر"
+    },
+    {
+      "key": "section.Safety",
+      "value": "الأمان"
+    },
+    {
+      "key": "section.Debug",
+      "value": "تصحيح الأخطاء"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "تفعيل المود"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "يفعل مود الحظ عند القتل."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "مضاعف مكافأة القتل"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "مضاعف الحظ المكتسب عند موت العدو. المكافأة الأساسية تستخدم Stat_LuckGain الحالي، وهي تساوي دقيقة واحدة من استعادة الحظ الأصلية."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "مكافأة قتل ثابتة"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "مكافأة ثابتة تضاف إلى مكافأة الحظ عند القتل بعد تطبيق المضاعف."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "استبدال مكافأة القتل"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "إذا كانت القيمة 0 أو أعلى، تستبدل مكافأة الحظ عند القتل بهذه القيمة الثابتة. -1 يعطل ذلك."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "التطبيق عبر ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "يطبق مكافآت القتل عبر ModifyStatus حتى يتمكن التحكم في الحظ من تعديلها أيضًا."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "اشتراط العداء للاعب"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "الوحدات المعادية للاعب فقط تمنح الحظ."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "اشتراط وحدات تمنح خبرة"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "الوحدات التي يكون ExperienceOnKill لديها أكبر من 0 فقط تمنح الحظ. اتركه مغلقًا للسماح بالأعداء الخاصين ذوي 0 خبرة."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "مكافأة المدنيين"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "يسمح للوحدات المدنية بمنح الحظ."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "مكافأة القابلة للكسر"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "يسمح للوحدات القابلة للكسر بمنح الحظ. الموصى به: إيقاف."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "منع المكافآت المكررة"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "يمنع موت الوحدة نفسها من منح الحظ أكثر من مرة. تتم معالجة إعادة استخدام تجميع الكائنات عندما يقوم Unit.Spawn() بمسح حالة المكافأة."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "تسجيل المكافآت"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "يسجل مكافآت الحظ الناتجة عن موت الأعداء."
+    }
+  ]
+}

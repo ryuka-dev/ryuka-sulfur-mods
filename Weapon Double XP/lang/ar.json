@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "خبرة السلاح المضاعفة"
+    },
+    {
+      "key": "plugin.description",
+      "value": "يضاعف خبرة السلاح المكتسبة عبر Weapon.AddExperience."
+    }
+  ]
+}

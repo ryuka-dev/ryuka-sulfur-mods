@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Waffen-XP-Multiplikator"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Passt die über Weapon.AddExperience erhaltene Waffen-XP an."
+    },
+    {
+      "key": "section.General",
+      "value": "Allgemein"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod aktivieren"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktiviert den Waffen-XP-Multiplikator."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "XP-Multiplikator"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "Multiplikator für Waffen-XP. 1.0 = Original, 2.0 = doppelte XP, 10.0 = zehnfache XP."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "XP-Änderungen protokollieren"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "Protokolliert Änderungen der Waffen-XP im BepInEx-Log. Für normales Spielen ausgeschaltet lassen."
+    }
+  ]
+}

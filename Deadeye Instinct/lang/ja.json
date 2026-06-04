@@ -1,0 +1,848 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "デッドアイ・インスティンクト"
+    },
+    {
+      "key": "plugin.description",
+      "value": "設定可能な照準補助、ハードロック、弱点狙い、自動射撃を追加します。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Assist Mode",
+      "value": "アシストモード"
+    },
+    {
+      "key": "section.Preset",
+      "value": "プリセット"
+    },
+    {
+      "key": "section.Official Pipeline",
+      "value": "Official Pipeline"
+    },
+    {
+      "key": "section.Input",
+      "value": "入力"
+    },
+    {
+      "key": "section.Custom Common",
+      "value": "カスタム共通"
+    },
+    {
+      "key": "section.Custom Magnet",
+      "value": "カスタム磁力"
+    },
+    {
+      "key": "section.Custom Target Stability",
+      "value": "カスタムターゲット安定性"
+    },
+    {
+      "key": "section.Custom Natural",
+      "value": "カスタム自然補助"
+    },
+    {
+      "key": "section.System - Official Scanner",
+      "value": "System - Official Scanner"
+    },
+    {
+      "key": "section.Troubleshooting",
+      "value": "Troubleshooting"
+    },
+    {
+      "key": "section.Debug - Weakspot Overlay",
+      "value": "デバッグ - 弱点オーバーレイ"
+    },
+    {
+      "key": "section.Master Switch",
+      "value": "Master Switch"
+    },
+    {
+      "key": "section.HardLock",
+      "value": "ハードロック"
+    },
+    {
+      "key": "section.HardLock Target Priority",
+      "value": "ハードロック目標優先度"
+    },
+    {
+      "key": "section.Auto Fire",
+      "value": "自動射撃"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "有効化Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Enable this mod."
+    },
+    {
+      "key": "entry.General.DebugLogging.name",
+      "value": "デバッグログ"
+    },
+    {
+      "key": "entry.General.DebugLogging.description",
+      "value": "Print aim assist debug logs."
+    },
+    {
+      "key": "entry.Assist Mode.Mode.name",
+      "value": "モード"
+    },
+    {
+      "key": "entry.Assist Mode.Mode.description",
+      "value": "Magnet = magnetic pull. Natural = input-shaped sticky assist."
+    },
+    {
+      "key": "entry.Preset.MagnetPreset.name",
+      "value": "磁力プリセット"
+    },
+    {
+      "key": "entry.Preset.MagnetPreset.description",
+      "value": "Low / Medium / High / Custom for Magnet mode. Current tested Magnet settings are defined as High."
+    },
+    {
+      "key": "entry.Preset.NaturalPreset.name",
+      "value": "自然プリセット"
+    },
+    {
+      "key": "entry.Preset.NaturalPreset.description",
+      "value": "Low / Medium / High / Custom for Natural mode. Current tested Natural settings are defined as Medium."
+    },
+    {
+      "key": "entry.Official Pipeline.EnableMouseConsumesRotationPullDelta.name",
+      "value": "有効化マウス消費回転引き寄せ差分"
+    },
+    {
+      "key": "entry.Official Pipeline.EnableMouseConsumesRotationPullDelta.description",
+      "value": "Allow mouse input to consume AimAssist.rotationPullDelta inside InputReader.Update()."
+    },
+    {
+      "key": "entry.Official Pipeline.EnableContinuousRotationalAssist.name",
+      "value": "有効化連続回転補助"
+    },
+    {
+      "key": "entry.Official Pipeline.EnableContinuousRotationalAssist.description",
+      "value": "Append continuous rotational assist to official AimAssist.rotationPullDelta."
+    },
+    {
+      "key": "entry.Input.RequirePlayerInput.name",
+      "value": "要求プレイヤー入力"
+    },
+    {
+      "key": "entry.Input.RequirePlayerInput.description",
+      "value": "Only assist while player has movement or look input."
+    },
+    {
+      "key": "entry.Input.CountLookInput.name",
+      "value": "数視点入力"
+    },
+    {
+      "key": "entry.Input.CountLookInput.description",
+      "value": "Look input counts as active player input."
+    },
+    {
+      "key": "entry.Input.CountMoveInput.name",
+      "value": "数移動入力"
+    },
+    {
+      "key": "entry.Input.CountMoveInput.description",
+      "value": "Movement input counts as active player input."
+    },
+    {
+      "key": "entry.Input.LookInputThreshold.name",
+      "value": "視点入力しきい値"
+    },
+    {
+      "key": "entry.Input.LookInputThreshold.description",
+      "value": "Threshold for effective look input after sensitivity."
+    },
+    {
+      "key": "entry.Input.MoveInputThreshold.name",
+      "value": "移動入力しきい値"
+    },
+    {
+      "key": "entry.Input.MoveInputThreshold.description",
+      "value": "Threshold for movement input."
+    },
+    {
+      "key": "entry.Custom Common.AssistCoefficient.name",
+      "value": "補助係数"
+    },
+    {
+      "key": "entry.Custom Common.AssistCoefficient.description",
+      "value": "Overall assist strength. 0.6 strong, 1.0 very strong, 2.0 extreme."
+    },
+    {
+      "key": "entry.Custom Common.RotationDeltaPerSecond.name",
+      "value": "回転差分毎Second"
+    },
+    {
+      "key": "entry.Custom Common.RotationDeltaPerSecond.description",
+      "value": "Base rotationPullDelta per second before AssistCoefficient scaling."
+    },
+    {
+      "key": "entry.Custom Common.MaxRotationDeltaPerFrame.name",
+      "value": "最大回転差分毎フレーム"
+    },
+    {
+      "key": "entry.Custom Common.MaxRotationDeltaPerFrame.description",
+      "value": "Hard cap for added rotationPullDelta per frame."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetCenterBias.name",
+      "value": "磁力中心バイアス"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetCenterBias.description",
+      "value": "For Magnet mode only when weakspot targeting is not available. 0 = official target point, 1 = collider center. Keep low to avoid center locking."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetMovementOnlyScale.name",
+      "value": "磁力移動のみ倍率"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetMovementOnlyScale.description",
+      "value": "For Magnet mode only. Strength scale when player is moving but not moving aim."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSmoothing.name",
+      "value": "磁力平滑化"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSmoothing.description",
+      "value": "For Magnet mode only. Active pull smoothing speed. Higher = more responsive."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetReleaseSmoothing.name",
+      "value": "磁力解除平滑化"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetReleaseSmoothing.description",
+      "value": "For Magnet mode only. Release smoothing speed. Lower = softer release."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetPreferWeakspot.name",
+      "value": "磁力優先弱点"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetPreferWeakspot.description",
+      "value": "For Magnet mode only. Prefer the highest base Hitmesh.Data.GetShapeMultiplier() part when available."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotBias.name",
+      "value": "磁力弱点バイアス"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotBias.description",
+      "value": "For MagnetPreferWeakspot. 0 = normal Magnet target, 1 = weakspot point."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotOverrideOfficialPull.name",
+      "value": "磁力弱点上書き公式引き寄せ"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetWeakspotOverrideOfficialPull.description",
+      "value": "When Magnet weakspot targeting succeeds, clear the official center pull before adding the weakspot pull."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetEdgeSofteningPower.name",
+      "value": "磁力端軟化強さ"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetEdgeSofteningPower.description",
+      "value": "For Magnet mode only. Extra falloff near the outer assist bubble edge. Higher = softer near edge."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetOuterEdgeStrength.name",
+      "value": "磁力外側端強度"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetOuterEdgeStrength.description",
+      "value": "For Magnet mode only. Minimum pull strength near the outer edge. Lower reduces snap-back jitter."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSnapBackAnglePadding.name",
+      "value": "磁力スナップ戻り角度余白"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetSnapBackAnglePadding.description",
+      "value": "For Magnet mode only. Softly scales down pull during the last N degrees before leaving the bubble."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetAllowLookAwayEscape.name",
+      "value": "磁力許可視点逆方向離脱"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetAllowLookAwayEscape.description",
+      "value": "For Magnet mode only. Reduce pull when player look input is clearly moving away from the target."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayThreshold.name",
+      "value": "磁力視点逆方向しきい値"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayThreshold.description",
+      "value": "For Magnet escape. Dot threshold for detecting look-away input. 0.10 means only clear away input reduces pull."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMinScale.name",
+      "value": "磁力視点逆方向最小倍率"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMinScale.description",
+      "value": "For Magnet escape. Minimum pull scale when player strongly looks away. Lower makes controller escape easier."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayCurvePower.name",
+      "value": "磁力視点逆方向曲線強さ"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayCurvePower.description",
+      "value": "For Magnet escape. Higher makes pull reduction happen later; lower makes it more sensitive."
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMovementScale.name",
+      "value": "磁力視点逆方向移動倍率"
+    },
+    {
+      "key": "entry.Custom Magnet.MagnetLookAwayMovementScale.description",
+      "value": "For Magnet escape. Extra scale when movement input is also active. Higher preserves sticky aim while strafing."
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchFadeSeconds.name",
+      "value": "目標切替Fade秒"
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchFadeSeconds.description",
+      "value": "Fade-in time after the official tracked target changes."
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchMinScale.name",
+      "value": "目標切替最小倍率"
+    },
+    {
+      "key": "entry.Custom Target Stability.TargetSwitchMinScale.description",
+      "value": "Minimum assist scale immediately after target switch. 0 = fully fade from zero, 1 = no switch fade."
+    },
+    {
+      "key": "entry.Custom Common.OuterBubbleAngleDegrees.name",
+      "value": "外側バブル角度Degrees"
+    },
+    {
+      "key": "entry.Custom Common.OuterBubbleAngleDegrees.description",
+      "value": "Target must be inside this angle from crosshair."
+    },
+    {
+      "key": "entry.Custom Common.InnerBubbleAngleDegrees.name",
+      "value": "Innerバブル角度Degrees"
+    },
+    {
+      "key": "entry.Custom Common.InnerBubbleAngleDegrees.description",
+      "value": "Inside this angle, assist reaches full strength."
+    },
+    {
+      "key": "entry.Custom Common.BubbleCurvePower.name",
+      "value": "バブル曲線強さ"
+    },
+    {
+      "key": "entry.Custom Common.BubbleCurvePower.description",
+      "value": "Higher values make assist weaker near the edge."
+    },
+    {
+      "key": "entry.Custom Common.DistanceFalloffPower.name",
+      "value": "距離減衰強さ"
+    },
+    {
+      "key": "entry.Custom Common.DistanceFalloffPower.description",
+      "value": "Higher values make far targets weaker."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalTowardAssist.name",
+      "value": "自然向き補助"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalTowardAssist.description",
+      "value": "Extra assist when player is already moving aim toward the target. Default 0 means no boost toward target."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSideAssist.name",
+      "value": "自然横補助"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSideAssist.description",
+      "value": "Small assist when player aim input is mostly perpendicular to target direction."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalAwayDamping.name",
+      "value": "自然逆方向減衰"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalAwayDamping.description",
+      "value": "Damping force when player aim input moves away from target."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMovementOnlyScale.name",
+      "value": "自然移動のみ倍率"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMovementOnlyScale.description",
+      "value": "Assist when only movement input exists and no look input exists. Default 0 disables hands-free pull."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMaxInputFraction.name",
+      "value": "自然最大入力割合"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMaxInputFraction.description",
+      "value": "Natural assist cap as a fraction of current player look input."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinDeltaPerFrame.name",
+      "value": "自然最小差分毎フレーム"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinDeltaPerFrame.description",
+      "value": "Minimum allowed natural delta cap per frame."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSmoothing.name",
+      "value": "自然平滑化"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalSmoothing.description",
+      "value": "Smoothing speed for natural assist output. Higher is more responsive."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseSmoothing.name",
+      "value": "自然解除平滑化"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseSmoothing.description",
+      "value": "Smoothing speed when Natural assist is releasing. Lower = softer release."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalDirectionSmoothing.name",
+      "value": "自然方向平滑化"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalDirectionSmoothing.description",
+      "value": "Smoothing speed for target direction in Natural mode. Lower reduces jitter from target point changes."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinLookInput.name",
+      "value": "自然最小視点入力"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalMinLookInput.description",
+      "value": "Minimum look input magnitude before natural aim shaping uses look direction."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalKeepOfficialGamepadPull.name",
+      "value": "自然維持公式Gamepad引き寄せ"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalKeepOfficialGamepadPull.description",
+      "value": "In Natural mode, keep the game's original controller ADS pull. Mouse official ADS pull is still removed."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseCurvePower.name",
+      "value": "自然解除曲線強さ"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalReleaseCurvePower.description",
+      "value": "Extra falloff used only by Natural mode. Higher values make assist release more smoothly near the edge of the bubble."
+    },
+    {
+      "key": "entry.Custom Natural.NaturalOuterEdgeStrength.name",
+      "value": "自然外側端強度"
+    },
+    {
+      "key": "entry.Custom Natural.NaturalOuterEdgeStrength.description",
+      "value": "Minimum Natural strength near the outer bubble edge. Keep low to avoid a sudden breakaway feeling."
+    },
+    {
+      "key": "entry.System - Official Scanner.OverrideOfficialScanner.name",
+      "value": "上書き公式スキャナー"
+    },
+    {
+      "key": "entry.System - Official Scanner.OverrideOfficialScanner.description",
+      "value": "Tune official AimAssist scanner fields."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialMaxAssistDistance.name",
+      "value": "公式最大補助距離"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialMaxAssistDistance.description",
+      "value": "Official scanner max distance."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanConeDegrees.name",
+      "value": "公式スキャンコーンDegrees"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanConeDegrees.description",
+      "value": "Official scanner cone. Should be wider than OuterBubbleAngleDegrees."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScoreThreshold.name",
+      "value": "公式スコアしきい値"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScoreThreshold.description",
+      "value": "Official scanner score threshold."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialDistanceVsDotBlend.name",
+      "value": "公式距離VsDot混合"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialDistanceVsDotBlend.description",
+      "value": "Official scanner scoring mix. 0 = aim angle, 1 = distance."
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanIntervalFrames.name",
+      "value": "公式スキャン間隔フレーム"
+    },
+    {
+      "key": "entry.System - Official Scanner.OfficialScanIntervalFrames.description",
+      "value": "Frames between official target scans."
+    },
+    {
+      "key": "entry.System - Official Scanner.ScannerKeepAliveStrength.name",
+      "value": "スキャナー維持生存強度"
+    },
+    {
+      "key": "entry.System - Official Scanner.ScannerKeepAliveStrength.description",
+      "value": "Tiny internal friction strength to keep official scanner active when all official assist sliders are zero."
+    },
+    {
+      "key": "entry.Troubleshooting.InvertX.name",
+      "value": "反転X"
+    },
+    {
+      "key": "entry.Troubleshooting.InvertX.description",
+      "value": "Invert horizontal assist direction if it moves away from target."
+    },
+    {
+      "key": "entry.Troubleshooting.InvertY.name",
+      "value": "反転Y"
+    },
+    {
+      "key": "entry.Troubleshooting.InvertY.description",
+      "value": "Invert vertical assist direction if it moves away from target."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.EnableWeakspotDebugOverlay.name",
+      "value": "有効化弱点デバッグオーバーレイ"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.EnableWeakspotDebugOverlay.description",
+      "value": "Enable a runtime overlay that draws actual weakspot polygons from Hitmesh / HitboxColliders data."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugOnlyTrackedTarget.name",
+      "value": "弱点デバッグのみTracked目標"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugOnlyTrackedTarget.description",
+      "value": "Only draw weakspot polygons for the current AimAssist tracked target."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugShowAllPositiveShapes.name",
+      "value": "弱点デバッグShowAllPositiveShapes"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugShowAllPositiveShapes.description",
+      "value": "Draw every non-invulnerable positive-multiplier shape. If false, only draw the highest-multiplier shape(s) per target."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugMinimumMultiplier.name",
+      "value": "弱点デバッグ最小倍率"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugMinimumMultiplier.description",
+      "value": "Minimum base GetShapeMultiplier() required for overlay drawing when WeakspotDebugShowAllPositiveShapes is true."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugLineWidth.name",
+      "value": "弱点デバッグ線幅"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugLineWidth.description",
+      "value": "World-space line width for the weakspot overlay."
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugDepthOffset.name",
+      "value": "弱点デバッグ深度オフセット"
+    },
+    {
+      "key": "entry.Debug - Weakspot Overlay.WeakspotDebugDepthOffset.description",
+      "value": "Move overlay vertices slightly toward the player camera to reduce z-fighting."
+    },
+    {
+      "key": "entry.Master Switch.EnableAimbot.name",
+      "value": "有効化自動照準"
+    },
+    {
+      "key": "entry.Master Switch.EnableAimbot.description",
+      "value": "Master switch for Deadeye Instinct aim assist and HardLock AutoFire."
+    },
+    {
+      "key": "entry.Master Switch.HoldDisableKey.name",
+      "value": "長押し無効化キー"
+    },
+    {
+      "key": "entry.Master Switch.HoldDisableKey.description",
+      "value": "Hold this key to temporarily disable aim assist and release AutoFire trigger. Use None to disable this keybind."
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistance.name",
+      "value": "ハードロック最大距離"
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistance.description",
+      "value": "Maximum configured distance for HardLock target search."
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistanceCap.name",
+      "value": "ハードロック最大距離上限"
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDistanceCap.description",
+      "value": "Safety cap applied on top of HardLockMaxDistance. This keeps old configs with very large distances from locking enemies too far away. Set to 0 to disable the cap."
+    },
+    {
+      "key": "entry.HardLock.HardLockPreferWeakspot.name",
+      "value": "ハードロック優先弱点"
+    },
+    {
+      "key": "entry.HardLock.HardLockPreferWeakspot.description",
+      "value": "HardLock aims at the best weakspot center when available."
+    },
+    {
+      "key": "entry.HardLock.HardLockWeakspotBias.name",
+      "value": "ハードロック弱点バイアス"
+    },
+    {
+      "key": "entry.HardLock.HardLockWeakspotBias.description",
+      "value": "0 = target body point, 1 = weakspot center."
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationSpeed.name",
+      "value": "ハードロック回転速度"
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationSpeed.description",
+      "value": "Maximum HardLock correction speed per second. High values create near-instant lock."
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationGain.name",
+      "value": "ハードロック回転Gain"
+    },
+    {
+      "key": "entry.HardLock.HardLockRotationGain.description",
+      "value": "Scales angular error into camera rotation delta. Higher values are more aggressive."
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDeltaPerFrame.name",
+      "value": "ハードロック最大差分毎フレーム"
+    },
+    {
+      "key": "entry.HardLock.HardLockMaxDeltaPerFrame.description",
+      "value": "Hard cap for HardLock rotation delta per frame."
+    },
+    {
+      "key": "entry.HardLock.HardLockRecoilCompensation.name",
+      "value": "ハードロック反動補正"
+    },
+    {
+      "key": "entry.HardLock.HardLockRecoilCompensation.description",
+      "value": "Apply an extra HardLock correction after CameraRecoil.LateUpdate()."
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireLineOfSight.name",
+      "value": "ハードロック要求線OfSight"
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireLineOfSight.description",
+      "value": "Legacy line-of-sight switch. Kept for compatibility. HardLockRequireVisibleTarget is the safer release switch."
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireVisibleTarget.name",
+      "value": "ハードロック要求可視目標"
+    },
+    {
+      "key": "entry.HardLock.HardLockRequireVisibleTarget.description",
+      "value": "Require official geometry-layer visibility before selecting a HardLock target. This prevents locking enemies behind walls or before the player can see them."
+    },
+    {
+      "key": "entry.HardLock Target Priority.HardLockTargetPriority.name",
+      "value": "ハードロック目標優先度"
+    },
+    {
+      "key": "entry.HardLock Target Priority.HardLockTargetPriority.description",
+      "value": "Nearest / LowestHealth / WeakspotThenDistance / ThreatWeighted."
+    },
+    {
+      "key": "entry.HardLock Target Priority.DistanceWeight.name",
+      "value": "距離重み"
+    },
+    {
+      "key": "entry.HardLock Target Priority.DistanceWeight.description",
+      "value": "ThreatWeighted score weight for nearby enemies. Default is 50% higher than v1.2.4."
+    },
+    {
+      "key": "entry.HardLock Target Priority.LowHealthWeight.name",
+      "value": "低体力重み"
+    },
+    {
+      "key": "entry.HardLock Target Priority.LowHealthWeight.description",
+      "value": "ThreatWeighted score weight for low health enemies."
+    },
+    {
+      "key": "entry.HardLock Target Priority.WeakspotWeight.name",
+      "value": "弱点重み"
+    },
+    {
+      "key": "entry.HardLock Target Priority.WeakspotWeight.description",
+      "value": "ThreatWeighted score weight for high-multiplier weakspots."
+    },
+    {
+      "key": "entry.HardLock Target Priority.StickyTargetBonus.name",
+      "value": "粘着目標ボーナス"
+    },
+    {
+      "key": "entry.HardLock Target Priority.StickyTargetBonus.description",
+      "value": "Extra score for the current HardLock target to prevent rapid target switching."
+    },
+    {
+      "key": "entry.Auto Fire.EnableAutoFire.name",
+      "value": "有効化自動射撃"
+    },
+    {
+      "key": "entry.Auto Fire.EnableAutoFire.description",
+      "value": "Automatically holds or pulses the weapon trigger when HardLock is aligned."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireOnlyInHardLock.name",
+      "value": "自動射撃のみInハードロック"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireOnlyInHardLock.description",
+      "value": "Only allow AutoFire while Mode = HardLock."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireAligned.name",
+      "value": "自動射撃要求整列"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireAligned.description",
+      "value": "Only fire when HardLock target angle is within AutoFireMaxAngleDegrees."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireMaxAngleDegrees.name",
+      "value": "自動射撃最大角度Degrees"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireMaxAngleDegrees.description",
+      "value": "Maximum angle error for AutoFire alignment."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireWeaponReady.name",
+      "value": "自動射撃要求武器準備完了"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRequireWeaponReady.description",
+      "value": "Check ammo / reload / cooldown fields before pressing the trigger when available."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRespectSemiAuto.name",
+      "value": "自動射撃尊重セミ自動"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireRespectSemiAuto.description",
+      "value": "Pulse semi-auto weapons instead of holding the trigger down."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFirePulseSeconds.name",
+      "value": "自動射撃パルス秒"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFirePulseSeconds.description",
+      "value": "Trigger-down duration for semi-auto AutoFire pulses."
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireReleaseSeconds.name",
+      "value": "自動射撃解除秒"
+    },
+    {
+      "key": "entry.Auto Fire.AutoFireReleaseSeconds.description",
+      "value": "Trigger-up duration between semi-auto AutoFire pulses."
+    },
+    {
+      "key": "value.Assist Mode.Mode.Magnet",
+      "value": "磁力"
+    },
+    {
+      "key": "value.Assist Mode.Mode.Natural",
+      "value": "自然"
+    },
+    {
+      "key": "value.Assist Mode.Mode.HardLock",
+      "value": "ハードロック"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.Low",
+      "value": "低"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.Medium",
+      "value": "中"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.High",
+      "value": "高"
+    },
+    {
+      "key": "value.Preset.MagnetPreset.Custom",
+      "value": "カスタム"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.Low",
+      "value": "低"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.Medium",
+      "value": "中"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.High",
+      "value": "高"
+    },
+    {
+      "key": "value.Preset.NaturalPreset.Custom",
+      "value": "カスタム"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.Nearest",
+      "value": "最も近い"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.LowestHealth",
+      "value": "最低体力"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.WeakspotThenDistance",
+      "value": "弱点優先、その後距離"
+    },
+    {
+      "key": "value.HardLock Target Priority.HardLockTargetPriorityMode.ThreatWeighted",
+      "value": "脅威重み付け"
+    }
+  ]
+}

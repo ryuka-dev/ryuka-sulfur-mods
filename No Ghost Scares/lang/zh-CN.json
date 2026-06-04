@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "禁用幽灵惊吓"
+    },
+    {
+      "key": "plugin.description",
+      "value": "检测并可选择阻止 Ability_Ghost_*_Scare 对象。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.Debug",
+      "value": "调试"
+    },
+    {
+      "key": "section.Performance",
+      "value": "性能"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "覆盖层"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "启用阻止"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "禁用 Ability_Ghost_*_Scare 对象。关闭后只检测，不阻止。"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "显示调试覆盖层"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "在屏幕上显示检测到或已阻止的幽灵惊吓对象。"
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "记录操作"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "将检测到或已阻止的幽灵惊吓对象写入 BepInEx 日志。"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "检测泛幽灵名称"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "仅用于调试。也显示 GhostParticles 或 Unit_Enemy_Ghost 等泛幽灵相关名称。这些对象不会被阻止。"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "扫描间隔"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "扫描已加载场景中幽灵惊吓触发器的频率。"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "覆盖层保留秒数"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "最新检测或阻止后，屏幕覆盖层保持可见的时间。"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "最大覆盖层项目数"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "屏幕上显示的最近记录最大数量。"
+    }
+  ]
+}

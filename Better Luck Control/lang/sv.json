@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Turkontroll"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Justerar turåterhämtning och turförbrukning från Status_Luck-ändringar."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Turåterhämtning"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Turförbrukning"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Felsökning"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Återhämtningsmultiplikator"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Multiplikator för positiva turändringar. 1 = original, 2 = dubbel turåterhämtning."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Fast återhämtningsbonus"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Fast bonus som läggs till varje positiv turåterhämtning efter multiplikatorn."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Åsidosätt återhämtning"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Om värdet är 0 eller högre ersätts varje positiv turåterhämtning med detta fasta värde. -1 inaktiverar detta."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Förbrukningsmultiplikator"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Multiplikator för negativa turändringar. 1 = original, 0.5 = halva kostnaden, 0 = ingen turförbrukning."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Detaljerad loggning"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Skriver detaljerade turändringar till BepInEx-loggen."
+    }
+  ]
+}

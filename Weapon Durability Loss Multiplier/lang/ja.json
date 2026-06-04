@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "武器耐久減少倍率"
+    },
+    {
+      "key": "plugin.description",
+      "value": "射撃による武器耐久減少量を調整します。"
+    },
+    {
+      "key": "section.General",
+      "value": "一般"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "武器"
+    },
+    {
+      "key": "section.Debug",
+      "value": "デバッグ"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Mod を有効化"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "武器耐久減少倍率を有効化します。"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "武器耐久減少倍率"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "射撃による最終的な武器耐久減少にかかる倍率です。1.0 はバニラ、0.5 は半減、0 は減少なし、2 は 2 倍です。"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "耐久変更ログ"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "調整後の射撃耐久減少をログに出力します。通常プレイではオフ推奨です。"
+    }
+  ]
+}

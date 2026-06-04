@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "행운 조정"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Status_Luck 변화에 따른 행운 회복량과 소모량을 조정합니다."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "행운 회복"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "행운 소모"
+    },
+    {
+      "key": "section.Debug",
+      "value": "디버그"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "회복 배율"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "양수 행운 변화에 적용되는 배율입니다. 1은 기본값, 2는 행운 회복 2배입니다."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "회복 고정 보너스"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "배율 적용 후 각 양수 행운 회복 틱에 추가되는 고정값입니다."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "회복 대체값"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "0 이상으로 설정하면 각 양수 행운 회복 틱을 이 고정값으로 대체합니다. -1은 비활성화입니다."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "소모 배율"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "음수 행운 변화에 적용되는 배율입니다. 1은 기본값, 0.5는 소모 절반, 0은 행운 소모 없음입니다."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "상세 로그"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "자세한 행운 변화를 BepInEx 로그에 출력합니다."
+    }
+  ]
+}

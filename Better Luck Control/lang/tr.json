@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Şans kontrolü"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Status_Luck değişikliklerinden gelen şans yenilenmesini ve şans tüketimini ayarlar."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Şans yenilenmesi"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Şans tüketimi"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Hata ayıklama"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Yenilenme çarpanı"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Pozitif şans değişiklikleri için çarpan. 1 = varsayılan, 2 = iki kat şans yenilenmesi."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Sabit yenilenme bonusu"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Çarpandan sonra her pozitif şans yenilenmesine eklenen sabit bonus."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Yenilenmeyi geçersiz kıl"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "0 veya daha yüksekse, her pozitif şans yenilenmesini bu sabit değerle değiştirir. -1 devre dışı bırakır."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Tüketim çarpanı"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Negatif şans değişiklikleri için çarpan. 1 = varsayılan, 0.5 = yarım maliyet, 0 = şans tüketimi yok."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Ayrıntılı günlük"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Ayrıntılı şans değişikliklerini BepInEx günlüğüne yazar."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Doppia XP arma"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Raddoppia l’XP dell’arma ottenuta da Weapon.AddExperience."
+    }
+  ]
+}

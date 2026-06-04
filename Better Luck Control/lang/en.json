@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Better Luck Control"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Adjusts Luck recovery and Luck consumption from Status_Luck changes."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Luck Recovery"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Luck Consumption"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Recovery Multiplier"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Multiplier for positive Luck changes. 1 = vanilla, 2 = double Luck recovery."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Recovery Flat Bonus"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Flat bonus added to each positive Luck recovery tick after the multiplier."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Recovery Override"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "If set to 0 or higher, replaces each positive Luck recovery tick with this fixed value. Set to -1 to disable."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Consumption Multiplier"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Multiplier for negative Luck changes. 1 = vanilla, 0.5 = half cost, 0 = no Luck consumption."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Verbose Logging"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Print detailed Luck changes to the BepInEx log."
+    }
+  ]
+}

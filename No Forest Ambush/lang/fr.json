@@ -1,0 +1,52 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "No Forest Ambush"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Neutralizes Forest Ambush visuals and scare presentation while preserving safer encounter logic."
+    },
+    {
+      "key": "section.General",
+      "value": "General"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Performance"
+    },
+    {
+      "key": "entry.General.LogActions.name",
+      "value": "Log Actions"
+    },
+    {
+      "key": "entry.General.LogActions.description",
+      "value": "Log neutralized Forest Ambush objects."
+    },
+    {
+      "key": "entry.Performance.SceneSignatureCheckInterval.name",
+      "value": "Scene Signature Check Interval"
+    },
+    {
+      "key": "entry.Performance.SceneSignatureCheckInterval.description",
+      "value": "How often to cheaply check whether the loaded scene hierarchy changed."
+    },
+    {
+      "key": "entry.Performance.CleanupBurstIterations.name",
+      "value": "Cleanup Burst Iterations"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstIterations.description",
+      "value": "How many cleanup passes to run after a scene hierarchy change."
+    },
+    {
+      "key": "entry.Performance.CleanupBurstInterval.name",
+      "value": "Cleanup Burst Interval"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstInterval.description",
+      "value": "Delay between cleanup passes during a cleanup burst."
+    }
+  ]
+}

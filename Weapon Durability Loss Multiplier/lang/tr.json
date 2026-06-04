@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Silah dayanıklılık kaybı çarpanı"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ateş etmekten kaynaklanan silah dayanıklılık kaybını ayarlar."
+    },
+    {
+      "key": "section.General",
+      "value": "Genel"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Silah"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Hata ayıklama"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Modu etkinleştir"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Silah dayanıklılık kaybı çarpanını etkinleştirir."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Silah dayanıklılık kaybı çarpanı"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Ateşten kaynaklanan son silah dayanıklılık kaybına uygulanan çarpan. 1.0 = varsayılan, 0.5 = yarı kayıp, 0 = kayıp yok, 2 = çift kayıp."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Dayanıklılık değişikliklerini kaydet"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Ayarlanmış ateş dayanıklılık kaybını günlüğe yazar. Normal oynanış için kapalı tutun."
+    }
+  ]
+}

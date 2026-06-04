@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "التحكم في الحظ"
+    },
+    {
+      "key": "plugin.description",
+      "value": "يضبط استعادة الحظ واستهلاكه الناتجين عن تغييرات Status_Luck."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "استعادة الحظ"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "استهلاك الحظ"
+    },
+    {
+      "key": "section.Debug",
+      "value": "تصحيح الأخطاء"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "مضاعف الاستعادة"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "مضاعف تغييرات الحظ الإيجابية. 1 = الوضع الأصلي، 2 = استعادة الحظ مضاعفة."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "مكافأة استعادة ثابتة"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "مكافأة ثابتة تضاف إلى كل نبضة استعادة حظ إيجابية بعد تطبيق المضاعف."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "استبدال قيمة الاستعادة"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "إذا كانت القيمة 0 أو أعلى، تستبدل كل نبضة استعادة حظ إيجابية بهذه القيمة الثابتة. -1 يعطل ذلك."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "مضاعف الاستهلاك"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "مضاعف تغييرات الحظ السلبية. 1 = الوضع الأصلي، 0.5 = نصف التكلفة، 0 = لا يوجد استهلاك للحظ."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "سجل تفصيلي"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "يطبع تغييرات الحظ التفصيلية في سجل BepInEx."
+    }
+  ]
+}

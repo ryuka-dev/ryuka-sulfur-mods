@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "击杀恢复幸运值"
+    },
+    {
+      "key": "plugin.description",
+      "value": "敌人死亡时给予幸运值，可配置奖励倍率、过滤条件、安全设置和兼容选项。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.Reward",
+      "value": "奖励"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "兼容性"
+    },
+    {
+      "key": "section.Filter",
+      "value": "过滤条件"
+    },
+    {
+      "key": "section.Safety",
+      "value": "安全"
+    },
+    {
+      "key": "section.Debug",
+      "value": "调试"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "启用 Mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "启用击杀恢复幸运值。"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "击杀奖励倍率"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "敌人死亡时获得幸运值的倍率。基础奖励使用当前 Stat_LuckGain，相当于原版一分钟的幸运值恢复量。"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "击杀奖励固定加成"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "在倍率计算后，给击杀幸运值奖励额外增加的固定值。"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "击杀奖励覆盖值"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "设为 0 或更高时，击杀幸运值奖励会被替换为该固定值；-1 表示关闭覆盖。"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "通过 ModifyStatus 应用"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "通过 ModifyStatus 应用击杀奖励，使 Better Luck Control 也能影响击杀奖励。"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "要求敌对玩家"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "只有对玩家敌对的单位才会给予幸运值。"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "仅奖励有经验单位"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "只有 ExperienceOnKill 大于 0 的单位才会给予幸运值。关闭后，0 经验的特殊敌对单位也可以给予奖励。"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "奖励平民单位"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "允许平民单位给予幸运值。"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "奖励可破坏物"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "允许可破坏物给予幸运值。推荐关闭。"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "防止重复奖励"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "防止同一个单位死亡多次给予幸运值。对象池复用会在 Unit.Spawn() 时清理奖励状态。"
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "记录奖励日志"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "把敌人死亡获得的幸运值奖励输出到日志。"
+    }
+  ]
+}

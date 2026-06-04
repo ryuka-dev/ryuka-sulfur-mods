@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "مضاعف خبرة السلاح"
+    },
+    {
+      "key": "plugin.description",
+      "value": "يضبط خبرة السلاح المكتسبة عبر Weapon.AddExperience."
+    },
+    {
+      "key": "section.General",
+      "value": "عام"
+    },
+    {
+      "key": "section.Debug",
+      "value": "تصحيح"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "تفعيل المود"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "يفعل مضاعف خبرة السلاح."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "مضاعف الخبرة"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "مضاعف خبرة السلاح. 1.0 = الأصلي، 2.0 = خبرة مضاعفة، 10.0 = عشرة أضعاف الخبرة."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "تسجيل تغييرات الخبرة"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "يسجل تغييرات خبرة السلاح في سجل BepInEx. يُفضل إبقاؤه معطلاً أثناء اللعب العادي."
+    }
+  ]
+}

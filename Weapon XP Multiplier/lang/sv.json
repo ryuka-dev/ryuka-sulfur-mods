@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Multiplikator för vapenerfarenhet"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Justerar vapenerfarenhet som fås från Weapon.AddExperience."
+    },
+    {
+      "key": "section.General",
+      "value": "Allmänt"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Felsökning"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Aktivera mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktivera multiplikatorn för vapenerfarenhet."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "XP-multiplikator"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "Multiplikator för vapenerfarenhet. 1.0 = standard, 2.0 = dubbel XP, 10.0 = tio gånger XP."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "Logga XP-ändringar"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "Logga ändringar av vapenerfarenhet i BepInEx-loggen. Ha avstängt vid normalt spelande."
+    }
+  ]
+}

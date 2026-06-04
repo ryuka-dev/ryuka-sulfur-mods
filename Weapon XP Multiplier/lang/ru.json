@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Множитель опыта оружия"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Настраивает опыт оружия, получаемый через Weapon.AddExperience."
+    },
+    {
+      "key": "section.General",
+      "value": "Общее"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Отладка"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Включить мод"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Включить множитель опыта оружия."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "Множитель опыта"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "Множитель опыта оружия. 1.0 = как в игре, 2.0 = двойной опыт, 10.0 = десятикратный опыт."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "Журнал изменений опыта"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "Записывать изменения опыта оружия в журнал BepInEx. Для обычной игры оставьте выключенным."
+    }
+  ]
+}

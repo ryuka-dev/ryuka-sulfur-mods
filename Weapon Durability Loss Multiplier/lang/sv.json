@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Multiplikator för vapenslitage"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Justerar vapnens hållbarhetsförlust från skjutning."
+    },
+    {
+      "key": "section.General",
+      "value": "Allmänt"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Vapen"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Felsökning"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Aktivera mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Aktivera multiplikatorn för vapenslitage."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Multiplikator för vapenslitage"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Multiplikator för slutlig hållbarhetsförlust från skjutning. 1.0 = standard, 0.5 = halv förlust, 0 = ingen förlust, 2 = dubbel förlust."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Logga hållbarhetsändringar"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Logga justerad hållbarhetsförlust från skjutning. Ha avstängt vid normalt spelande."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Controle de sorte"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ajusta a recuperação e o consumo de sorte em alterações de Status_Luck."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Recuperação de sorte"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Consumo de sorte"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Depuração"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Multiplicador de recuperação"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Multiplicador para alterações positivas de sorte. 1 = padrão, 2 = recuperação dobrada."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Bônus fixo de recuperação"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Bônus fixo adicionado a cada tick positivo de recuperação de sorte após o multiplicador."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Substituição da recuperação"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Se definido como 0 ou mais, substitui cada tick positivo de recuperação de sorte por este valor fixo. -1 desativa."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Multiplicador de consumo"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Multiplicador para alterações negativas de sorte. 1 = padrão, 0.5 = metade do custo, 0 = sem consumo de sorte."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Log detalhado"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Imprime alterações detalhadas de sorte no log do BepInEx."
+    }
+  ]
+}

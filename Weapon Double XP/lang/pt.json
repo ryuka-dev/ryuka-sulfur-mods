@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "XP de arma em dobro"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Dobra a XP de arma recebida por Weapon.AddExperience."
+    }
+  ]
+}

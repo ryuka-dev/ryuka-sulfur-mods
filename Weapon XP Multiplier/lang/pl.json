@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Mnożnik PD broni"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Dostosowuje PD broni otrzymywane przez Weapon.AddExperience."
+    },
+    {
+      "key": "section.General",
+      "value": "Ogólne"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debugowanie"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Włącz mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Włącza mnożnik PD broni."
+    },
+    {
+      "key": "entry.General.XpMultiplier.name",
+      "value": "Mnożnik PD"
+    },
+    {
+      "key": "entry.General.XpMultiplier.description",
+      "value": "Mnożnik PD broni. 1.0 = wersja podstawowa, 2.0 = podwójne PD, 10.0 = dziesięć razy PD."
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.name",
+      "value": "Loguj zmiany PD"
+    },
+    {
+      "key": "entry.Debug.LogXpChanges.description",
+      "value": "Zapisuje zmiany PD broni w logu BepInEx. Do normalnej gry zostaw wyłączone."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Multiplicateur de perte de durabilité d’arme"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Ajuste la perte de durabilité des armes due aux tirs."
+    },
+    {
+      "key": "section.General",
+      "value": "Général"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Arme"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Débogage"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Activer le mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Active le multiplicateur de perte de durabilité d’arme."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Multiplicateur de perte de durabilité d’arme"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Multiplicateur appliqué à la perte finale de durabilité d’arme due aux tirs. 1.0 = valeur d’origine, 0.5 = perte réduite de moitié, 0 = aucune perte, 2 = perte doublée."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Journaliser les changements de durabilité"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Journalise la perte de durabilité ajustée due aux tirs. À laisser désactivé pour une partie normale."
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Öldürmede şans"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Düşmanlar öldüğünde şans verir; ödül, filtre, güvenlik ve uyumluluk seçenekleri ayarlanabilir."
+    },
+    {
+      "key": "section.General",
+      "value": "Genel"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Ödül"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Uyumluluk"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filtre"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Güvenlik"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Hata ayıklama"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Modu etkinleştir"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Öldürmede şansı etkinleştirir."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Öldürme ödülü çarpanı"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Bir düşman öldüğünde kazanılan şansın çarpanı. Temel ödül mevcut Stat_LuckGain değeridir ve varsayılan bir dakikalık şans yenilenmesine eşittir."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Öldürme sabit bonusu"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Çarpandan sonra öldürme şansı ödülüne eklenen sabit bonus."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Öldürme ödülünü geçersiz kıl"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "0 veya daha yüksekse, öldürme şansı ödülünü bu sabit değerle değiştirir. -1 devre dışı bırakır."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "ModifyStatus ile uygula"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Öldürme ödüllerini ModifyStatus ile uygular, böylece Şans kontrolü de bunları değiştirebilir."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Oyuncuya düşman olma şartı"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Sadece oyuncuya düşman birimler şans verir."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "XP birimleri gerekli"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Sadece ExperienceOnKill değeri 0’dan büyük olan birimler şans verir. 0 XP’li özel düşmanlara izin vermek için kapalı bırakın."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Sivilleri ödüllendir"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Sivil birimlerin şans vermesine izin verir."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Kırılabilirleri ödüllendir"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Kırılabilir birimlerin şans vermesine izin verir. Önerilen: kapalı."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Çift ödülleri önle"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Aynı birim ölümünün birden fazla kez şans vermesini önler. Nesne havuzu yeniden kullanımı, Unit.Spawn() ödül durumunu temizlediğinde işlenir."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Ödülleri günlüğe yaz"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Düşman ölümlerinden gelen şans ödüllerini günlüğe yazar."
+    }
+  ]
+}

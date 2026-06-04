@@ -1,0 +1,52 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "禁用森林伏击"
+    },
+    {
+      "key": "plugin.description",
+      "value": "中和森林伏击的视觉与惊吓表现，同时尽量保留安全的遭遇逻辑。"
+    },
+    {
+      "key": "section.General",
+      "value": "通用"
+    },
+    {
+      "key": "section.Performance",
+      "value": "性能"
+    },
+    {
+      "key": "entry.General.LogActions.name",
+      "value": "记录操作"
+    },
+    {
+      "key": "entry.General.LogActions.description",
+      "value": "记录被中和的森林伏击对象。"
+    },
+    {
+      "key": "entry.Performance.SceneSignatureCheckInterval.name",
+      "value": "场景签名检查间隔"
+    },
+    {
+      "key": "entry.Performance.SceneSignatureCheckInterval.description",
+      "value": "低成本检查已加载场景层级是否变化的频率。"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstIterations.name",
+      "value": "清理突发迭代次数"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstIterations.description",
+      "value": "场景层级变化后运行多少次清理。"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstInterval.name",
+      "value": "清理突发间隔"
+    },
+    {
+      "key": "entry.Performance.CleanupBurstInterval.description",
+      "value": "清理突发期间每次清理之间的延迟。"
+    }
+  ]
+}

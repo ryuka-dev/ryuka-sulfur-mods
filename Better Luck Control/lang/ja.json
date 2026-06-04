@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "ラック調整"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Status_Luck の回復量と消費量を調整します。"
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "ラック回復"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "ラック消費"
+    },
+    {
+      "key": "section.Debug",
+      "value": "デバッグ"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "回復倍率"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "プラス方向のラック変化にかかる倍率です。1 はバニラ、2 はラック回復が 2 倍です。"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "回復固定ボーナス"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "倍率計算後、プラス方向のラック回復 1 回ごとに加算する固定値です。"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "回復上書き値"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "0 以上にすると、プラス方向のラック回復 1 回ごとの値をこの固定値に置き換えます。-1 で無効化します。"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "消費倍率"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "マイナス方向のラック変化にかかる倍率です。1 はバニラ、0.5 は消費半分、0 はラック消費なしです。"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "詳細ログ"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "ラック変化の詳細を BepInEx ログに出力します。"
+    }
+  ]
+}

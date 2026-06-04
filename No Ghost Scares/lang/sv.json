@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Inga spökskrämslar"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Upptäcker och blockerar valfritt Ability_Ghost_*_Scare-objekt."
+    },
+    {
+      "key": "section.General",
+      "value": "Allmänt"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Felsökning"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Prestanda"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Överlägg"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Aktivera blockering"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Inaktivera Ability_Ghost_*_Scare-objekt. Stäng av för att endast upptäcka dem."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Visa felsökningsöverlägg"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Visa upptäckta eller blockerade spökskrämselobjekt på skärmen."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Logga åtgärder"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Skriv upptäckta eller blockerade spökskrämselobjekt till BepInEx-loggen."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Upptäck breda spöknamn"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Endast felsökning. Visa även breda spökrelaterade namn som GhostParticles eller Unit_Enemy_Ghost. Dessa blockeras aldrig."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Skanningsintervall"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "Hur ofta laddade scener skannas efter spökskrämselutlösare."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Överläggstid i sekunder"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "Hur länge överlägget visas efter senaste upptäckt eller blockering."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Max överläggsposter"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Högsta antal senaste poster som visas på skärmen."
+    }
+  ]
+}

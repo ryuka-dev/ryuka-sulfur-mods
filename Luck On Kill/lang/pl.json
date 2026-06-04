@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Szczęście za zabójstwo"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Przyznaje szczęście po śmierci wrogów, z ustawieniami nagrody, filtrów, bezpieczeństwa i zgodności."
+    },
+    {
+      "key": "section.General",
+      "value": "Ogólne"
+    },
+    {
+      "key": "section.Reward",
+      "value": "Nagroda"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "Zgodność"
+    },
+    {
+      "key": "section.Filter",
+      "value": "Filtr"
+    },
+    {
+      "key": "section.Safety",
+      "value": "Bezpieczeństwo"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debugowanie"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Włącz mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Włącza Szczęście za zabójstwo."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "Mnożnik nagrody za zabójstwo"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "Mnożnik szczęścia zdobywanego po śmierci wroga. Podstawowa nagroda używa aktualnego Stat_LuckGain i odpowiada jednej minucie podstawowego odzyskiwania szczęścia."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "Stały bonus za zabójstwo"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "Stały bonus dodawany do nagrody szczęścia za zabójstwo po mnożniku."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "Zastąpienie nagrody za zabójstwo"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "Wartość 0 lub wyższa zastępuje nagrodę szczęścia za zabójstwo tą stałą wartością. -1 wyłącza zastąpienie."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "Zastosuj przez ModifyStatus"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "Stosuje nagrody za zabójstwo przez ModifyStatus, aby Kontrola szczęścia również mogła je modyfikować."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "Wymagaj wrogości wobec gracza"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "Tylko jednostki wrogie wobec gracza przyznają szczęście."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "Tylko jednostki z XP"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "Tylko jednostki z ExperienceOnKill większym niż 0 przyznają szczęście. Wyłącz, aby dopuścić specjalnych wrogów z 0 XP."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "Nagradzać cywilów"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "Pozwala jednostkom cywilnym przyznawać szczęście."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "Nagradzać obiekty zniszczalne"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "Pozwala obiektom zniszczalnym przyznawać szczęście. Zalecane: wyłączone."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "Zapobiegaj podwójnym nagrodom"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "Zapobiega przyznaniu szczęścia więcej niż raz za tę samą śmierć jednostki. Ponowne użycie puli obiektów jest obsługiwane przy czyszczeniu stanu w Unit.Spawn()."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "Loguj nagrody"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "Zapisuje do logu nagrody szczęścia za śmierć wrogów."
+    }
+  ]
+}

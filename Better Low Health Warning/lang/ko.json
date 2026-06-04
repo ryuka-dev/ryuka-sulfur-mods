@@ -1,0 +1,120 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "향상된 낮은 체력 경고"
+    },
+    {
+      "key": "plugin.description",
+      "value": "낮은 체력일 때 설정 가능한 비네트 경고를 추가합니다."
+    },
+    {
+      "key": "section.General",
+      "value": "일반"
+    },
+    {
+      "key": "section.Visual",
+      "value": "시각"
+    },
+    {
+      "key": "section.Debug",
+      "value": "디버그"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "모드 활성화"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "향상된 낮은 체력 경고를 활성화합니다."
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.name",
+      "value": "HUD 숨김 시 숨기기"
+    },
+    {
+      "key": "entry.General.HideWhenHudHidden.description",
+      "value": "게임 HUD가 숨겨져 있을 때 경고도 숨깁니다."
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.name",
+      "value": "경고 체력 비율"
+    },
+    {
+      "key": "entry.Visual.WarningHealthPercent.description",
+      "value": "이 체력 비율 아래에서 경고를 표시합니다. 0.35는 35%입니다."
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.name",
+      "value": "위험 체력 비율"
+    },
+    {
+      "key": "entry.Visual.CriticalHealthPercent.description",
+      "value": "이 체력 비율 아래에서 더 강한 경고를 사용합니다. 0.15는 15%입니다."
+    },
+    {
+      "key": "entry.Visual.BorderThickness.name",
+      "value": "테두리 두께"
+    },
+    {
+      "key": "entry.Visual.BorderThickness.description",
+      "value": "부드러운 빨간 비네트의 두께를 픽셀 단위로 지정합니다."
+    },
+    {
+      "key": "entry.Visual.MinOpacity.name",
+      "value": "최소 불투명도"
+    },
+    {
+      "key": "entry.Visual.MinOpacity.description",
+      "value": "경고 임계값에서의 경고 불투명도입니다."
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.name",
+      "value": "최대 불투명도"
+    },
+    {
+      "key": "entry.Visual.MaxOpacity.description",
+      "value": "위험 임계값 이하에서의 경고 불투명도입니다."
+    },
+    {
+      "key": "entry.Visual.EnablePulse.name",
+      "value": "맥동 효과 활성화"
+    },
+    {
+      "key": "entry.Visual.EnablePulse.description",
+      "value": "체력이 낮을 때 경고가 맥동하도록 합니다."
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.name",
+      "value": "맥동 속도"
+    },
+    {
+      "key": "entry.Visual.PulseSpeed.description",
+      "value": "맥동 속도입니다. 값이 높을수록 더 빠르게 맥동합니다."
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.name",
+      "value": "페이드 속도"
+    },
+    {
+      "key": "entry.Visual.FadeSpeed.description",
+      "value": "경고가 나타나고 사라지는 속도입니다."
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.name",
+      "value": "전체 화면 색조 불투명도"
+    },
+    {
+      "key": "entry.Visual.FullscreenTintOpacity.description",
+      "value": "아주 약한 전체 화면 빨간 색조 배율입니다. 0으로 설정하면 비활성화됩니다."
+    },
+    {
+      "key": "entry.Debug.LogErrors.name",
+      "value": "오류 로그"
+    },
+    {
+      "key": "entry.Debug.LogErrors.description",
+      "value": "패치 오류를 로그에 출력합니다. 일반 플레이에서는 꺼 두는 것이 좋습니다."
+    }
+  ]
+}

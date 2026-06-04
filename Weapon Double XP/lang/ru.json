@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Двойной опыт оружия"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Удваивает опыт оружия, получаемый через Weapon.AddExperience."
+    }
+  ]
+}

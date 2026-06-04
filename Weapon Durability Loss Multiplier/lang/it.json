@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Moltiplicatore perdita durabilità arma"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Regola la perdita di durabilità dell’arma causata dagli spari."
+    },
+    {
+      "key": "section.General",
+      "value": "Generale"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Arma"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Abilita mod"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Abilita il moltiplicatore di perdita durabilità dell’arma."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Moltiplicatore perdita durabilità arma"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Moltiplicatore applicato alla perdita finale di durabilità dell’arma dagli spari. 1.0 = normale, 0.5 = perdita dimezzata, 0 = nessuna perdita, 2 = perdita doppia."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Registra cambiamenti durabilità"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Registra la perdita di durabilità da sparo modificata. Lascia disattivato per il gioco normale."
+    }
+  ]
+}

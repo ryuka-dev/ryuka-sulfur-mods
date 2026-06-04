@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Controllo fortuna"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Regola il recupero e il consumo di fortuna per le modifiche a Status_Luck."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Recupero fortuna"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Consumo fortuna"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Moltiplicatore recupero"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Moltiplicatore per le modifiche positive alla fortuna. 1 = originale, 2 = recupero fortuna doppio."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Bonus fisso di recupero"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Bonus fisso aggiunto a ogni tick positivo di recupero fortuna dopo il moltiplicatore."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Sostituzione recupero"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Se impostato a 0 o più, sostituisce ogni tick positivo di recupero fortuna con questo valore fisso. -1 lo disattiva."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Moltiplicatore consumo"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Moltiplicatore per le modifiche negative alla fortuna. 1 = originale, 0.5 = costo dimezzato, 0 = nessun consumo di fortuna."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Log dettagliato"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Scrive le modifiche dettagliate della fortuna nel log di BepInEx."
+    }
+  ]
+}

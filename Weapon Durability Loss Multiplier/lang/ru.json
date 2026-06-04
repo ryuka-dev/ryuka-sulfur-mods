@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Множитель потери прочности оружия"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Настраивает потерю прочности оружия от стрельбы."
+    },
+    {
+      "key": "section.General",
+      "value": "Общее"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "Оружие"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Отладка"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "Включить мод"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "Включить множитель потери прочности оружия."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "Множитель потери прочности оружия"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "Множитель итоговой потери прочности оружия от стрельбы. 1.0 = как в игре, 0.5 = половина потери, 0 = без потери, 2 = двойная потеря."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "Журнал изменений прочности"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "Записывать скорректированную потерю прочности от стрельбы. Для обычной игры оставьте выключенным."
+    }
+  ]
+}

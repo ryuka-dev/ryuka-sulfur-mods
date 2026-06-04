@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "처치 시 행운 획득"
+    },
+    {
+      "key": "plugin.description",
+      "value": "적이 죽을 때 행운을 지급하며, 보상량, 필터, 안전 및 호환성 옵션을 설정할 수 있습니다."
+    },
+    {
+      "key": "section.General",
+      "value": "일반"
+    },
+    {
+      "key": "section.Reward",
+      "value": "보상"
+    },
+    {
+      "key": "section.Compatibility",
+      "value": "호환성"
+    },
+    {
+      "key": "section.Filter",
+      "value": "필터"
+    },
+    {
+      "key": "section.Safety",
+      "value": "안전"
+    },
+    {
+      "key": "section.Debug",
+      "value": "디버그"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "모드 활성화"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "처치 시 행운 획득을 활성화합니다."
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.name",
+      "value": "처치 보상 배율"
+    },
+    {
+      "key": "entry.Reward.RewardMultiplier.description",
+      "value": "적이 죽었을 때 얻는 행운의 배율입니다. 기본 보상은 현재 Stat_LuckGain이며, 기본 행운 회복 1분에 해당합니다."
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.name",
+      "value": "처치 보상 고정 보너스"
+    },
+    {
+      "key": "entry.Reward.RewardFlatBonus.description",
+      "value": "배율 적용 후 처치 행운 보상에 추가되는 고정값입니다."
+    },
+    {
+      "key": "entry.Reward.RewardOverride.name",
+      "value": "처치 보상 대체값"
+    },
+    {
+      "key": "entry.Reward.RewardOverride.description",
+      "value": "0 이상으로 설정하면 처치 행운 보상을 이 고정값으로 대체합니다. -1은 비활성화입니다."
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.name",
+      "value": "ModifyStatus로 적용"
+    },
+    {
+      "key": "entry.Compatibility.ApplyThroughModifyStatus.description",
+      "value": "처치 보상을 ModifyStatus로 적용하여 행운 조정도 해당 보상에 영향을 줄 수 있게 합니다."
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.name",
+      "value": "플레이어 적대 요구"
+    },
+    {
+      "key": "entry.Filter.RequireHostileToPlayer.description",
+      "value": "플레이어에게 적대적인 유닛만 행운을 지급합니다."
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.name",
+      "value": "XP 유닛만 보상"
+    },
+    {
+      "key": "entry.Filter.RewardOnlyExperienceUnits.description",
+      "value": "ExperienceOnKill이 0보다 큰 유닛만 행운을 지급합니다. 끄면 XP가 0인 특수 적대 유닛도 보상을 줄 수 있습니다."
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.name",
+      "value": "민간인 보상"
+    },
+    {
+      "key": "entry.Filter.RewardCivilians.description",
+      "value": "민간인 유닛도 행운을 지급할 수 있게 합니다."
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.name",
+      "value": "파괴물 보상"
+    },
+    {
+      "key": "entry.Filter.RewardBreakables.description",
+      "value": "파괴 가능한 오브젝트도 행운을 지급할 수 있게 합니다. 권장: 끔."
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.name",
+      "value": "중복 보상 방지"
+    },
+    {
+      "key": "entry.Safety.PreventDuplicateRewards.description",
+      "value": "같은 유닛의 죽음으로 행운 보상이 여러 번 지급되지 않게 합니다. 오브젝트 풀 재사용은 Unit.Spawn()에서 보상 상태를 지워 처리합니다."
+    },
+    {
+      "key": "entry.Debug.LogRewards.name",
+      "value": "보상 로그"
+    },
+    {
+      "key": "entry.Debug.LogRewards.description",
+      "value": "적 사망으로 얻은 행운 보상을 로그에 출력합니다."
+    }
+  ]
+}

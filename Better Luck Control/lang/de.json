@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Glückskontrolle"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Passt Glücksregeneration und Glücksverbrauch bei Status_Luck-Änderungen an."
+    },
+    {
+      "key": "section.Luck Recovery",
+      "value": "Glücksregeneration"
+    },
+    {
+      "key": "section.Luck Consumption",
+      "value": "Glücksverbrauch"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.name",
+      "value": "Regenerationsmultiplikator"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryMultiplier.description",
+      "value": "Multiplikator für positive Glücksänderungen. 1 = Original, 2 = doppelte Regeneration."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.name",
+      "value": "Fester Regenerationsbonus"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryFlatBonus.description",
+      "value": "Fester Bonus, der nach dem Multiplikator zu jedem positiven Glücks-Regenerationstick addiert wird."
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.name",
+      "value": "Regeneration ersetzen"
+    },
+    {
+      "key": "entry.Luck Recovery.RecoveryOverridePerMinute.description",
+      "value": "Bei 0 oder höher ersetzt dieser feste Wert jeden positiven Glücks-Regenerationstick. -1 deaktiviert dies."
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.name",
+      "value": "Verbrauchsmultiplikator"
+    },
+    {
+      "key": "entry.Luck Consumption.ConsumptionMultiplier.description",
+      "value": "Multiplikator für negative Glücksänderungen. 1 = Original, 0.5 = halbe Kosten, 0 = kein Glücksverbrauch."
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.name",
+      "value": "Ausführliches Logging"
+    },
+    {
+      "key": "entry.Debug.VerboseLogging.description",
+      "value": "Gibt detaillierte Glücksänderungen im BepInEx-Log aus."
+    }
+  ]
+}

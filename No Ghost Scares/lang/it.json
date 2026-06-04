@@ -1,0 +1,84 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "Niente spaventi fantasma"
+    },
+    {
+      "key": "plugin.description",
+      "value": "Rileva e, opzionalmente, blocca gli oggetti Ability_Ghost_*_Scare."
+    },
+    {
+      "key": "section.General",
+      "value": "Generale"
+    },
+    {
+      "key": "section.Debug",
+      "value": "Debug"
+    },
+    {
+      "key": "section.Performance",
+      "value": "Prestazioni"
+    },
+    {
+      "key": "section.Overlay",
+      "value": "Overlay"
+    },
+    {
+      "key": "entry.General.EnableBlocking.name",
+      "value": "Abilita blocco"
+    },
+    {
+      "key": "entry.General.EnableBlocking.description",
+      "value": "Disabilita gli oggetti Ability_Ghost_*_Scare. Disattiva per rilevarli soltanto."
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.name",
+      "value": "Mostra overlay di debug"
+    },
+    {
+      "key": "entry.Debug.ShowDebugOverlay.description",
+      "value": "Mostra sullo schermo gli oggetti di spavento fantasma rilevati o bloccati."
+    },
+    {
+      "key": "entry.Debug.LogActions.name",
+      "value": "Registra azioni"
+    },
+    {
+      "key": "entry.Debug.LogActions.description",
+      "value": "Scrive nel log di BepInEx gli oggetti di spavento fantasma rilevati o bloccati."
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.name",
+      "value": "Rileva nomi fantasma generici"
+    },
+    {
+      "key": "entry.Debug.DetectBroadGhostNames.description",
+      "value": "Solo debug. Mostra anche nomi generici legati ai fantasmi come GhostParticles o Unit_Enemy_Ghost. Non vengono mai bloccati."
+    },
+    {
+      "key": "entry.Performance.ScanInterval.name",
+      "value": "Intervallo scansione"
+    },
+    {
+      "key": "entry.Performance.ScanInterval.description",
+      "value": "Frequenza con cui scansionare le scene caricate per trigger di spavento fantasma."
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.name",
+      "value": "Secondi mantenimento overlay"
+    },
+    {
+      "key": "entry.Overlay.OverlayKeepSeconds.description",
+      "value": "Quanto a lungo l’overlay resta visibile dopo l’ultima rilevazione o blocco."
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.name",
+      "value": "Elementi overlay massimi"
+    },
+    {
+      "key": "entry.Overlay.MaxOverlayItems.description",
+      "value": "Numero massimo di record recenti mostrati sullo schermo."
+    }
+  ]
+}

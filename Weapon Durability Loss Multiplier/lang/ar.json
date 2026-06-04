@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "key": "plugin.name",
+      "value": "مضاعف فقدان متانة السلاح"
+    },
+    {
+      "key": "plugin.description",
+      "value": "يضبط فقدان متانة السلاح الناتج عن إطلاق النار."
+    },
+    {
+      "key": "section.General",
+      "value": "عام"
+    },
+    {
+      "key": "section.Weapon",
+      "value": "السلاح"
+    },
+    {
+      "key": "section.Debug",
+      "value": "تصحيح"
+    },
+    {
+      "key": "entry.General.EnableMod.name",
+      "value": "تفعيل المود"
+    },
+    {
+      "key": "entry.General.EnableMod.description",
+      "value": "يفعل مضاعف فقدان متانة السلاح."
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.name",
+      "value": "مضاعف فقدان متانة السلاح"
+    },
+    {
+      "key": "entry.Weapon.WeaponDurabilityLossMultiplier.description",
+      "value": "مضاعف يطبق على فقدان متانة السلاح النهائي عند إطلاق النار. 1.0 = الأصلي، 0.5 = نصف الفقد، 0 = لا فقدان، 2 = فقدان مضاعف."
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.name",
+      "value": "تسجيل تغييرات المتانة"
+    },
+    {
+      "key": "entry.Debug.LogDurabilityChanges.description",
+      "value": "يسجل فقدان المتانة المعدل عند إطلاق النار. يُفضل إبقاؤه معطلاً أثناء اللعب العادي."
+    }
+  ]
+}
